@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4ba772gmr1xu"]
+
+[ext_resource type="Script" path="res://Scripts/dropped_item.gd" id="1_jqgpm"]
+[ext_resource type="Texture2D" uid="uid://4c0j2oh51sl" path="res://Assets/Sprites/Basic_tools_and_meterials.png" id="3_g2kw2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uoln0"]
+radius = 8.68
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3ey4"]
+atlas = ExtResource("3_g2kw2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlt5x"]
+atlas = ExtResource("3_g2kw2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebmv5"]
+atlas = ExtResource("3_g2kw2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s2li"]
+atlas = ExtResource("3_g2kw2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jddgd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3ey4")
+}],
+"loop": true,
+"name": &"espada_bruta",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlt5x")
+}],
+"loop": true,
+"name": &"espada_finalizada",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebmv5")
+}],
+"loop": true,
+"name": &"metal_bruto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s2li")
+}],
+"loop": true,
+"name": &"metal_forjado",
+"speed": 5.0
+}]
+
+[node name="DroppedItem" type="Node2D"]
+script = ExtResource("1_jqgpm")
+
+[node name="interaction_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_uoln0")
+
+[node name="Tooltip" type="Label" parent="."]
+visible = false
+z_index = 50
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 223.0
+offset_bottom = 1.0
+scale = Vector2(0.257306, 0.257306)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_font_sizes/font_size = 16
+text = "Press SPACE to grab the item"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemSprite" type="AnimatedSprite2D" parent="."]
+z_index = 20
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_jddgd")
+animation = &"espada_finalizada"
+
+[connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="interaction_area" to="." method="_on_interaction_area_body_exited"]
