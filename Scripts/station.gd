@@ -22,19 +22,19 @@ const stations = {
 		'empty': 'metal_bruto',
 		'emtpy_text': 'You need metal to start the forge',
 		'ready': 'metal_forjado',
-		'duration': 5
+		'duration': 1
 	},
 	'anvil': {
 		'empty': 'metal_forjado',
 		'emtpy_text': 'You need forged metal to start the anvil',
 		'ready': 'espada_bruta',
-		'duration': 5
+		'duration': 1
 	},
 	'whetstone': {
 		'empty': 'espada_bruta',
 		'emtpy_text': 'You need a sword to start the whetstone',
 		'ready': 'espada_finalizada',
-		'duration': 5
+		'duration': 1
 	}
 }
 

@@ -39,7 +39,6 @@ radius = 15.0
 [node name="chest" type="CharacterBody2D"]
 z_index = 3
 script = ExtResource("1_4l67n")
-item = "metal_bruto"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)

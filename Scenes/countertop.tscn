@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd8mep6yrwu1w"]
+
+[ext_resource type="Script" path="res://Scripts/countertop.gd" id="1_0bcu8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uoln0"]
+radius = 15.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0bcu8")
+
+[node name="interaction_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_uoln0")
+
+[node name="Tooltip" type="Label" parent="."]
+z_index = 50
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 223.0
+offset_bottom = 1.0
+scale = Vector2(0.257306, 0.257306)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_font_sizes/font_size = 16
+text = "Press SPACE to grab the material"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="interaction_area" to="." method="_on_interaction_area_body_exited"]
