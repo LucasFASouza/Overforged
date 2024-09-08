@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bx3jr3fs8prko"]
+[gd_scene load_steps=27 format=3 uid="uid://bx3jr3fs8prko"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4brsm"]
 [ext_resource type="Texture2D" uid="uid://dtn68yvlf7xn0" path="res://Assets/Sprites/Basic Charakter Spritesheet.png" id="2_gdo80"]
@@ -162,23 +162,27 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_71uxf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3ey4"]
 atlas = ExtResource("3_26ppp")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3vksm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlt5x"]
 atlas = ExtResource("3_26ppp")
-region = Rect2(0, 16, 16, 16)
+region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nhqep"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebmv5"]
 atlas = ExtResource("3_26ppp")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s2li"]
+atlas = ExtResource("3_26ppp")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tumcx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_71uxf")
+"texture": SubResource("AtlasTexture_v3ey4")
 }],
 "loop": true,
 "name": &"espada_bruta",
@@ -186,7 +190,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3vksm")
+"texture": SubResource("AtlasTexture_jlt5x")
+}],
+"loop": true,
+"name": &"espada_finalizada",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebmv5")
 }],
 "loop": true,
 "name": &"metal_bruto",
@@ -194,7 +206,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nhqep")
+"texture": SubResource("AtlasTexture_8s2li")
 }],
 "loop": true,
 "name": &"metal_forjado",
@@ -224,4 +236,4 @@ z_index = 20
 position = Vector2(0, -20)
 scale = Vector2(0.56, 0.56)
 sprite_frames = SubResource("SpriteFrames_tumcx")
-animation = &"espada_bruta"
+animation = &"espada_finalizada"

@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 
 
 func _on_interaction_area_body_entered(_body: Node2D) -> void:
+	print('is_trash', is_trash) 	
 	is_interactable = true
 	tooltip.visible = true
 

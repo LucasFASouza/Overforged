@@ -1,22 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://v8rnhsybj0qb"]
+[gd_scene load_steps=8 format=3 uid="uid://v8rnhsybj0qb"]
 
 [ext_resource type="Script" path="res://Scripts/chest.gd" id="1_4l67n"]
-[ext_resource type="Texture2D" uid="uid://b73ioel3qx0a1" path="res://Assets/Sprites/Basic_Furniture.png" id="2_44ist"]
-[ext_resource type="Texture2D" uid="uid://baigv0iryq5bm" path="res://Assets/Sprites/Chest.png" id="3_ijryj"]
+[ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_nxngq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lpdov"]
-atlas = ExtResource("3_ijryj")
-region = Rect2(0, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hb0m"]
+atlas = ExtResource("2_nxngq")
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8cneb"]
-atlas = ExtResource("2_44ist")
-region = Rect2(112, 32, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_35h8t"]
+atlas = ExtResource("2_nxngq")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vx5ep"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lpdov")
+"texture": SubResource("AtlasTexture_2hb0m")
 }],
 "loop": true,
 "name": &"chest",
@@ -24,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8cneb")
+"texture": SubResource("AtlasTexture_35h8t")
 }],
 "loop": true,
 "name": &"trash",

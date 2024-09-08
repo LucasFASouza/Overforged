@@ -29,9 +29,14 @@ const stations = {
 		'emtpy_text': 'You need forged metal to start the anvil',
 		'ready': 'espada_bruta',
 		'duration': 5
+	},
+	'whetstone': {
+		'empty': 'espada_bruta',
+		'emtpy_text': 'You need a sword to start the whetstone',
+		'ready': 'espada_finalizada',
+		'duration': 5
 	}
 }
-
 
 
 func _ready() -> void:

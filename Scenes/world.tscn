@@ -229,26 +229,23 @@ layer_1/tile_data = PackedInt32Array(-196616, 0, 0, -131080, 0, 1, -65544, 0, 1,
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
-[node name="chest" parent="." instance=ExtResource("7_15ro2")]
-position = Vector2(-103, -34)
-script = SubResource("GDScript_3kg8w")
-
 [node name="chest2" parent="." instance=ExtResource("7_15ro2")]
-position = Vector2(23, -34)
+position = Vector2(21, -32)
 script = SubResource("GDScript_3kg8w")
 item = ""
 is_trash = true
 
-[node name="station" parent="." instance=ExtResource("7_gniju")]
-position = Vector2(-104, 40)
+[node name="chest" parent="." instance=ExtResource("7_15ro2")]
+position = Vector2(-103, -34)
+script = SubResource("GDScript_3kg8w")
 
-[node name="station2" parent="." instance=ExtResource("7_gniju")]
-position = Vector2(-72, 40)
+[node name="station" parent="." instance=ExtResource("7_gniju")]
+position = Vector2(-97, 36)
 
 [node name="station4" parent="." instance=ExtResource("7_gniju")]
-position = Vector2(-2, 40)
-station = "anvil"
+position = Vector2(15, 37)
+station = "whetstone"
 
 [node name="station3" parent="." instance=ExtResource("7_gniju")]
-position = Vector2(-36, 40)
+position = Vector2(-40, 36)
 station = "anvil"
