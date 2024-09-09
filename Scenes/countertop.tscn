@@ -5,16 +5,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_uoln0"]
 radius = 15.0
 
-[node name="Countertop" type="Node2D"]
+[node name="CounterTop" type="StaticBody2D"]
 script = ExtResource("1_0bcu8")
-
-[node name="interaction_area" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
-position = Vector2(0, -6)
-shape = SubResource("CircleShape2D_uoln0")
 
 [node name="Tooltip" type="Label" parent="."]
 z_index = 50
@@ -28,6 +20,14 @@ theme_override_font_sizes/font_size = 16
 text = "Press SPACE to grab the material"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="interaction_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_uoln0")
 
 [connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="interaction_area" to="." method="_on_interaction_area_body_exited"]

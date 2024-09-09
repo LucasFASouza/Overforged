@@ -30,9 +30,9 @@ static var ids_options: Array = [
 	"espada_finalizada",
 ]
 
-static func get_item_name(id: String) -> String:
-	return items_names.get(id, "Empty")
+static func get_item_name(given_id: String) -> String:
+	return items_names.get(given_id, "Empty")
 
-static func create_item(id: String) -> Item:
-	var name = get_item_name(id)
-	return Item.new(id, name)
+static func create_item(given_id: String) -> Item:
+	var name = get_item_name(given_id)
+	return Item.new(given_id, name)
