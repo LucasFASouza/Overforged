@@ -17,7 +17,7 @@ func _ready() -> void:
 	super._ready()
 
 func interact() -> void:
-	if player.item_holding != '':
+	if player.item_holding['id'] != '':
 		tooltip.text = "You have your hands full right now"
 	else:
 		player.get_item(item)

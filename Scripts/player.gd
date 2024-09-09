@@ -10,7 +10,7 @@ var animation_name: String = "front_idle"
 @onready var item_sprite: AnimatedSprite2D = $ItemSprite
 
 var ItemsType = preload("items_type.gd").new()
-var item_holding = ItemsType.empty_item
+var item_holding = ItemsType.create_item("")
 const dropped_item_scene = preload("res://Scenes/dropped_item.tscn")
 
 var current_interactable_item = null
@@ -60,11 +60,19 @@ func play_animation() -> void:
 func get_item(item) -> void:
 	item_sprite.visible = true
 	item_sprite.play(item['id'])
-	item_holding = item
 
-func give_item() -> void:
+	item_holding = ItemsType.create_item(item['id'])
+	item_holding['forge_level'] = item['forge_level']
+	item_holding['anvil_level'] = item['anvil_level']
+	item_holding['whetstone_level'] = item['whetstone_level']
+
+func give_item():
 	item_sprite.visible = false
-	item_holding = ItemsType.empty_item
+
+	var gave_item = item_holding
+	item_holding = ItemsType.create_item("")
+
+	return gave_item
 
 func drop_item() -> void:
 	item_sprite.visible = false
@@ -76,4 +84,4 @@ func drop_item() -> void:
 	dropped_items_node.add_child(dropped_item)
 	dropped_item.global_position = global_position
 
-	item_holding = ItemsType.empty_item
+	item_holding = ItemsType.create_item("")

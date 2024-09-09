@@ -8,7 +8,7 @@ func _ready() -> void:
 	super._ready()
 
 func interact() -> void:
-	if player.item_holding != 'espada_finalizada':
+	if player.item_holding['id'] != 'espada_finalizada':
 		tooltip.text = "You need a finished sword to sell"
 	else:
 		var item = player.give_item()
