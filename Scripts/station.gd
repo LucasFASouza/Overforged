@@ -30,8 +30,8 @@ const stations = {
 	}
 }
 
-var ItemsType = preload("res://path/to/items_type.gd")
-var current_item = ItemsType.empty_item_holding
+var ItemsType = preload("items_type.gd").new()
+var current_item = ItemsType.empty_item
 
 func _ready() -> void:
 	message_base = "Press SPACE to interact"
@@ -87,11 +87,11 @@ func interact() -> void:
 			return
 
 		current_item['id'] = stations[station]['ready']
-		current_item['name'] = ItemsType["items_names"][current_item['id']]
+		current_item['name'] = ItemsType.items_names[current_item['id']]
 		current_item[station + '_level'] = 1
 
 		player.get_item(current_item)
-		current_item = ItemsType.empty_item_holding
+		current_item = ItemsType.empty_item
 		state = 'empty'
 		percentage.visible = false
 		percentage.text = "00%"

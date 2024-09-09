@@ -2,7 +2,8 @@ extends "res://Scripts/interactable_item.gd"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var ItemsType = preload("res://path/to/items_type.gd")
+var ItemsType = preload("items_type.gd").new()
+var item = ItemsType.empty_item
 
 @export var item_id: String = ''
 @export var is_trash: bool = false
@@ -11,6 +12,10 @@ func _ready() -> void:
 	message_base = "Press SPACE to get the item" if not is_trash else "Press SPACE to throw the item"
 	tooltip.text = message_base
 	animated_sprite.play("chest" if not is_trash else "trash")
+
+	item['id'] = item_id
+	item['name'] = ItemsType.items_names[item_id]
+	
 	super._ready()
 
 func interact() -> void:

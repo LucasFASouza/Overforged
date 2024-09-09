@@ -182,7 +182,6 @@ station = "anvil"
 
 [node name="chest" parent="." instance=ExtResource("7_15ro2")]
 position = Vector2(-80, 33)
-item = "metal_bruto"
 
 [node name="chest2" parent="." instance=ExtResource("7_15ro2")]
 position = Vector2(-42, 33)
