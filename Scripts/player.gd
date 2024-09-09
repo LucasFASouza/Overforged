@@ -9,7 +9,8 @@ var animation_name: String = "front_idle"
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
 @onready var item_sprite: AnimatedSprite2D = $ItemSprite
 
-var item_holding: String = ""
+var ItemsType = preload("res://path/to/items_type.gd")
+var item_holding = ItemsType.empty_item_holding
 const dropped_item_scene = preload("res://Scenes/dropped_item.tscn")
 
 var current_interactable_item = null
@@ -20,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_select"):
 		if current_interactable_item != null:
 			current_interactable_item.interact()
-		elif item_holding != "":
+		elif item_holding['id'] != "":
 			drop_item()
 
 func player_movement() -> void:	
@@ -56,14 +57,14 @@ func play_animation() -> void:
 	animation_name = current_direction + ("_walk" if is_moving else "_idle")
 	player_sprite.play(animation_name)
 
-func get_item(item: String) -> void:
+func get_item(item) -> void:
 	item_sprite.visible = true
-	item_sprite.play(item)
+	item_sprite.play(item['id'])
 	item_holding = item
 
 func give_item() -> void:
 	item_sprite.visible = false
-	item_holding = ""
+	item_holding = ItemsType.empty_item_holding
 
 func drop_item() -> void:
 	item_sprite.visible = false
@@ -75,4 +76,4 @@ func drop_item() -> void:
 	dropped_items_node.add_child(dropped_item)
 	dropped_item.global_position = global_position
 
-	item_holding = ""
+	item_holding = ItemsType.empty_item_holding

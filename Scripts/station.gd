@@ -30,6 +30,9 @@ const stations = {
 	}
 }
 
+var ItemsType = preload("res://path/to/items_type.gd")
+var current_item = ItemsType.empty_item_holding
+
 func _ready() -> void:
 	message_base = "Press SPACE to interact"
 	tooltip.visible = false
@@ -69,21 +72,26 @@ func _on_interaction_area_body_entered(_body: Node2D) -> void:
 
 func interact() -> void:
 	if state == 'empty':
-		if player.item_holding != stations[station]['empty']:
+		if player.item_holding['id'] != stations[station]['empty']:
 			tooltip.text = stations[station]['emtpy_text']
 			return
 
-		player.give_item()
+		current_item = player.give_item()
 		state = 'running'
 		percentage.visible = true
 		elapsed_time = 0.0
 
 	elif state == 'ready':
-		if player.item_holding != '':
+		if player.item_holding['id'] != '':
 			tooltip.text = "You have your hands full right now"
 			return
 
-		player.get_item(stations[station]['ready'])
+		current_item['id'] = stations[station]['ready']
+		current_item['name'] = ItemsType["items_names"][current_item['id']]
+		current_item[station + '_level'] = 1
+
+		player.get_item(current_item)
+		current_item = ItemsType.empty_item_holding
 		state = 'empty'
 		percentage.visible = false
 		percentage.text = "00%"

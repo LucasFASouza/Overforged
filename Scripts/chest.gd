@@ -2,7 +2,9 @@ extends "res://Scripts/interactable_item.gd"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var item: String = ''
+var ItemsType = preload("res://path/to/items_type.gd")
+
+@export var item_id: String = ''
 @export var is_trash: bool = false
 
 func _ready() -> void:

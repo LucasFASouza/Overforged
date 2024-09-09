@@ -11,8 +11,8 @@ func interact() -> void:
 	if player.item_holding != 'espada_finalizada':
 		tooltip.text = "You need a finished sword to sell"
 	else:
-		player.give_item()
-		game_manager.sell_weapon("espada_finalizada")
+		var item = player.give_item()
+		game_manager.sell_weapon(item)
 		player.current_interactable_item = null
 		tooltip.visible = false
 		tooltip.text = message_base
