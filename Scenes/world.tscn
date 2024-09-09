@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cw3e2l6ehj64b"]
+[gd_scene load_steps=11 format=3 uid="uid://cw3e2l6ehj64b"]
 
 [ext_resource type="PackedScene" uid="uid://bx3jr3fs8prko" path="res://Scenes/player.tscn" id="1_5hxnf"]
 [ext_resource type="PackedScene" uid="uid://bn5epijt7q1nj" path="res://Scenes/game_manager.tscn" id="1_e144n"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://v8rnhsybj0qb" path="res://Scenes/chest.tscn" id="7_15ro2"]
 [ext_resource type="PackedScene" uid="uid://d3062yman47n6" path="res://Scenes/station.tscn" id="7_gniju"]
 [ext_resource type="PackedScene" uid="uid://cd8mep6yrwu1w" path="res://Scenes/countertop.tscn" id="7_jt7tc"]
-[ext_resource type="PackedScene" uid="uid://c4ba772gmr1xu" path="res://Scenes/dropped_item.tscn" id="8_ssfo0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8df2o"]
 texture = ExtResource("2_cqnce")
@@ -162,10 +161,15 @@ layer_1/tile_data = PackedInt32Array(-131077, 65536, 0, 196603, 65536, 2, -13107
 position = Vector2(2, 2)
 zoom = Vector2(5, 5)
 
+[node name="DroppedItems" type="Node2D" parent="."]
+
 [node name="Countertop" parent="." instance=ExtResource("7_jt7tc")]
 position = Vector2(23, 7)
 
 [node name="station" parent="." instance=ExtResource("7_gniju")]
+position = Vector2(-81, -16)
+
+[node name="station4" parent="." instance=ExtResource("7_gniju")]
 position = Vector2(-81, -16)
 
 [node name="station2" parent="." instance=ExtResource("7_gniju")]
@@ -183,7 +187,3 @@ item = "metal_bruto"
 [node name="chest2" parent="." instance=ExtResource("7_15ro2")]
 position = Vector2(-42, 33)
 is_trash = true
-
-[node name="DroppedItem" parent="." instance=ExtResource("8_ssfo0")]
-position = Vector2(-3, 30)
-item = "espada_bruta"
