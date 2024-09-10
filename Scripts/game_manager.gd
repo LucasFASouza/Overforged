@@ -26,5 +26,4 @@ func get_hit(damage: int) -> void:
 		health_label.text = "Game Over"
 
 func _on_wave_timer_timeout() -> void:
-	pass
-	#enemies_group.start_wave(5)
+	enemies_group.start_wave(5)
