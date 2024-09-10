@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var label: Label = $Label
 
 @export var move_interval_min: float = 2.0
 @export var move_interval_max: float = 5.0
@@ -11,6 +12,10 @@ extends CharacterBody2D
 
 var target_position: Vector2
 var move_timer: Timer
+var attack_timer: Timer
+@export var attacl_cooldown: float = 1.0
+
+var mode = "idle"
 
 var is_walking = false
 
@@ -28,20 +33,29 @@ func _ready() -> void:
 	move_timer.wait_time = randf_range(move_interval_min, move_interval_max)
 	move_timer.connect("timeout", Callable(self, "_on_move_timer_timeout"))
 	add_child(move_timer)
+
+	attack_timer = Timer.new()
+	attack_timer.wait_time = attacl_cooldown
+	attack_timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
+	add_child(attack_timer)
 	
 
 func _physics_process(_delta: float) -> void:
-	print("Locked: ", enemy_locked)
-	print("Target: ", target_position)
-	print("Position: ", position)
+	label.text = mode
+
+	if enemies_group.get_child_count() > 0 and not enemy_locked:
+		var enemy = enemies_group.get_child(0)
+		var enemy_position = enemy.position
+		target_position.y = enemy_position.y
 
 	entity_movement()
-	get_closest_enemy()
-
 
 func _on_move_timer_timeout() -> void:
 	move_randomly()	
 
+func _on_attack_timer_timeout() -> void:
+	if enemy_locked:
+		enemy_locked.get_hit(weapon.whetstone_level)
 
 func entity_movement() -> void:
 	if is_walking:
@@ -60,13 +74,13 @@ func entity_movement() -> void:
 			is_walking = false
 			sword_sprite.visible = true
 			velocity.y = 0
-			sprite.play("right_idle")
+			sprite.play("idle")
 
-			move_timer.wait_time = randf_range(move_interval_min, move_interval_max)
-			move_timer.start()
-	
+			if mode == "idle":
+				move_timer.wait_time = randf_range(move_interval_min, move_interval_max)
+				move_timer.start()
+		
 	move_and_slide()
-
 
 func move_randomly() -> void:
 	if enemy_locked:
@@ -87,31 +101,23 @@ func move_randomly() -> void:
 
 	is_walking = true
 
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name.split(" ")[0] == "Enemy":
+		enemy_locked = body
+		is_walking = false
+		move_timer.stop()
+		sprite.play("idle")
+		mode = "attack"
+		attack_timer.start()
 
-func get_closest_enemy():
-	var closest_enemy = null
-	var closest_distance = 1000000
-
-	for enemy_i in enemies_group.get_children():
-		if enemy_i.name == "SpawnTimer":
-			continue
-
-		var distance = position.distance_to(enemy_i.position)
-
-		if distance < closest_distance:
-			closest_distance = distance
-			closest_enemy = enemy_i
-	
-	if closest_enemy:
-		target_position.y = closest_enemy.position.y
-		is_walking = true
-		enemy_locked = closest_enemy
-	else:
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body == enemy_locked:
 		enemy_locked = null
+		velocity.y = 0
+		mode = "idle"
+		move_randomly()
 
-
-# TODO: Rework movement
-# make soldier be able to move a little to the right also
-# only 1 enemy will spanw at time
-# make a pathfind until this enemy
-# when close enough, start attacking every cooldown
+# OK SO NEW IDEA
+# rework this whole thing, and make the main component be soldier group instead of soldier
+# the group will match the enemies or divide itself, but each soldier won't decide where to go
+# calculate the damage based on each weapon

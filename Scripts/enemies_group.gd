@@ -12,10 +12,11 @@ var spawn_timer: Timer
 var enemies_to_spawn: int
 
 func _ready() -> void:
-	spawn_timer = Timer.new()
-	spawn_timer.connect("timeout", Callable(self, "_on_spawn_timer_timeout"))
-	spawn_timer.name = "SpawnTimer"
-	add_child(spawn_timer)
+	pass
+
+func _process(_delta: float) -> void:
+	if self.get_child_count() == 0:
+		spawn_enemy()
 
 func start_wave(intensity: int) -> void:
 	enemies_to_spawn = intensity
@@ -29,9 +30,3 @@ func spawn_enemy() -> void:
 		new_enemy.name = "Enemy"
 		add_child(new_enemy)
 		enemies_to_spawn -= 1
-
-		var interval = randf_range(min_spawn_interval, max_spawn_interval)
-		spawn_timer.start(interval)
-
-func _on_spawn_timer_timeout() -> void:
-	spawn_enemy()
