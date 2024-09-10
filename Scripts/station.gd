@@ -11,21 +11,21 @@ var elapsed_time: float = 0.0
 
 const stations = {
 	'forge': {
-		'empty': 'metal_bruto',
-		'emtpy_text': 'You need metal to start the forge',
-		'ready': 'metal_forjado',
+		'empty': 'iron_ore',
+		'emtpy_text': 'You need Iron Ore to start the forge',
+		'ready': 'iron_ingot',
 		'duration': 0.1 # value for testing
 	},
 	'anvil': {
-		'empty': 'metal_forjado',
-		'emtpy_text': 'You need forged metal to start the anvil',
-		'ready': 'espada_bruta',
+		'empty': 'iron_ingot',
+		'emtpy_text': 'You need Iron Ingot to start the anvil',
+		'ready': 'dull_sword',
 		'duration': 0.1 # value for testing
 	},
 	'whetstone': {
-		'empty': 'espada_bruta',
-		'emtpy_text': 'You need a sword to start the whetstone',
-		'ready': 'espada_finalizada',
+		'empty': 'dull_sword',
+		'emtpy_text': 'You need a Dull Sword to start the whetstone',
+		'ready': 'finished_sword',
 		'duration': 0.1 # value for testing
 	}
 }
@@ -88,9 +88,7 @@ func interact() -> void:
 
 		current_item['id'] = stations[station]['ready']
 		current_item['name'] = ItemsType.items_names.get(current_item['id'], "")
-		current_item[station + '_level'] = 1
-
-		print("Stars: ", current_item[station + '_level'])
+		current_item[station + '_level'] = 5
 
 		player.get_item(current_item)
 		current_item = ItemsType.create_item("")

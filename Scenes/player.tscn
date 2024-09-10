@@ -170,13 +170,13 @@ region = Rect2(32, 0, 16, 16)
 atlas = ExtResource("3_26ppp")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebmv5"]
-atlas = ExtResource("3_26ppp")
-region = Rect2(0, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8s2li"]
 atlas = ExtResource("3_26ppp")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebmv5"]
+atlas = ExtResource("3_26ppp")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tumcx"]
 animations = [{
@@ -185,7 +185,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_v3ey4")
 }],
 "loop": true,
-"name": &"espada_bruta",
+"name": &"dull_sword",
 "speed": 5.0
 }, {
 "frames": [{
@@ -193,15 +193,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jlt5x")
 }],
 "loop": true,
-"name": &"espada_finalizada",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ebmv5")
-}],
-"loop": true,
-"name": &"metal_bruto",
+"name": &"finished_sword",
 "speed": 5.0
 }, {
 "frames": [{
@@ -209,7 +201,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_8s2li")
 }],
 "loop": true,
-"name": &"metal_forjado",
+"name": &"iron_ingot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebmv5")
+}],
+"loop": true,
+"name": &"iron_ore",
 "speed": 5.0
 }]
 
@@ -235,4 +235,4 @@ z_index = 20
 position = Vector2(0, -20)
 scale = Vector2(0.56, 0.56)
 sprite_frames = SubResource("SpriteFrames_tumcx")
-animation = &"espada_finalizada"
+animation = &"finished_sword"

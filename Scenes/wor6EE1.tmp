@@ -162,7 +162,7 @@ zoom = Vector2(5, 5)
 [node name="Countertop" parent="." instance=ExtResource("7_jt7tc")]
 position = Vector2(10, 45)
 
-[node name="Forge" parent="." instance=ExtResource("7_gniju")]
+[node name="Froge" parent="." instance=ExtResource("7_gniju")]
 position = Vector2(-80, -16)
 
 [node name="Anvil" parent="." instance=ExtResource("7_gniju")]

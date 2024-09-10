@@ -1,8 +1,8 @@
 extends "res://Scripts/interactable_item.gd"
 
 @export var item = {
-	"id": "metal_bruto",
-	"name": "Metal Ore",
+	"id": "iron_ore",
+	"name": "Iron Ore",
 	"forge_level": null,
 	"anvil_level": null,
 	"whetstone_level": null,
