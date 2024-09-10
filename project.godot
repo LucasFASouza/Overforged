@@ -17,6 +17,10 @@ boot_splash/show_image=false
 boot_splash/image="res://Assets/Marketing/Splash.png"
 config/icon="res://icon.svg"
 
+[autoload]
+
+Audiomanager="*res://Scenes/audiomanager.tscn"
+
 [input]
 
 ui_select={

@@ -76,6 +76,7 @@ func interact() -> void:
 			return
 
 		current_item = player.give_item()
+		Audiomanager.play_sfx(station)
 		state = 'running'
 		percentage.visible = true
 		elapsed_time = 0.0
