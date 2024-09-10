@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxffngrm8x0k2"]
+[gd_scene load_steps=19 format=3 uid="uid://cxffngrm8x0k2"]
 
 [ext_resource type="Script" path="res://Scripts/soldier.gd" id="1_c86f4"]
 [ext_resource type="Texture2D" uid="uid://62m8mga1ddwf" path="res://Assets/Sprites/Soldado.png" id="2_7waw3"]
@@ -19,6 +19,14 @@ region = Rect2(96, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_11j48"]
 atlas = ExtResource("2_7waw3")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbib7"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx0ms"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(48, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f75pc"]
 atlas = ExtResource("2_7waw3")
@@ -58,6 +66,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"front_walk",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbib7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx0ms")
+}],
+"loop": true,
+"name": &"hit",
 "speed": 8.0
 }, {
 "frames": [{
@@ -114,11 +133,12 @@ script = ExtResource("1_c86f4")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ixryu")
-animation = &"idle"
-frame_progress = 0.862816
+animation = &"hit"
+frame_progress = 0.691755
 offset = Vector2(0, -6)
 
 [node name="Sword" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(4, -3)
 scale = Vector2(0.56, 0.56)
 sprite_frames = SubResource("SpriteFrames_tumcx")
@@ -136,7 +156,7 @@ position = Vector2(9.5, -4)
 scale = Vector2(2.44, 1)
 shape = SubResource("RectangleShape2D_xvcss")
 
-[node name="Label" type="Label" parent="."]
+[node name="HealthLabel" type="Label" parent="."]
 offset_left = -21.0
 offset_top = -13.0
 offset_right = 107.0

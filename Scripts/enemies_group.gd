@@ -2,9 +2,6 @@ extends Node2D
 
 var enemy_scene = preload("res://Scenes/enemy.tscn")
 
-@export var boundary_up: int = -42
-@export var boundary_down: int = 56
-
 @export var min_spawn_interval: float = 10
 @export var max_spawn_interval: float = 15
 
@@ -25,8 +22,7 @@ func start_wave(intensity: int) -> void:
 func spawn_enemy() -> void:
 	if enemies_to_spawn > 0:
 		var new_enemy = enemy_scene.instantiate()
-		var y_value = randi_range(boundary_up, boundary_down)
-		new_enemy.position = Vector2(150, y_value)
+		new_enemy.position = Vector2(150, 0)
 		new_enemy.name = "Enemy"
 		add_child(new_enemy)
 		enemies_to_spawn -= 1

@@ -1,3 +1,8 @@
+# OK SO NEW IDEA
+# rework this whole thing, and make the main component be soldier group instead of soldier
+# the group will match the enemies or divide itself, but each soldier won't decide where to go
+# calculate the damage based on each weapon
+
 extends CharacterBody2D
 @onready var label: Label = $Label
 
@@ -116,8 +121,3 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		velocity.y = 0
 		mode = "idle"
 		move_randomly()
-
-# OK SO NEW IDEA
-# rework this whole thing, and make the main component be soldier group instead of soldier
-# the group will match the enemies or divide itself, but each soldier won't decide where to go
-# calculate the damage based on each weapon

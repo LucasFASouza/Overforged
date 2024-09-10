@@ -7,8 +7,13 @@ extends CharacterBody2D
 var target_position
 var is_walking = false
 
+@onready var health_label = $HealthLabel
+@export var health: int = 0
+
+var mode: String = "idle"
+
 func _ready() -> void:
-	pass
+	health_label.text = str(health)
 	
 func _physics_process(_delta: float) -> void:
 	entity_movement()
@@ -28,10 +33,19 @@ func entity_movement() -> void:
 		if position.distance_to(target_position) < 1:
 			is_walking = false
 			velocity.y = 0
+
 			sprite.play("idle")
+	
+	if mode == "fight":
+		sprite.play("hit")
 		
 	move_and_slide()
 
 func move_to_position(new_position: Vector2) -> void:
 	target_position = new_position
 	is_walking = true
+
+func get_hit(damage):
+	health -= damage
+	health_label.text = str(health)
+	return health
