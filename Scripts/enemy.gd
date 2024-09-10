@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: int = 50
+@export var speed: int = 20
 @onready var sprite: AnimatedSprite2D = $Sprite
 
 @onready var game_manager = get_node("/root/World/GameManager")
@@ -8,8 +8,6 @@ extends CharacterBody2D
 func _ready() -> void:
 	var random_number = randi_range(-10, 10)
 	speed += random_number
-
-	print("Speed: ", speed)
 
 func _physics_process(_delta: float) -> void:
 	entity_movement()

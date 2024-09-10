@@ -89,8 +89,6 @@ func interact() -> void:
 		current_item['name'] = ItemsType.items_names.get(current_item['id'], "")
 		current_item[station + '_level'] = 1
 
-		print("Stars: ", current_item[station + '_level'])
-
 		player.get_item(current_item)
 		current_item = ItemsType.create_item("")
 		state = 'empty'

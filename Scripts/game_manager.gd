@@ -8,9 +8,8 @@ extends Control
 var wave_timer: Timer
 
 func _ready() -> void:
-	print(enemies_group)
 	wave_timer = Timer.new()
-	wave_timer.wait_time = 10.0
+	wave_timer.wait_time = 10
 	wave_timer.one_shot = true
 	wave_timer.connect("timeout", Callable(self, "_on_wave_timer_timeout"))
 	add_child(wave_timer)

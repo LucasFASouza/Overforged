@@ -170,13 +170,13 @@ region = Rect2(32, 0, 16, 16)
 atlas = ExtResource("3_26ppp")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebmv5"]
-atlas = ExtResource("3_26ppp")
-region = Rect2(0, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8s2li"]
 atlas = ExtResource("3_26ppp")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebmv5"]
+atlas = ExtResource("3_26ppp")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tumcx"]
 animations = [{
@@ -198,18 +198,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ebmv5")
-}],
-"loop": true,
-"name": &"iron_ore",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_8s2li")
 }],
 "loop": true,
 "name": &"iron_ingot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebmv5")
+}],
+"loop": true,
+"name": &"iron_ore",
 "speed": 5.0
 }]
 

@@ -30,7 +30,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 8.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -41,7 +41,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 8.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xhoj"]
@@ -52,22 +52,25 @@ size = Vector2(4, 6)
 
 [node name="Enemy" type="CharacterBody2D"]
 z_index = 5
-collision_layer = 3
-collision_mask = 3
+scale = Vector2(2.44, 2.44)
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_ie530")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_ixryu")
-animation = &"walk"
-frame_progress = 0.232788
+animation = &"idle"
+frame_progress = 0.488863
 offset = Vector2(0, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -3.25)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_8xhoj")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-7, -3)
