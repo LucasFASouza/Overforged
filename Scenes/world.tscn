@@ -175,7 +175,7 @@ station = "whetstone"
 
 [node name="Chest" parent="." instance=ExtResource("7_15ro2")]
 position = Vector2(-77, 33)
-item_id = "metal_bruto"
+item_id = "iron_ore"
 
 [node name="Trash" parent="." instance=ExtResource("7_15ro2")]
 position = Vector2(-25, 34)

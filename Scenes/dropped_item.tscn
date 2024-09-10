@@ -26,7 +26,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_v3ey4")
 }],
 "loop": true,
-"name": &"espada_bruta",
+"name": &"dull_sword",
 "speed": 5.0
 }, {
 "frames": [{
@@ -34,7 +34,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jlt5x")
 }],
 "loop": true,
-"name": &"espada_finalizada",
+"name": &"finished_sword",
 "speed": 5.0
 }, {
 "frames": [{
@@ -42,7 +42,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ebmv5")
 }],
 "loop": true,
-"name": &"metal_bruto",
+"name": &"iron_ore",
 "speed": 5.0
 }, {
 "frames": [{
@@ -50,7 +50,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8s2li")
 }],
 "loop": true,
-"name": &"metal_forjado",
+"name": &"iron_ingot",
 "speed": 5.0
 }]
 
@@ -78,7 +78,7 @@ vertical_alignment = 1
 z_index = 20
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_jddgd")
-animation = &"espada_finalizada"
+animation = &"finished_sword"
 
 [node name="interaction_area" type="Area2D" parent="."]
 collision_layer = 2

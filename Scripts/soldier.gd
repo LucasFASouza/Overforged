@@ -71,12 +71,3 @@ func move_randomly() -> void:
 	target_position.y = randi_range(sector_start, sector_end)
 
 	is_walking = true
-
-# Lógica de IA:
-# 	Verificar se há um inimigo em seu setor
-# 	Se houver, ficar na cordenada Y correspondente ao inimigo mais próximo e atacar
-# 	Só se mover novamente quando este inimigo for derrotado
-# 	Se não houver, verificar se há algum inimigo nos setores adjacentes
-# 	Se houver, se mover para o setor do inimigo mais próximo, com um offset de 10 pixels
-# 	Continuar aumentando os setores até achar um inimigo, ou esgotar
-# 	Se não houver, permanecer em seu setor e se mover aleatoriamente

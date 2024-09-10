@@ -17,17 +17,17 @@ class Item:
 		self.whetstone_level = given_whetstone_level
 
 static var items_names: Dictionary = {
-	"metal_bruto": "Metal Ore",
-	"metal_forjado": "Forged Metal",
-	"espada_bruta": "Raw Sword",
-	"espada_finalizada": "Finished Sword",
+	"iron_ore": "Iron Ore",
+	"iron_ingot": "Iron Ingot",
+	"dull_sword": "Dull Sword",
+	"finished_sword": "Finished Sword",
 }
 
 static var ids_options: Array = [
-	"metal_bruto",
-	"metal_forjado",
-	"espada_bruta",
-	"espada_finalizada",
+	"iron_ore",
+	"iron_ingot",
+	"dull_sword",
+	"finished_sword",
 ]
 
 static func get_item_name(given_id: String) -> String:

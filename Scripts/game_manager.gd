@@ -3,7 +3,7 @@ extends Control
 @export var health = 100
 @onready var health_label: Label = $HealthLabel
 @onready var timer_label: Label = $TimerLabel
-@onready var enemies_group = $EnemiesGroup
+@onready var enemies_group = $"/root/World/EnemiesGroup"
 
 var wave_timer: Timer
 
