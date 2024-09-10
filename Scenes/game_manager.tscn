@@ -2,6 +2,28 @@
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_valuy"]
 
-[node name="Control" type="Node2D"]
+[node name="GameManager" type="Control"]
 z_index = 50
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_valuy")
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 1
+offset_right = 197.0
+offset_bottom = 50.0
+scale = Vector2(0.4, 0.4)
+theme_override_font_sizes/font_size = 36
+text = "Health: 100"
+
+[node name="TimerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 17.0
+offset_right = 42.0
+offset_bottom = 40.0
+text = "90"

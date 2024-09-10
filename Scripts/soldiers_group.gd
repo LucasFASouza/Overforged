@@ -5,6 +5,9 @@ var soldier_scene = preload("res://Scenes/soldier.tscn")
 var soldiers_count: int = 0
 var weapons_sold: Array = []
 
+@export var boundary_up: int = -42
+@export var boundary_down: int = 56
+
 func _ready() -> void:
 	pass
 
@@ -17,7 +20,7 @@ func sell_weapon(weapon) -> void:
 
 	var new_soldier = soldier_scene.instantiate()
 	new_soldier.name = "Soldier " + str(soldiers_count)
-	new_soldier.position = Vector2(40, 90)
+	new_soldier.position = Vector2(35, 90)
 	new_soldier.weapon = weapon
 	add_child(new_soldier)
 

@@ -6,11 +6,8 @@ extends CharacterBody2D
 @export var speed: int = 50
 
 @onready var soldiers_group = get_parent()
-@onready var sprite = $PlayerSprite
+@onready var sprite = $Sprite
 @onready var sword_sprite: AnimatedSprite2D = $Sword
-
-@onready var boundary_up = $"/root/World/BoundaryUp"
-@onready var boundary_down = $"/root/World/BoundaryDown"
 
 var target_position: Vector2
 var move_timer: Timer
@@ -21,11 +18,11 @@ var is_walking = false
 var weapon = ItemsType.create_item("")
 
 func _ready() -> void:
-	target_position = Vector2(40, 50)
+	target_position = Vector2(35, 50)
 	is_walking = true
 
 	move_timer = Timer.new()
-	move_timer.wait_time = lerp(move_interval_min, move_interval_max, randf())
+	move_timer.wait_time = randf_range(move_interval_min, move_interval_max)
 	move_timer.connect("timeout", Callable(self, "_on_move_timer_timeout"))
 	add_child(move_timer)
 	
@@ -54,7 +51,7 @@ func entity_movement() -> void:
 			velocity.y = 0
 			sprite.play("right_idle")
 
-			move_timer.wait_time = lerp(move_interval_min, move_interval_max, randf())
+			move_timer.wait_time = randf_range(move_interval_min, move_interval_max)
 			move_timer.start()
 	
 	move_and_slide()
@@ -62,15 +59,24 @@ func entity_movement() -> void:
 func move_randomly() -> void:
 	move_timer.stop()
 
-	var y_range = boundary_down.position.y - boundary_up.position.y
+	var y_range = soldiers_group.boundary_down - soldiers_group.boundary_up
 
 	var sector_height = y_range / soldiers_group.soldiers_count
 
 	soldier_number = soldiers_group.get_soldier_number(self)
 
-	var sector_start = boundary_up.position.y + (sector_height * soldier_number)
+	var sector_start = soldiers_group.boundary_up + (sector_height * soldier_number)
 	var sector_end = sector_start + sector_height
 	
-	target_position.y = lerp(sector_start, sector_end, randf())
+	target_position.y = randi_range(sector_start, sector_end)
 
 	is_walking = true
+
+# Lógica de IA:
+# 	Verificar se há um inimigo em seu setor
+# 	Se houver, ficar na cordenada Y correspondente ao inimigo mais próximo e atacar
+# 	Só se mover novamente quando este inimigo for derrotado
+# 	Se não houver, verificar se há algum inimigo nos setores adjacentes
+# 	Se houver, se mover para o setor do inimigo mais próximo, com um offset de 10 pixels
+# 	Continuar aumentando os setores até achar um inimigo, ou esgotar
+# 	Se não houver, permanecer em seu setor e se mover aleatoriamente
