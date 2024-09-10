@@ -1,6 +1,6 @@
 extends "res://Scripts/interactable_item.gd"
 
-@onready var game_manager: Control = $"/root/World/GameManager"
+@onready var soldiers: Node2D = $"/root/World/SoldiersGroup"
 
 func _ready() -> void:
 	message_base = "Press SPACE to sell the sword"
@@ -12,7 +12,7 @@ func interact() -> void:
 		tooltip.text = "You need a finished sword to sell"
 	else:
 		var item = player.give_item()
-		game_manager.sell_weapon(item)
+		soldiers.sell_weapon(item)
 		player.current_interactable_item = null
 		tooltip.visible = false
 		tooltip.text = message_base

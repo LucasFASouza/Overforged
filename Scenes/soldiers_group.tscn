@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvpj6jo2uwn6o"]
+
+[ext_resource type="Script" path="res://Scripts/soldiers_group.gd" id="1_yotb2"]
+
+[node name="SoldiersGroup" type="Node2D"]
+position = Vector2(-38, 3)
+script = ExtResource("1_yotb2")

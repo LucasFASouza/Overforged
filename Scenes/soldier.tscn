@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://cxffngrm8x0k2"]
+
+[ext_resource type="Script" path="res://Scripts/soldier.gd" id="1_c86f4"]
+[ext_resource type="Texture2D" uid="uid://62m8mga1ddwf" path="res://Assets/Sprites/Soldado.png" id="2_7waw3"]
+[ext_resource type="Texture2D" uid="uid://4c0j2oh51sl" path="res://Assets/Sprites/Basic_tools_and_meterials.png" id="3_apm1s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfm8s"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ply8j"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayllq"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11j48"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f75pc"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en354"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igjty"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31lrs"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ixryu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfm8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ply8j")
+}],
+"loop": true,
+"name": &"back_walk",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayllq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11j48")
+}],
+"loop": true,
+"name": &"front_walk",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f75pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_en354")
+}],
+"loop": true,
+"name": &"right_idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igjty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31lrs")
+}],
+"loop": true,
+"name": &"right_walk",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlt5x"]
+atlas = ExtResource("3_apm1s")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tumcx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlt5x")
+}],
+"loop": true,
+"name": &"espada_finalizada",
+"speed": 5.0
+}]
+
+[node name="Soldier" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_c86f4")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ixryu")
+animation = &"back_walk"
+offset = Vector2(0, -6)
+
+[node name="Sword" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -3)
+scale = Vector2(0.56, 0.56)
+sprite_frames = SubResource("SpriteFrames_tumcx")
+animation = &"espada_finalizada"

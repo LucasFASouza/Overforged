@@ -14,23 +14,22 @@ const stations = {
 		'empty': 'metal_bruto',
 		'emtpy_text': 'You need metal to start the forge',
 		'ready': 'metal_forjado',
-		'duration': 1
+		'duration': 0.1 # value for testing
 	},
 	'anvil': {
 		'empty': 'metal_forjado',
 		'emtpy_text': 'You need forged metal to start the anvil',
 		'ready': 'espada_bruta',
-		'duration': 1
+		'duration': 0.1 # value for testing
 	},
 	'whetstone': {
 		'empty': 'espada_bruta',
 		'emtpy_text': 'You need a sword to start the whetstone',
 		'ready': 'espada_finalizada',
-		'duration': 1
+		'duration': 0.1 # value for testing
 	}
 }
 
-var ItemsType = preload("items_type.gd").new()
 var current_item = ItemsType.create_item("")
 
 func _ready() -> void:
@@ -90,7 +89,7 @@ func interact() -> void:
 		current_item['name'] = ItemsType.items_names.get(current_item['id'], "")
 		current_item[station + '_level'] = 1
 
-		print(current_item[station + '_level'])
+		print("Stars: ", current_item[station + '_level'])
 
 		player.get_item(current_item)
 		current_item = ItemsType.create_item("")

@@ -9,7 +9,6 @@ var animation_name: String = "front_idle"
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
 @onready var item_sprite: AnimatedSprite2D = $ItemSprite
 
-var ItemsType = preload("items_type.gd").new()
 var item_holding = ItemsType.create_item("")
 const dropped_item_scene = preload("res://Scenes/dropped_item.tscn")
 

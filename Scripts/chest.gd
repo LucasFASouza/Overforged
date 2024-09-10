@@ -4,7 +4,6 @@ extends "res://Scripts/interactable_item.gd"
 
 @export var item_id: String = ''
 
-var ItemsType = preload("items_type.gd").new()
 var item = ItemsType.create_item(item_id)
 
 @export var is_trash: bool = false
