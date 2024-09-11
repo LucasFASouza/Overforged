@@ -4,6 +4,7 @@ extends Node
 @onready var whetstone_sfx: AudioStreamPlayer2D = $Whetstone_SFX
 @onready var forge_sfx: AudioStreamPlayer2D = $Forge_SFX
 @onready var main_music: AudioStreamPlayer2D = $MainMusic
+@onready var pickup_sfx: AudioStreamPlayer2D = $Pickup_SFX
 
 func _ready() -> void:
 	pass

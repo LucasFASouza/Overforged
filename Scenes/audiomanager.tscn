@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bumg85ng7qt4r"]
+[gd_scene load_steps=7 format=3 uid="uid://bumg85ng7qt4r"]
 
 [ext_resource type="Script" path="res://Scenes/audiomanager.gd" id="1_i1tav"]
 [ext_resource type="AudioStream" uid="uid://c8hciuf0npt7e" path="res://Assets/Audio/Anvil_SFX.mp3" id="2_w73pk"]
 [ext_resource type="AudioStream" uid="uid://conk4ejsukpdx" path="res://Assets/Audio/Whetstone_SFX.mp3" id="3_0r07y"]
 [ext_resource type="AudioStream" uid="uid://r6s8mum4gtn3" path="res://Assets/Audio/OverForged_main_theme_v1.mp3" id="4_qe17s"]
 [ext_resource type="AudioStream" uid="uid://bgm1hmd8mn0kr" path="res://Assets/Audio/Forge_SFX.mp3" id="4_rwrhr"]
+[ext_resource type="AudioStream" uid="uid://dixahq0ulavhq" path="res://Assets/Audio/Pickup_SFX.wav" id="6_ttcyh"]
 
 [node name="Audiomanager" type="Node"]
 script = ExtResource("1_i1tav")
@@ -23,3 +24,6 @@ stream = ExtResource("4_qe17s")
 autoplay = true
 
 [node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Pickup_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ttcyh")
