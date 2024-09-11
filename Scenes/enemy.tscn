@@ -48,7 +48,7 @@ animations = [{
 size = Vector2(12.1475, 9.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6ly6"]
-size = Vector2(3.27869, 23.4509)
+size = Vector2(3.27869, 56.9523)
 
 [node name="Enemy" type="CharacterBody2D"]
 z_index = 5

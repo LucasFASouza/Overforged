@@ -226,7 +226,8 @@ shape = SubResource("RectangleShape2D_unyj5")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ixryu")
-animation = &"front_idle"
+animation = &"right_walk"
+frame_progress = 0.518258
 offset = Vector2(0, -6)
 
 [node name="ItemSprite" type="AnimatedSprite2D" parent="."]
