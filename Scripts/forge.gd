@@ -8,6 +8,7 @@ var state: String = 'empty'
 @export var duration: float = 10
 @export var warning_time: float = 15
 @export var max_time: float = 20
+@export var clean_time: float = 25
 
 var elapsed_time: float = 0.0
 var current_item = ItemsType.create_item("")
@@ -23,11 +24,19 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super._process(delta)
+	elapsed_time += delta
 
 	if state == 'running':
-		elapsed_time += delta
 		percentage.text = str(int(elapsed_time / duration * 100)) + "%"
 
+		if elapsed_time >= duration:
+			state = 'ready'
+			percentage.text = "READY"
+	elif state == 'ready':
+		if elapsed_time >= clean_time:
+			state = 'empty'
+			percentage.visible = false
+			percentage.text = "00%"
 		if elapsed_time >= max_time:
 			percentage.text = "BURNED :("
 			state = 'empty'
@@ -35,9 +44,6 @@ func _process(delta: float) -> void:
 			current_item = ItemsType.create_item("")
 		elif elapsed_time >= warning_time:
 			percentage.text = "CAREFUL!!!"
-		elif elapsed_time >= duration:
-			state = 'ready'
-			percentage.text = "READY"
 
 
 func _on_interaction_area_body_entered(_body: Node2D) -> void:
