@@ -14,19 +14,19 @@ const stations = {
 		'empty': 'iron_ore',
 		'emtpy_text': 'You need Iron Ore to start the forge',
 		'ready': 'iron_ingot',
-		'duration': 0.1 # value for testing
+		'duration':5 # value for testing
 	},
 	'anvil': {
 		'empty': 'iron_ingot',
 		'emtpy_text': 'You need Iron Ingot to start the anvil',
 		'ready': 'dull_sword',
-		'duration': 0.1 # value for testing
+		'duration':7# value for testing
 	},
 	'whetstone': {
 		'empty': 'dull_sword',
 		'emtpy_text': 'You need a Dull Sword to start the whetstone',
 		'ready': 'finished_sword',
-		'duration': 0.1 # value for testing
+		'duration': 5# value for testing
 	}
 }
 

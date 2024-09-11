@@ -134,7 +134,7 @@ script = ExtResource("1_c86f4")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ixryu")
 animation = &"hit"
-frame_progress = 0.691755
+frame_progress = 0.910288
 offset = Vector2(0, -6)
 
 [node name="Sword" type="AnimatedSprite2D" parent="."]
