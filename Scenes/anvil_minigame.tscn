@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://x04taujvdhrw" path="res://Assets/Sprites/metal sword.png" id="2_8rexv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mscwl"]
-size = Vector2(24.5, 20)
+size = Vector2(23.75, 20)
 
 [sub_resource type="GDScript" id="GDScript_6ux16"]
 script/source = "extends CharacterBody2D
@@ -57,7 +57,7 @@ collision_layer = 128
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/MinX"]
-position = Vector2(-108.5, 0)
+position = Vector2(-108.875, 0)
 shape = SubResource("RectangleShape2D_mscwl")
 
 [node name="MaxX" type="Area2D" parent="Sword"]
@@ -76,9 +76,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
+offset_left = -17.0
 offset_top = -10.0
-offset_right = 10.0
+offset_right = 17.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -86,10 +86,10 @@ pivot_offset = Vector2(10, 10)
 color = Color(0.984314, 0.286275, 0.203922, 1)
 
 [node name="MinX" type="Node2D" parent="Sweetspot"]
-position = Vector2(-10, 0)
+position = Vector2(-17, 0)
 
 [node name="MaxX" type="Node2D" parent="Sweetspot"]
-position = Vector2(10, 0)
+position = Vector2(17, 0)
 
 [node name="Hammer" type="CharacterBody2D" parent="."]
 collision_layer = 128

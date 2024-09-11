@@ -18,11 +18,11 @@ func _process(delta):
 		hammer.position += Vector2(speed * delta * direction * -1, 0)
 	else:
 		# TODO: This is not working, it's getting the relative position, instead of abslute
-		sweetspot_min = sweetspot.get_node("MinX").position.x
-		sweetspot_max = sweetspot.get_node("MaxX").position.x
+		sweetspot_min = sweetspot.get_node("MinX").global_position.x
+		sweetspot_max = sweetspot.get_node("MaxX").global_position.x
 		
-		hammer_min = hammer.get_node("MinX").position.x
-		hammer_max = hammer.get_node("MaxX").position.x
+		hammer_min = hammer.get_node("MinX").global_position.x
+		hammer_max = hammer.get_node("MaxX").global_position.x
 
 		# Check if hammer is inside sweetspot
 		print("The sweet spot was: ", sweetspot_min, sweetspot_max)
