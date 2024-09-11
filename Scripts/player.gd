@@ -14,16 +14,22 @@ const dropped_item_scene = preload("res://Scenes/dropped_item.tscn")
 
 var current_interactable_item = null
 
+var state: String = 'free'
+
 func _physics_process(_delta: float) -> void:
 	player_movement()
 
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("ui_select") and state == "free":
 		if current_interactable_item != null:
 			current_interactable_item.interact()
+			Audiomanager.pickup_sfx.play()
 		elif item_holding['id'] != "":
 			drop_item()
 
 func player_movement() -> void:	
+	if state != 'free':
+		return
+
 	if Input.is_action_pressed("ui_right"):
 		current_direction = "right"
 		is_moving = true

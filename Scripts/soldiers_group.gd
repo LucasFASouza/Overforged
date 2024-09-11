@@ -10,7 +10,7 @@ var enemy: Node2D
 
 var mode = "idle"
 var attack_timer: Timer
-@export var cooldown: float = 2
+@export var cooldown: float = 1
 @export var damage: int = 0
 
 func _ready() -> void:
@@ -20,13 +20,18 @@ func _ready() -> void:
 	add_child(attack_timer)
 	attack_timer.start()
 
+
+func _process(_delta: float) -> void:
+	if enemy == null:
+		mode = "idle"
+
 func attack() -> void:
-	if mode == "fight":
+	if mode == "fight" and get_child_count() > 1:
 		damage = 0
 
 		for weapon in weapons_sold:
 			damage += weapon.whetstone_level
-
+		
 		enemy.get_hit(damage)
 	
 	attack_timer.start()	
@@ -35,10 +40,13 @@ func sell_weapon(weapon) -> void:
 	weapons_sold.append(weapon)
 
 	var new_soldier = soldier_scene.instantiate()
-	new_soldier.name = "Soldier " + str(get_child_count() + 1)
+	new_soldier.name = "Soldier " + str(get_child_count())
 	new_soldier.position = Vector2(35, 90)
 	new_soldier.health = weapon.anvil_level
 	add_child(new_soldier)
+
+	if enemy != null:
+		enemy.mode = "fight"
 
 	move_soldiers()
 
@@ -73,13 +81,9 @@ func get_hit(damage_hit):
 		first_soldier.queue_free()
 		move_soldiers()
 
+		enemy.mode = "walk"
+
 func set_mode(new_mode):
-	for soldier in get_children():
-		if soldier.name.split(" ")[0] != "Soldier":
-			continue
-
-		soldier.mode = new_mode
-
 	mode = new_mode
 
 	if new_mode == "idle":

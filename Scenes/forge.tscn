@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://gdc1ix2uyyp3"]
+
+[ext_resource type="Script" path="res://Scripts/forge.gd" id="1_kvn06"]
+[ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_t56f2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t042"]
+atlas = ExtResource("2_t56f2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qifsq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5t042")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tpjp"]
+size = Vector2(14, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uoln0"]
+radius = 15.0
+
+[node name="Forge" type="StaticBody2D"]
+z_index = 3
+script = ExtResource("1_kvn06")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qifsq")
+animation = &"idle"
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_1tpjp")
+
+[node name="interaction_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_uoln0")
+
+[node name="Tooltip" type="Label" parent="."]
+z_index = 50
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 203.0
+offset_bottom = 0.999998
+scale = Vector2(0.257306, 0.257306)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_font_sizes/font_size = 16
+text = "Press SPACE to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Percentage" type="Label" parent="."]
+z_index = 50
+offset_left = -23.0
+offset_top = -32.0
+offset_right = 151.0
+offset_bottom = 13.0
+scale = Vector2(0.264085, 0.264085)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.568627)
+theme_override_font_sizes/font_size = 32
+text = "00%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="interaction_area" to="." method="_on_interaction_area_body_exited"]
