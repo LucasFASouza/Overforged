@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw3e2l6ehj64b"]
+[gd_scene load_steps=14 format=3 uid="uid://cw3e2l6ehj64b"]
 
 [ext_resource type="PackedScene" uid="uid://bx3jr3fs8prko" path="res://Scenes/player.tscn" id="1_5hxnf"]
 [ext_resource type="PackedScene" uid="uid://bn5epijt7q1nj" path="res://Scenes/game_manager.tscn" id="1_e144n"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cd8mep6yrwu1w" path="res://Scenes/countertop.tscn" id="7_jt7tc"]
 [ext_resource type="PackedScene" uid="uid://dvpj6jo2uwn6o" path="res://Scenes/soldiers_group.tscn" id="8_ppm1x"]
 [ext_resource type="PackedScene" uid="uid://bylwydf31a3xk" path="res://Scenes/enemies_group.tscn" id="8_w3gsf"]
+[ext_resource type="PackedScene" uid="uid://gdc1ix2uyyp3" path="res://Scenes/forge.tscn" id="10_62ftn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8df2o"]
 texture = ExtResource("2_cqnce")
@@ -162,9 +163,6 @@ zoom = Vector2(5, 5)
 [node name="Countertop" parent="." instance=ExtResource("7_jt7tc")]
 position = Vector2(10, 45)
 
-[node name="Forge" parent="." instance=ExtResource("7_gniju")]
-position = Vector2(-80, -16)
-
 [node name="Anvil" parent="." instance=ExtResource("7_gniju")]
 position = Vector2(-48, -16)
 station = "anvil"
@@ -185,3 +183,6 @@ is_trash = true
 position = Vector2(0, 0)
 
 [node name="EnemiesGroup" parent="." instance=ExtResource("8_w3gsf")]
+
+[node name="Forge" parent="." instance=ExtResource("10_62ftn")]
+position = Vector2(-81, -16)
