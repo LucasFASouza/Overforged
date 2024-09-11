@@ -67,6 +67,10 @@ func get_hit(damage_hit: int) -> void:
 	health -= damage_hit
 	health_label.text = str(health)
 
+	if health <= 0:
+		soldiers_group.set_mode("idle")
+		queue_free()
+
 func attack() -> void:
 	if mode == "fight":
 		soldiers_group.get_hit(damage)

@@ -5,10 +5,10 @@ extends "res://Scripts/interactable_item.gd"
 
 var state: String = 'empty'
 
-@export var duration: float = 10
-@export var warning_time: float = 15
-@export var max_time: float = 20
-@export var clean_time: float = 25
+@export var duration: float = 1
+@export var warning_time: float = 5
+@export var max_time: float = 6
+@export var clean_time: float = 10
 
 var elapsed_time: float = 0.0
 var current_item = ItemsType.create_item("")

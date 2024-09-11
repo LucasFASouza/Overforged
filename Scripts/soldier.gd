@@ -10,8 +10,6 @@ var is_walking = false
 @onready var health_label = $HealthLabel
 @export var health: int = 0
 
-var mode: String = "idle"
-
 func _ready() -> void:
 	health_label.text = str(health)
 	
@@ -36,7 +34,7 @@ func entity_movement() -> void:
 
 			sprite.play("idle")
 	
-	if mode == "fight":
+	if soldiers_group.mode == "fight":
 		sprite.play("hit")
 		
 	move_and_slide()

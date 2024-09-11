@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cd8mep6yrwu1w" path="res://Scenes/countertop.tscn" id="7_jt7tc"]
 [ext_resource type="PackedScene" uid="uid://dvpj6jo2uwn6o" path="res://Scenes/soldiers_group.tscn" id="8_ppm1x"]
 [ext_resource type="PackedScene" uid="uid://bylwydf31a3xk" path="res://Scenes/enemies_group.tscn" id="8_w3gsf"]
-[ext_resource type="PackedScene" uid="uid://gdc1ix2uyyp3" path="res://Scenes/forge.tscn" id="10_62ftn"]
-[ext_resource type="PackedScene" uid="uid://dh6427ppcl5tm" path="res://Scenes/anvil_minigame.tscn" id="12_fn5ih"]
+[ext_resource type="PackedScene" path="res://Scenes/forge.tscn" id="10_62ftn"]
+[ext_resource type="PackedScene" path="res://Scenes/anvil_minigame.tscn" id="12_fn5ih"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8df2o"]
 texture = ExtResource("2_cqnce")

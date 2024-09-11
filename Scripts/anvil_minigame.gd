@@ -25,15 +25,15 @@ func _process(delta):
 		hammer_max = hammer.get_node("MaxX").global_position.x
 
 		# Check if hammer is inside sweetspot
-		print("The sweet spot was: ", sweetspot_min, sweetspot_max)
-		print("The hammer was: ", hammer_min, hammer_max)
+		# print("The sweet spot was: ", sweetspot_min, sweetspot_max)
+		# print("The hammer was: ", hammer_min, hammer_max)
 		
-		if hammer_min >= sweetspot_min and hammer_max <= sweetspot_max:
-			print("Max Success - 3 Stars")
-		elif hammer_min >= sweetspot_min or hammer_max <= sweetspot_max:
-			print("Not Bad - 2 Stars")
-		else:
-			print("Fail - 1 Star")
+		# if hammer_min >= sweetspot_min and hammer_max <= sweetspot_max:
+		# 	print("Max Success - 3 Stars")
+		# elif hammer_min >= sweetspot_min or hammer_max <= sweetspot_max:
+		# 	print("Not Bad - 2 Stars")
+		# else:
+		# 	print("Fail - 1 Star")
 	
 	if Input.is_action_just_pressed("ui_select"):
 		is_stopped = true
