@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dh6427ppcl5tm"]
+[gd_scene load_steps=8 format=3 uid="uid://dh6427ppcl5tm"]
 
 [ext_resource type="Script" path="res://Scripts/anvil_minigame.gd" id="1_jh6bu"]
 [ext_resource type="Texture2D" uid="uid://x04taujvdhrw" path="res://Assets/Sprites/metal sword.png" id="2_8rexv"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pqta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mscwl"]
 size = Vector2(24.5, 20)
@@ -54,28 +52,6 @@ grow_vertical = 2
 pivot_offset = Vector2(100, 10)
 color = Color(0.359069, 0.359069, 0.359069, 1)
 
-[node name="Sweetspot" type="Area2D" parent="Sword"]
-collision_layer = 128
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/Sweetspot"]
-shape = SubResource("RectangleShape2D_5pqta")
-
-[node name="ColorRect" type="ColorRect" parent="Sword/Sweetspot"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(10, 10)
-color = Color(0.984314, 0.286275, 0.203922, 1)
-
 [node name="MinX" type="Area2D" parent="Sword"]
 collision_layer = 128
 collision_mask = 128
@@ -92,6 +68,29 @@ collision_mask = 128
 position = Vector2(109.25, 0)
 shape = SubResource("RectangleShape2D_mscwl")
 
+[node name="Sweetspot" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Sweetspot"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(10, 10)
+color = Color(0.984314, 0.286275, 0.203922, 1)
+
+[node name="MinX" type="Node2D" parent="Sweetspot"]
+position = Vector2(-10, 0)
+
+[node name="MaxX" type="Node2D" parent="Sweetspot"]
+position = Vector2(10, 0)
+
 [node name="Hammer" type="CharacterBody2D" parent="."]
 collision_layer = 128
 collision_mask = 128
@@ -103,7 +102,11 @@ shape = SubResource("CircleShape2D_pvt47")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hammer"]
 sprite_frames = SubResource("SpriteFrames_b7umi")
 
-[connection signal="body_entered" from="Sword/Sweetspot" to="." method="_on_sweetspot_body_entered"]
-[connection signal="body_exited" from="Sword/Sweetspot" to="." method="_on_sweetspot_body_exited"]
+[node name="MinX" type="Node2D" parent="Hammer"]
+position = Vector2(-7, 0)
+
+[node name="MaxX" type="Node2D" parent="Hammer"]
+position = Vector2(7, 0)
+
 [connection signal="body_entered" from="Sword/MinX" to="." method="_on_min_x_body_entered"]
 [connection signal="body_entered" from="Sword/MaxX" to="." method="_on_max_x_body_entered"]
