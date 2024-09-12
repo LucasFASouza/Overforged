@@ -35,6 +35,7 @@ func player_movement() -> void:
 		is_moving = true
 		velocity.x = speed
 		velocity.y = 0
+
 	elif Input.is_action_pressed("ui_left"):
 		current_direction = "left"
 		is_moving = true
@@ -58,6 +59,7 @@ func player_movement() -> void:
 	move_and_slide()
 	play_animation()
 
+
 func play_animation() -> void:
 	animation_name = current_direction + ("_walk" if is_moving else "_idle")
 	player_sprite.play(animation_name)
@@ -80,6 +82,7 @@ func give_item():
 	return gave_item
 
 func drop_item() -> void:
+	Audiomanager.play_sfx("drop")
 	item_sprite.visible = false
 
 	var dropped_item = dropped_item_scene.instantiate()
