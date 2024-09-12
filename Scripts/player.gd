@@ -22,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_select") and state == "free":
 		if current_interactable_item != null:
 			current_interactable_item.interact()
-			Audiomanager.pickup_sfx.play()
+			Audiomanager.play_sfx("pickup")
 		elif item_holding['id'] != "":
 			drop_item()
 

@@ -44,6 +44,7 @@ func sell_weapon(weapon) -> void:
 	new_soldier.position = Vector2(35, 90)
 	new_soldier.health = weapon.anvil_level
 	add_child(new_soldier)
+	Audiomanager.play_sfx("soldierfootsteps")
 
 	if enemy != null:
 		enemy.mode = "fight"

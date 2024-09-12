@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bumg85ng7qt4r"]
+[gd_scene load_steps=11 format=3 uid="uid://bumg85ng7qt4r"]
 
 [ext_resource type="Script" path="res://Scenes/audiomanager.gd" id="1_i1tav"]
 [ext_resource type="AudioStream" uid="uid://c8hciuf0npt7e" path="res://Assets/Audio/Anvil_SFX.mp3" id="2_w73pk"]
@@ -6,24 +6,46 @@
 [ext_resource type="AudioStream" uid="uid://r6s8mum4gtn3" path="res://Assets/Audio/OverForged_main_theme_v1.mp3" id="4_qe17s"]
 [ext_resource type="AudioStream" uid="uid://bgm1hmd8mn0kr" path="res://Assets/Audio/Forge_SFX.mp3" id="4_rwrhr"]
 [ext_resource type="AudioStream" uid="uid://dixahq0ulavhq" path="res://Assets/Audio/Pickup_SFX.wav" id="6_ttcyh"]
+[ext_resource type="AudioStream" uid="uid://1ccyhs8lju3o" path="res://Assets/Audio/Melting_SFX.mp3" id="7_fhx8w"]
+[ext_resource type="AudioStream" uid="uid://cb6p3v6vbitov" path="res://Assets/Audio/Warhorn_SFX.mp3" id="7_hwuk0"]
+[ext_resource type="AudioStream" uid="uid://diiyams3vuwqx" path="res://Assets/Audio/SoldierFootsteps_SFX.mp3" id="8_01sgs"]
+[ext_resource type="AudioStream" uid="uid://ca0o57m8utj74" path="res://Assets/Audio/Hit_SFX.mp3" id="9_nr8x3"]
 
 [node name="Audiomanager" type="Node"]
 script = ExtResource("1_i1tav")
 
-[node name="Anvil_SFX" type="AudioStreamPlayer2D" parent="."]
+[node name="SFX" type="Node" parent="."]
+
+[node name="Anvil" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("2_w73pk")
 
-[node name="Whetstone_SFX" type="AudioStreamPlayer2D" parent="."]
+[node name="Whetstone" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("3_0r07y")
 
-[node name="Forge_SFX" type="AudioStreamPlayer2D" parent="."]
+[node name="Forge" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("4_rwrhr")
 
-[node name="MainMusic" type="AudioStreamPlayer2D" parent="."]
+[node name="Pickup" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_ttcyh")
+
+[node name="Warhorn" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_hwuk0")
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="SFX"]
+
+[node name="Melting" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_fhx8w")
+
+[node name="Soldierfootsteps" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("8_01sgs")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("9_nr8x3")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="MainMusic" type="AudioStreamPlayer2D" parent="Music"]
 stream = ExtResource("4_qe17s")
 autoplay = true
 
-[node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
-
-[node name="Pickup_SFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_ttcyh")
+[node name="BattleMusic" type="AudioStreamPlayer2D" parent="Music"]

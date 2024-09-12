@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cd8mep6yrwu1w" path="res://Scenes/countertop.tscn" id="7_jt7tc"]
 [ext_resource type="PackedScene" uid="uid://dvpj6jo2uwn6o" path="res://Scenes/soldiers_group.tscn" id="8_ppm1x"]
 [ext_resource type="PackedScene" uid="uid://bylwydf31a3xk" path="res://Scenes/enemies_group.tscn" id="8_w3gsf"]
-[ext_resource type="PackedScene" path="res://Scenes/forge.tscn" id="10_62ftn"]
+[ext_resource type="PackedScene" uid="uid://gdc1ix2uyyp3" path="res://Scenes/forge.tscn" id="10_62ftn"]
 [ext_resource type="PackedScene" uid="uid://dggakpdoilho0" path="res://Scenes/anvil.tscn" id="11_euab3"]
 [ext_resource type="PackedScene" uid="uid://cl8rualnpkwow" path="res://Scenes/whetstone.tscn" id="11_l4jay"]
 
