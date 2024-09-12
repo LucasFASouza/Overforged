@@ -23,5 +23,6 @@ func interact() -> void:
 		player.give_item()
 	elif player.item_holding['id'] == '':
 		player.get_item(item)
+		Audiomanager.play_sfx("chest")
 	else:
 		tooltip.text = "You have your hands full right now"

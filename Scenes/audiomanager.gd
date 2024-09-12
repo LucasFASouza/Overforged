@@ -1,19 +1,16 @@
 extends Node
 
-@onready var anvil_sfx: AudioStreamPlayer2D = $Anvil_SFX
-@onready var whetstone_sfx: AudioStreamPlayer2D = $Whetstone_SFX
-@onready var forge_sfx: AudioStreamPlayer2D = $Forge_SFX
-@onready var main_music: AudioStreamPlayer2D = $MainMusic
-@onready var pickup_sfx: AudioStreamPlayer2D = $Pickup_SFX
+var sfx_dict = {}
+
 
 func _ready() -> void:
-	pass
+	var sfx_node = $SFX
+	for child in sfx_node.get_children():
+		if child is AudioStreamPlayer2D: 
+			sfx_dict[child.name.to_lower()] = child  
 
-func play_sfx(station):
-	if station == "anvil":
-		anvil_sfx.play()
-	if station == "whetstone":
-		whetstone_sfx.play()
-	if station == "forge":
-		forge_sfx.play()
-		
+func play_sfx(sfx_name: String) -> void:
+	if sfx_dict.has(sfx_name):
+		sfx_dict[sfx_name].play()
+	else:
+		print("SFX: %s not found!" % sfx_name)
