@@ -8,6 +8,8 @@ var enemy_scene = preload("res://Scenes/enemy.tscn")
 var spawn_timer: Timer
 var enemies_to_spawn: int
 
+@onready var game_manager = get_node("/root/World/GameManager")
+
 func _ready() -> void:
 	pass
 
@@ -26,3 +28,5 @@ func spawn_enemy() -> void:
 		new_enemy.name = "Enemy"
 		add_child(new_enemy)
 		enemies_to_spawn -= 1
+	else:
+		game_manager.finish_wave()

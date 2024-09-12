@@ -8,7 +8,7 @@ var target_position
 var is_walking = false
 
 @onready var health_label = $HealthLabel
-@export var health: int = 0
+@export var health: float = 0
 
 func _ready() -> void:
 	health_label.text = str(health)

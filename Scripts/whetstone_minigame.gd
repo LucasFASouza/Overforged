@@ -90,7 +90,7 @@ func move_sweetspot():
 
 func stop_minigame():
 	is_running  = false
-	score = min(3, (score / max_score * 3) + 0.5)
+	score = min(3, (score / max_score * 3) + 0.2)
 	whetstone.finish_minigame(score)
 	score = 0
 	max_score = 0
@@ -103,3 +103,4 @@ func start_minigame():
 	game_timer.start()
 
 	whetstone.player.player_sprite.play("front_idle")
+	Audiomanager.play_sfx("whetstone")

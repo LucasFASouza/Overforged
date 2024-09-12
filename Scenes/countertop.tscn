@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/countertop.gd" id="1_0bcu8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uoln0"]
-radius = 15.0
+radius = 20.025
 
 [node name="CounterTop" type="StaticBody2D"]
 script = ExtResource("1_0bcu8")
