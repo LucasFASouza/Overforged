@@ -1,6 +1,8 @@
 extends Control
 
-@export var health = 100
+@export var health = 10
+@export var wave_timer_time = 20
+
 @onready var health_label: Label = $HealthLabel
 @onready var timer_label: Label = $TimerLabel
 @onready var enemies_group = $"/root/World/EnemiesGroup"
@@ -9,7 +11,7 @@ var wave_timer: Timer
 
 func _ready() -> void:
 	wave_timer = Timer.new()
-	wave_timer.wait_time = 10
+	wave_timer.wait_time = wave_timer_time
 	wave_timer.one_shot = true
 	wave_timer.connect("timeout", Callable(self, "_on_wave_timer_timeout"))
 	add_child(wave_timer)

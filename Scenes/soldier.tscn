@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/soldier.gd" id="1_c86f4"]
 [ext_resource type="Texture2D" uid="uid://62m8mga1ddwf" path="res://Assets/Sprites/Soldado.png" id="2_7waw3"]
-[ext_resource type="Texture2D" uid="uid://4c0j2oh51sl" path="res://Assets/Sprites/Basic_tools_and_meterials.png" id="3_apm1s"]
+[ext_resource type="Texture2D" uid="uid://x04taujvdhrw" path="res://Assets/Sprites/metal sword.png" id="3_0vqoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfm8s"]
 atlas = ExtResource("2_7waw3")
@@ -102,15 +102,15 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jlt5x"]
-atlas = ExtResource("3_apm1s")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw8e0"]
+atlas = ExtResource("3_0vqoq")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tumcx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jlt5x")
+"texture": SubResource("AtlasTexture_kw8e0")
 }],
 "loop": true,
 "name": &"finished_sword",

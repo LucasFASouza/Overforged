@@ -1,11 +1,19 @@
-[gd_scene load_steps=27 format=3 uid="uid://bx3jr3fs8prko"]
+[gd_scene load_steps=31 format=3 uid="uid://bx3jr3fs8prko"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4brsm"]
 [ext_resource type="Texture2D" uid="uid://dtn68yvlf7xn0" path="res://Assets/Sprites/Basic Charakter Spritesheet.png" id="2_gdo80"]
-[ext_resource type="Texture2D" uid="uid://4c0j2oh51sl" path="res://Assets/Sprites/Basic_tools_and_meterials.png" id="3_26ppp"]
+[ext_resource type="Texture2D" uid="uid://x04taujvdhrw" path="res://Assets/Sprites/metal sword.png" id="3_ucujl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unyj5"]
 size = Vector2(12, 9.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8813w"]
+atlas = ExtResource("2_gdo80")
+region = Rect2(96, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjb8g"]
+atlas = ExtResource("2_gdo80")
+region = Rect2(144, 192, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d8xxm"]
 atlas = ExtResource("2_gdo80")
@@ -22,6 +30,14 @@ region = Rect2(96, 48, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_w0afm"]
 atlas = ExtResource("2_gdo80")
 region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gvni"]
+atlas = ExtResource("2_gdo80")
+region = Rect2(0, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enbq4"]
+atlas = ExtResource("2_gdo80")
+region = Rect2(48, 192, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nal45"]
 atlas = ExtResource("2_gdo80")
@@ -75,6 +91,17 @@ region = Rect2(144, 144, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8813w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjb8g")
+}],
+"loop": true,
+"name": &"back_hammer",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_d8xxm")
 }, {
 "duration": 1.0,
@@ -93,6 +120,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"back_walk",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gvni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enbq4")
+}],
+"loop": true,
+"name": &"front_hammer",
 "speed": 8.0
 }, {
 "frames": [{
@@ -162,27 +200,27 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v3ey4"]
-atlas = ExtResource("3_26ppp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_txjpl"]
+atlas = ExtResource("3_ucujl")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jlt5x"]
-atlas = ExtResource("3_26ppp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_upuny"]
+atlas = ExtResource("3_ucujl")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8s2li"]
-atlas = ExtResource("3_26ppp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4arm"]
+atlas = ExtResource("3_ucujl")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebmv5"]
-atlas = ExtResource("3_26ppp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpo2s"]
+atlas = ExtResource("3_ucujl")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tumcx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v3ey4")
+"texture": SubResource("AtlasTexture_txjpl")
 }],
 "loop": true,
 "name": &"dull_sword",
@@ -190,7 +228,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jlt5x")
+"texture": SubResource("AtlasTexture_upuny")
 }],
 "loop": true,
 "name": &"finished_sword",
@@ -198,7 +236,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8s2li")
+"texture": SubResource("AtlasTexture_j4arm")
 }],
 "loop": true,
 "name": &"iron_ingot",
@@ -206,7 +244,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ebmv5")
+"texture": SubResource("AtlasTexture_hpo2s")
 }],
 "loop": true,
 "name": &"iron_ore",
@@ -226,8 +264,8 @@ shape = SubResource("RectangleShape2D_unyj5")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ixryu")
-animation = &"right_walk"
-frame_progress = 0.518258
+animation = &"back_hammer"
+frame_progress = 0.609456
 offset = Vector2(0, -6)
 
 [node name="ItemSprite" type="AnimatedSprite2D" parent="."]
@@ -236,4 +274,4 @@ z_index = 20
 position = Vector2(0, -20)
 scale = Vector2(0.56, 0.56)
 sprite_frames = SubResource("SpriteFrames_tumcx")
-animation = &"finished_sword"
+animation = &"iron_ore"

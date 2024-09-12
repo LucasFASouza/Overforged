@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://cyxy8wxpm06t2" path="res://Assets/Sprites/Wooden_House_Walls_Tilset.png" id="2_cqnce"]
 [ext_resource type="Texture2D" uid="uid://csjuuxdjxnk0r" path="res://Assets/Sprites/Grass.png" id="3_jlohd"]
 [ext_resource type="PackedScene" uid="uid://v8rnhsybj0qb" path="res://Scenes/chest.tscn" id="7_15ro2"]
-[ext_resource type="PackedScene" uid="uid://d3062yman47n6" path="res://Scenes/station.tscn" id="7_gniju"]
 [ext_resource type="PackedScene" uid="uid://cd8mep6yrwu1w" path="res://Scenes/countertop.tscn" id="7_jt7tc"]
 [ext_resource type="PackedScene" uid="uid://dvpj6jo2uwn6o" path="res://Scenes/soldiers_group.tscn" id="8_ppm1x"]
 [ext_resource type="PackedScene" uid="uid://bylwydf31a3xk" path="res://Scenes/enemies_group.tscn" id="8_w3gsf"]
 [ext_resource type="PackedScene" path="res://Scenes/forge.tscn" id="10_62ftn"]
-[ext_resource type="PackedScene" path="res://Scenes/anvil_minigame.tscn" id="12_fn5ih"]
+[ext_resource type="PackedScene" uid="uid://dggakpdoilho0" path="res://Scenes/anvil.tscn" id="11_euab3"]
+[ext_resource type="PackedScene" uid="uid://cl8rualnpkwow" path="res://Scenes/whetstone.tscn" id="11_l4jay"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8df2o"]
 texture = ExtResource("2_cqnce")
@@ -164,20 +164,12 @@ zoom = Vector2(5, 5)
 [node name="Countertop" parent="." instance=ExtResource("7_jt7tc")]
 position = Vector2(10, 45)
 
-[node name="Anvil" parent="." instance=ExtResource("7_gniju")]
-position = Vector2(-48, -16)
-station = "anvil"
-
-[node name="Whetstone" parent="." instance=ExtResource("7_gniju")]
-position = Vector2(-13, -16)
-station = "whetstone"
-
 [node name="Chest" parent="." instance=ExtResource("7_15ro2")]
 position = Vector2(-77, 33)
 item_id = "iron_ore"
 
 [node name="Trash" parent="." instance=ExtResource("7_15ro2")]
-position = Vector2(-25, 34)
+position = Vector2(6, -16)
 is_trash = true
 
 [node name="SoldiersGroup" parent="." instance=ExtResource("8_ppm1x")]
@@ -188,6 +180,8 @@ position = Vector2(0, 0)
 [node name="Forge" parent="." instance=ExtResource("10_62ftn")]
 position = Vector2(-81, -16)
 
-[node name="AnvilMinigame" parent="." instance=ExtResource("12_fn5ih")]
-position = Vector2(-48, -39)
-scale = Vector2(0.2, 0.2)
+[node name="Anvil" parent="." instance=ExtResource("11_euab3")]
+position = Vector2(-48, -16)
+
+[node name="Whetstone" parent="." instance=ExtResource("11_l4jay")]
+position = Vector2(-35, 32)
