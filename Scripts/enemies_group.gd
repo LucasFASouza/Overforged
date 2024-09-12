@@ -9,16 +9,18 @@ var spawn_timer: Timer
 var enemies_to_spawn: int
 
 @onready var game_manager = get_node("/root/World/GameManager")
+var is_attacking = false
 
 func _ready() -> void:
 	pass
 
 func _process(_delta: float) -> void:
-	if self.get_child_count() == 0:
+	if self.get_child_count() == 0 and is_attacking:
 		spawn_enemy()
 
 func start_wave(intensity: int) -> void:
 	enemies_to_spawn = intensity
+	is_attacking = true
 	spawn_enemy()
 
 func spawn_enemy() -> void:
@@ -30,3 +32,4 @@ func spawn_enemy() -> void:
 		enemies_to_spawn -= 1
 	else:
 		game_manager.finish_wave()
+		is_attacking = false
