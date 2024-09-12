@@ -21,6 +21,10 @@ config/icon="res://icon.svg"
 
 Audiomanager="*res://Scenes/audiomanager.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 ui_select={
