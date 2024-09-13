@@ -38,6 +38,8 @@ func _process(delta: float) -> void:
 			percentage.visible = false
 			percentage.text = "00%"
 		if elapsed_time >= max_time:
+			Audiomanager.play_sfx("melting",true)
+			Audiomanager.play_sfx("forgeburning",false)
 			percentage.text = "BURNED :("
 			state = 'empty'
 			elapsed_time = 0.0
@@ -64,7 +66,8 @@ func interact() -> void:
 			return
 
 		current_item = player.give_item()
-		Audiomanager.play_sfx("forge")
+		Audiomanager.play_sfx("forgestart",true)
+		Audiomanager.play_sfx("forgeburning",true)
 		state = 'running'
 		percentage.visible = true
 		elapsed_time = 0.0
@@ -83,3 +86,4 @@ func interact() -> void:
 		state = 'empty'
 		percentage.visible = false
 		percentage.text = "00%"
+		Audiomanager.play_sfx("forgeburning",false)
