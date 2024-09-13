@@ -2,7 +2,7 @@ extends Node
 
 var sfx_dict = {}
 @onready var main_music: AudioStreamPlayer2D = $Music/MainMusic
-@onready var battle_music: AudioStreamPlayer2D = $Music/BattleMusi
+@onready var battle_music: AudioStreamPlayer2D = $Music/BattleMusic
 
 func _ready() -> void:
 	main_music.play()
@@ -11,12 +11,20 @@ func _ready() -> void:
 		if child is AudioStreamPlayer2D: 
 			sfx_dict[child.name.to_lower()] = child  
 
-func play_sfx(sfx_name: String) -> void:
+
+func play_sfx(sfx_name: String, play: bool = true) -> void:
 	if sfx_dict.has(sfx_name):
-		sfx_dict[sfx_name].play()
+		if play:
+			if not sfx_dict[sfx_name].is_playing():
+				sfx_dict[sfx_name].play()
+		else:
+			if sfx_dict[sfx_name].is_playing():
+				sfx_dict[sfx_name].stop()
+			
 	else:
 		print("SFX: %s not found!" % sfx_name)
  
+
 func switch_music(to_battle: bool):
 	if to_battle:
 		if main_music.playing:
