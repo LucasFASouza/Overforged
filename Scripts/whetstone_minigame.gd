@@ -55,7 +55,7 @@ func _physics_process(delta):
 		stone_max = stone.get_node("MaxY").global_position.y
 		stone_min = stone.get_node("MinY").global_position.y
 
-		if Input.is_action_pressed("ui_select") and stone_max  > sword_max:
+		if Input.is_action_pressed("interact") and stone_max  > sword_max:
 			stone.position += Vector2(0, stone_speed_up * delta * direction)
 		elif stone_min < sword_min:
 			stone.position += Vector2(0, stone_speed_down * delta * direction * -1)
@@ -90,7 +90,7 @@ func move_sweetspot():
 
 func stop_minigame():
 	is_running  = false
-	score = min(3, (score / max_score * 3) + 0.5)
+	score = min(3, (score / max_score * 3) + 0.2)
 	whetstone.finish_minigame(score)
 	score = 0
 	max_score = 0
@@ -102,4 +102,4 @@ func start_minigame():
 	movement_timer.start()
 	game_timer.start()
 
-	whetstone.player.player_sprite.play("front_idle")
+	Audiomanager.play_sfx("whetstone")

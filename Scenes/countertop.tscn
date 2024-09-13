@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/countertop.gd" id="1_0bcu8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uoln0"]
-radius = 15.0
+radius = 20.025
 
 [node name="CounterTop" type="StaticBody2D"]
 script = ExtResource("1_0bcu8")
@@ -26,7 +26,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
-position = Vector2(0, -6)
+position = Vector2(1, -3)
 shape = SubResource("CircleShape2D_uoln0")
 
 [connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]

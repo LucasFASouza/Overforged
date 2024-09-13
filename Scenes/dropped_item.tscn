@@ -1,7 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4ba772gmr1xu"]
+[gd_scene load_steps=10 format=3 uid="uid://c4ba772gmr1xu"]
 
 [ext_resource type="Script" path="res://Scripts/dropped_item.gd" id="1_jqgpm"]
 [ext_resource type="Texture2D" uid="uid://x04taujvdhrw" path="res://Assets/Sprites/metal sword.png" id="2_5laa8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmmnk"]
+atlas = ExtResource("2_5laa8")
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68ung"]
 atlas = ExtResource("2_5laa8")
@@ -55,7 +59,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uoln0"]
-radius = 8.68
+radius = 4.0
 
 [node name="DroppedItem" type="StaticBody2D"]
 script = ExtResource("1_jqgpm")
@@ -64,9 +68,9 @@ script = ExtResource("1_jqgpm")
 visible = false
 z_index = 50
 offset_left = -30.0
-offset_top = -22.0
+offset_top = -16.0
 offset_right = 223.0
-offset_bottom = 1.0
+offset_bottom = 7.0
 scale = Vector2(0.257306, 0.257306)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
 theme_override_font_sizes/font_size = 16
@@ -74,9 +78,14 @@ text = "Press SPACE to grab the item"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(0.505254, 0.505254)
+texture = SubResource("AtlasTexture_lmmnk")
+
 [node name="ItemSprite" type="AnimatedSprite2D" parent="."]
-z_index = 20
 position = Vector2(0, -6)
+scale = Vector2(0.505254, 0.505254)
 sprite_frames = SubResource("SpriteFrames_jddgd")
 animation = &"iron_ore"
 
@@ -85,7 +94,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
-position = Vector2(0, -6)
+position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_uoln0")
 
 [connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]

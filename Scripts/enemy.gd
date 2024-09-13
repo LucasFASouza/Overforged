@@ -5,15 +5,17 @@ extends CharacterBody2D
 
 @onready var game_manager = $"/root/World/GameManager"
 
-@export var health: int = 50
+@export var health: float = 15
 @onready var health_label: Label = $HealthLabel
 
 var soldiers_infront = []
 @onready var soldiers_group = $"/root/World/SoldiersGroup"
 
-var attack_timer: Timer
+var attack_timer = Timer.new()
 @export var cooldown: float = 2
 @export var damage: int = 3
+
+var die_timer = Timer.new()
 
 var mode = "walk"
 
@@ -23,11 +25,15 @@ func _ready() -> void:
 
 	health_label.text = str(health)
 
-	attack_timer = Timer.new()
 	attack_timer.wait_time = cooldown
 	attack_timer.connect("timeout", Callable(self, "attack"))
 	add_child(attack_timer)
 	attack_timer.start()
+
+	die_timer.wait_time = 1
+	die_timer.one_shot = true
+	die_timer.connect("timeout", Callable(self, "queue_free"))
+	add_child(die_timer)
 
 func _physics_process(_delta: float) -> void:
 	entity_movement()
@@ -67,12 +73,21 @@ func get_hit(damage_hit: int) -> void:
 	health -= damage_hit
 	health_label.text = str(health)
 
+	sprite.play("hit")
+
 	if health <= 0:
 		soldiers_group.set_mode("idle")
-		queue_free()
+		sprite.play("die")
 
 func attack() -> void:
 	if mode == "fight":
+		damage = randf_range(1, 3)
 		soldiers_group.get_hit(damage)
+		sprite.play("attack")
 
 	attack_timer.start()
+
+func _on_sprite_animation_finished():
+	if sprite.animation != 'idle':
+		if health > 0:
+			sprite.play('idle')

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cl8rualnpkwow"]
+[gd_scene load_steps=8 format=3 uid="uid://b2wbdu6gus4bg"]
 
 [ext_resource type="Script" path="res://Scripts/whetstone.gd" id="1_fsww0"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_h1dje"]
@@ -22,8 +22,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tpjp"]
 size = Vector2(14, 12)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_uoln0"]
-radius = 15.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtf6a"]
+size = Vector2(6, 18)
 
 [node name="Whetstone" type="StaticBody2D"]
 z_index = 3
@@ -43,15 +43,15 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
-position = Vector2(0, -6)
-shape = SubResource("CircleShape2D_uoln0")
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_jtf6a")
 
 [node name="Tooltip" type="Label" parent="."]
 z_index = 50
 offset_left = -30.0
-offset_top = 3.0
+offset_top = -24.0
 offset_right = 203.0
-offset_bottom = 26.0
+offset_bottom = -1.0
 scale = Vector2(0.257306, 0.257306)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
 theme_override_font_sizes/font_size = 16
@@ -61,7 +61,7 @@ vertical_alignment = 1
 
 [node name="WhetstoneMinigame" parent="." instance=ExtResource("3_ja7yg")]
 visible = false
-position = Vector2(14, -17)
+position = Vector2(13, -8)
 
 [connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="interaction_area" to="." method="_on_interaction_area_body_exited"]

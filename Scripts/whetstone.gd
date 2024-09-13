@@ -41,6 +41,17 @@ func interact() -> void:
 func finish_minigame(score):
 	current_item['id'] = "finished_sword"
 	current_item['name'] = ItemsType.items_names.get("finished_sword", "")
+
+	var thresholds = [2.5, 2, 1.5, 1]
+	var scores = [3, 2.5, 2, 1.5]
+
+	for i in range(thresholds.size()):
+		if score > thresholds[i]:
+			score = scores[i]
+			break
+		else:
+			score = 1
+
 	current_item['whetstone_level'] = score
 
 	player.get_item(current_item)

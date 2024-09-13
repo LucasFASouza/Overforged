@@ -1,7 +1,37 @@
-[gd_scene load_steps=10 format=3 uid="uid://pu3f13mvpekq"]
+[gd_scene load_steps=16 format=3 uid="uid://pu3f13mvpekq"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ie530"]
 [ext_resource type="Texture2D" uid="uid://b4bap1wo0xb3w" path="res://Assets/Sprites/Inimigo.png" id="2_ihgvq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xhoj"]
+size = Vector2(12.1475, 9.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6ly6"]
+size = Vector2(3.27869, 56.9523)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blf41"]
+atlas = ExtResource("2_ihgvq")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0kwt"]
+atlas = ExtResource("2_ihgvq")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akhii"]
+atlas = ExtResource("2_ihgvq")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_autgy"]
+atlas = ExtResource("2_ihgvq")
+region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxskk"]
+atlas = ExtResource("2_ihgvq")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrjri"]
+atlas = ExtResource("2_ihgvq")
+region = Rect2(0, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7m84"]
 atlas = ExtResource("2_ihgvq")
@@ -23,6 +53,63 @@ region = Rect2(96, 96, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_blf41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0kwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blf41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0kwt")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akhii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_autgy")
+}],
+"loop": false,
+"name": &"die",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxskk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrjri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxskk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrjri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxskk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrjri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxskk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrjri")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_s7m84")
 }, {
 "duration": 1.0,
@@ -30,7 +117,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 4.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -41,14 +128,8 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 4.0
+"speed": 6.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xhoj"]
-size = Vector2(12.1475, 9.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6ly6"]
-size = Vector2(3.27869, 56.9523)
 
 [node name="Enemy" type="CharacterBody2D"]
 z_index = 5
@@ -56,13 +137,6 @@ scale = Vector2(2.44, 2.44)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_ie530")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -1)
-sprite_frames = SubResource("SpriteFrames_ixryu")
-animation = &"idle"
-frame_progress = 0.849351
-offset = Vector2(0, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
@@ -77,6 +151,12 @@ position = Vector2(-7.78688, -3.5082)
 scale = Vector2(1, 0.978674)
 shape = SubResource("RectangleShape2D_s6ly6")
 
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_ixryu")
+animation = &"idle"
+offset = Vector2(0, -6)
+
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = 6.14754
 offset_top = -6.96721
@@ -89,3 +169,4 @@ text = "100
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

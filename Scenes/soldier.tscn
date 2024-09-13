@@ -1,8 +1,22 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxffngrm8x0k2"]
+[gd_scene load_steps=21 format=3 uid="uid://cxffngrm8x0k2"]
 
 [ext_resource type="Script" path="res://Scripts/soldier.gd" id="1_c86f4"]
 [ext_resource type="Texture2D" uid="uid://62m8mga1ddwf" path="res://Assets/Sprites/Soldado.png" id="2_7waw3"]
-[ext_resource type="Texture2D" uid="uid://x04taujvdhrw" path="res://Assets/Sprites/metal sword.png" id="3_0vqoq"]
+[ext_resource type="PackedScene" uid="uid://c0yvsljiwby2d" path="res://Scenes/health_bar.tscn" id="3_qb2rn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur8so"]
+size = Vector2(12, 9.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvcss"]
+size = Vector2(2.86885, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbib7"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx0ms"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(48, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfm8s"]
 atlas = ExtResource("2_7waw3")
@@ -12,6 +26,14 @@ region = Rect2(96, 48, 48, 48)
 atlas = ExtResource("2_7waw3")
 region = Rect2(144, 48, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fspl1"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e2nr"]
+atlas = ExtResource("2_7waw3")
+region = Rect2(144, 96, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ayllq"]
 atlas = ExtResource("2_7waw3")
 region = Rect2(96, 0, 48, 48)
@@ -20,13 +42,13 @@ region = Rect2(96, 0, 48, 48)
 atlas = ExtResource("2_7waw3")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gbib7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbhs3"]
 atlas = ExtResource("2_7waw3")
-region = Rect2(0, 48, 48, 48)
+region = Rect2(0, 96, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cx0ms"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3udo"]
 atlas = ExtResource("2_7waw3")
-region = Rect2(48, 48, 48, 48)
+region = Rect2(48, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f75pc"]
 atlas = ExtResource("2_7waw3")
@@ -48,6 +70,23 @@ region = Rect2(144, 144, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gbib7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx0ms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbib7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx0ms")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bfm8s")
 }, {
 "duration": 1.0,
@@ -56,6 +95,17 @@ animations = [{
 "loop": true,
 "name": &"back_walk",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fspl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e2nr")
+}],
+"loop": false,
+"name": &"die",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -70,12 +120,30 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gbib7")
+"texture": SubResource("AtlasTexture_tbhs3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cx0ms")
+"texture": SubResource("AtlasTexture_r3udo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbhs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3udo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbhs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3udo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbhs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3udo")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 8.0
 }, {
@@ -102,27 +170,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kw8e0"]
-atlas = ExtResource("3_0vqoq")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tumcx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kw8e0")
-}],
-"loop": true,
-"name": &"finished_sword",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur8so"]
-size = Vector2(12, 9.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvcss"]
-size = Vector2(2.86885, 17)
-
 [node name="Soldier" type="CharacterBody2D"]
 light_mask = 4
 visibility_layer = 4
@@ -130,19 +177,6 @@ z_index = 5
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_c86f4")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ixryu")
-animation = &"hit"
-frame_progress = 0.910288
-offset = Vector2(0, -6)
-
-[node name="Sword" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(4, -3)
-scale = Vector2(0.56, 0.56)
-sprite_frames = SubResource("SpriteFrames_tumcx")
-animation = &"finished_sword"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
@@ -156,15 +190,17 @@ position = Vector2(9.5, -4)
 scale = Vector2(2.44, 1)
 shape = SubResource("RectangleShape2D_xvcss")
 
-[node name="HealthLabel" type="Label" parent="."]
-offset_left = -21.0
-offset_top = -13.0
-offset_right = 107.0
-offset_bottom = 37.0
-scale = Vector2(0.107046, 0.107046)
-theme_override_font_sizes/font_size = 36
-text = "state: a"
-horizontal_alignment = 2
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ixryu")
+animation = &"attack"
+frame = 3
+frame_progress = 1.0
+offset = Vector2(0, -6)
+
+[node name="HealthBar" parent="." instance=ExtResource("3_qb2rn")]
+position = Vector2(-7, -27)
+max_health = 3
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

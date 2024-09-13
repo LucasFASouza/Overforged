@@ -10,15 +10,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jtnpg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiwjn"]
 atlas = ExtResource("2_2h3g3")
-region = Rect2(0, 16, 16, 16)
+region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b7umi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jtnpg")
+"texture": SubResource("AtlasTexture_hiwjn")
 }],
 "loop": true,
 "name": &"default",
@@ -77,6 +77,8 @@ position = Vector2(0, 5)
 position = Vector2(0, -5)
 
 [node name="Stone" type="CharacterBody2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(1.28, 1.28)
 collision_layer = 128
 collision_mask = 128
 script = SubResource("GDScript_6ux16")
@@ -86,7 +88,7 @@ scale = Vector2(0.359999, 0.359999)
 sprite_frames = SubResource("SpriteFrames_b7umi")
 
 [node name="MinY" type="Node2D" parent="Stone"]
-position = Vector2(0, 3)
+position = Vector2(0, 2.34375)
 
 [node name="MaxY" type="Node2D" parent="Stone"]
-position = Vector2(0, -3)
+position = Vector2(0, -2.34375)
