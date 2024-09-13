@@ -34,3 +34,12 @@ func switch_music(to_battle: bool):
 		if battle_music.playing:
 			battle_music.stop()
 		main_music.play()
+
+func _process(delta):
+	var whetstone: AudioStreamPlayer2D = $SFX/Whetstone
+	var random_pitch = randf_range(0.8, 1.0)
+	if Input.is_action_pressed("interact"):
+		whetstone.pitch_scale = 0.5
+	else:
+		whetstone.pitch_scale = 1
+	
