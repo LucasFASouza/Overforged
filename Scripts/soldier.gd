@@ -7,11 +7,23 @@ extends CharacterBody2D
 var target_position
 var is_walking = false
 
-@onready var health_label = $HealthLabel
-@export var health: float = 0
+@onready var health_bar: Node2D = $HealthBar
+@export var health: float
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+
+var weapon = ItemsType.create_item("")
+
+var die_timer = Timer.new()
 
 func _ready() -> void:
-	health_label.text = str(health)
+	health_bar.max_health = 3
+
+	print("Minha health é: ", health)
+
+	die_timer.wait_time = 1
+	die_timer.one_shot = true
+	die_timer.connect("timeout", Callable(self, "queue_free"))
+	add_child(die_timer)
 	
 func _physics_process(_delta: float) -> void:
 	entity_movement()
@@ -33,9 +45,6 @@ func entity_movement() -> void:
 			velocity.y = 0
 
 			sprite.play("idle")
-	
-	if soldiers_group.mode == "fight":
-		sprite.play("hit")
 		
 	move_and_slide()
 
@@ -45,5 +54,16 @@ func move_to_position(new_position: Vector2) -> void:
 
 func get_hit(damage):
 	health -= damage
-	health_label.text = str(health)
+	health_bar.set_health(health)
+	sprite.play("hit")
 	return health
+
+func _on_sprite_animation_finished():
+	if sprite.animation != 'idle':
+		if health > 0:
+			sprite.play('idle')
+
+func die():
+	sprite.play("die")
+	collision_shape_2d.disabled = true
+	die_timer.start()

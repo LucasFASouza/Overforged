@@ -54,7 +54,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
-position = Vector2(0, -16)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_6eues")
 
 [node name="Tooltip" type="Label" parent="."]

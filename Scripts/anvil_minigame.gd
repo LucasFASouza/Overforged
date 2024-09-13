@@ -43,7 +43,7 @@ func _physics_process(delta):
 	if is_running:
 		hammer.position += Vector2(speed * delta * direction * -1, 0)
 		
-		if Input.is_action_just_pressed("ui_select"):
+		if Input.is_action_just_pressed("interact"):
 			stop_hammer()
 			Audiomanager.play_sfx("anvil")
 

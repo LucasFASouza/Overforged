@@ -1,7 +1,7 @@
 extends Control
 
 @export var health = 10
-@export var wave_timer_time = 20
+@export var wave_timer_time = 90
 
 @onready var health_label: Label = $HealthLabel
 @onready var timer_label: Label = $TimerLabel
@@ -35,7 +35,7 @@ func get_hit(damage: int) -> void:
 	health_label.text = "Health: "  + str(health)
 
 func _on_wave_timer_timeout() -> void:
-	enemies_group.start_wave(5)
+	enemies_group.start_wave(3)
 
 func finish_wave() -> void:
 	finished_wave = true

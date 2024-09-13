@@ -19,12 +19,14 @@ var state: String = 'free'
 func _physics_process(_delta: float) -> void:
 	player_movement()
 
-	if Input.is_action_just_pressed("ui_select") and state == "free":
-		if current_interactable_item != null:
-			current_interactable_item.interact()
-			Audiomanager.play_sfx("pickup")
-		elif item_holding['id'] != "":
+	if state == 'free':
+
+		if Input.is_action_just_pressed("interact"):
+			if current_interactable_item != null:
+				current_interactable_item.interact()
+		if Input.is_action_just_pressed("drop"):
 			drop_item()
+		
 
 func player_movement() -> void:	
 	if state != 'free':
