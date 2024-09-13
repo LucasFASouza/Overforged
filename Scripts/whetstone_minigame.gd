@@ -94,6 +94,7 @@ func stop_minigame():
 	whetstone.finish_minigame(score)
 	score = 0
 	max_score = 0
+	Audiomanager.play_sfx("whetstone", false)
 
 
 func start_minigame():
@@ -102,4 +103,4 @@ func start_minigame():
 	movement_timer.start()
 	game_timer.start()
 
-	Audiomanager.play_sfx("whetstone")
+	Audiomanager.play_sfx("whetstone",true)
