@@ -22,7 +22,7 @@ var is_enemy_ready = false
 var wave_number = 0
 var enemies_coming = 0
 
-var ending_scene = preload("res://Scenes/ending_screen.tscn")
+var ending_scene = preload("res://Scenes/endgamescreen.tscn")
 
 
 func _ready() -> void:
@@ -75,6 +75,7 @@ func get_hit(_damage: float) -> void:
 		get_tree().root.add_child(new_scene)
 		get_tree().current_scene.queue_free() 
 		get_tree().current_scene = new_scene
+		new_scene.change_endscreen_text("You lost", "result")
 
 
 func _on_wave_timer_timeout() -> void:

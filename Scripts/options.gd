@@ -22,12 +22,11 @@ func _ready() -> void:
         sfx_slider.value = user_prefs.sfx_audio_level
 
 func _on_master_slider_value_changed(value: float) -> void:
-    AudioServer.set_bus_volume_db(master_bus_id, linear_to_db(value))
-    AudioServer.set_bus_mute(master_bus_id, value < .05)
-    if user_prefs:
-        user_prefs.master_audio_level = value
-        print("master audio value: ", value)
-        user_prefs.save()
+	AudioServer.set_bus_volume_db(master_bus_id, linear_to_db(value))
+	AudioServer.set_bus_mute(master_bus_id, value < .05)
+	if user_prefs:
+		user_prefs.master_audio_level = value
+		user_prefs.save()
 
 
 func _on_music_slider_value_changed(value: float) -> void:
