@@ -59,16 +59,13 @@ func move_to_position(new_position: Vector2) -> void:
 func get_hit(damage):
 	health -= damage
 	health_bar.set_health(health)
-	print("Playing hit animation - current health: ", health)
 	sprite.play("hit")
 	return health
 
 
 func die():
-	print("Playing die animation")
 	sprite.stop()
 	sprite.play("die")
-	print("Playing animation: ", sprite.animation)
 	health_bar.visible = false
 	health_bar.set_health(0)
 	health = 0
@@ -76,11 +73,8 @@ func die():
 
 
 func _on_sprite_animation_finished():
-	print("Animation " + sprite.animation + " finished from soldier")
-
 	if sprite.animation != 'idle' and health > 0:
 		sprite.play('idle')
 	elif sprite.animation == 'die':
-		print("Soldier died")
 		queue_free()
 	pass

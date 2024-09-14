@@ -10,6 +10,7 @@ var is_attacking = false
 var mode = "walk"
 
 signal enemy_ready
+signal enemy_spawn
 
 
 func _process(_delta: float) -> void:
@@ -29,6 +30,8 @@ func spawn_enemy() -> void:
 		new_enemy.position = Vector2(150, 2)
 		new_enemy.name = "Enemy"
 		add_child(new_enemy)
+		
+		enemy_spawn.emit()
 
 		new_enemy.position_reached.connect(on_enemy_position_reached)
 
@@ -39,7 +42,7 @@ func spawn_enemy() -> void:
 		is_attacking = false
 
 
-func get_hit(_damage: int):
+func get_hit(_damage: float):
 	if self.get_child_count() > 0:
 		var enemy = self.get_child(0)
 		var enemy_health = enemy.get_hit(_damage)

@@ -18,6 +18,14 @@ region = Rect2(0, 48, 48, 48)
 atlas = ExtResource("2_ihgvq")
 region = Rect2(48, 48, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrjri"]
+atlas = ExtResource("2_ihgvq")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxskk"]
+atlas = ExtResource("2_ihgvq")
+region = Rect2(48, 144, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7ck5"]
 atlas = ExtResource("2_ihgvq")
 region = Rect2(0, 0, 48, 48)
@@ -25,14 +33,6 @@ region = Rect2(0, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ey80n"]
 atlas = ExtResource("2_ihgvq")
 region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lxskk"]
-atlas = ExtResource("2_ihgvq")
-region = Rect2(48, 144, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rrjri"]
-atlas = ExtResource("2_ihgvq")
-region = Rect2(0, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7m84"]
 atlas = ExtResource("2_ihgvq")
@@ -71,6 +71,12 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rrjri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxskk")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_s7ck5")
 }, {
 "duration": 1.0,
@@ -88,7 +94,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ey80n")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 4.0
 }, {
@@ -154,9 +160,7 @@ shape = SubResource("RectangleShape2D_s6ly6")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_ixryu")
-animation = &"hit"
-frame = 3
-frame_progress = 1.0
+animation = &"die"
 offset = Vector2(0, -6)
 
 [node name="HealthBar" parent="." instance=ExtResource("3_4ln40")]

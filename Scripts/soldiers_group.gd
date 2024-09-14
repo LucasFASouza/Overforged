@@ -56,8 +56,6 @@ func get_hit(damage_hit: float):
 	var have_survivors = false
 
 	for child in get_children():
-		print(damage_left)
-
 		child.get_hit(damage_left)
 
 		if child.health < 0:

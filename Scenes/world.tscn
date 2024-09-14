@@ -230,7 +230,6 @@ offset_top = -61.0
 offset_right = 69.0
 offset_bottom = -61.0
 scale = Vector2(0.480003, 0.480003)
-wave_timer_time = 30
 
 [node name="SoldiersGroup" parent="GameManager" instance=ExtResource("8_ppm1x")]
 position = Vector2(-143.749, 127.083)

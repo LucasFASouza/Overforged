@@ -5,10 +5,10 @@ extends CharacterBody2D
 
 @onready var game_manager = $"/root/World/GameManager"
 
-@export var health: float = 15
+@export var health: float = 4
 @onready var health_bar: Node2D = $HealthBar
 
-@export var damage: int = 3
+@export var damage: float = 2
 
 var mode = "walk"
 var target_position
@@ -56,7 +56,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		queue_free()
 
 
-func get_hit(damage_hit: int):
+func get_hit(damage_hit: float):
 	health -= damage_hit
 	health_bar.set_health(health)
 
