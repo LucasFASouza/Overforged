@@ -455,6 +455,7 @@ position = Vector2(-28, -16)
 position = Vector2(1, -16)
 
 [node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
 script = ExtResource("16_rx0t0")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("17_q3qks")]

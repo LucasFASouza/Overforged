@@ -9,7 +9,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("pause"):
-		pause_menu.show()
-		get_tree().paused = true
+	if Input.is_action_just_pressed("pause"):
+		if not get_tree().paused:
+			pause_menu.show()
+			get_tree().paused = true
+		else:
+			pause_menu.hide()
+			get_tree().paused = false
+		
 	
