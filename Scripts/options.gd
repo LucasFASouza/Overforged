@@ -26,7 +26,6 @@ func _on_master_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_mute(master_bus_id, value < .05)
 	if user_prefs:
 		user_prefs.master_audio_level = value
-		print("master audio value: ", value)
 		user_prefs.save()
 
 

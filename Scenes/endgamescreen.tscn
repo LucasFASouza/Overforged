@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgunobdrnpkan"]
+
+[ext_resource type="Script" path="res://Scripts/endgamescreen.gd" id="1_v27kb"]
+[ext_resource type="Texture2D" uid="uid://csjuuxdjxnk0r" path="res://Assets/Sprites/Grass.png" id="2_yugrg"]
+[ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="3_g6dbp"]
+
+[node name="EndScreenMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-163, 371)
+script = ExtResource("1_v27kb")
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_yugrg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameoverLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_g6dbp")
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MenuContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MenuContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+theme = ExtResource("3_g6dbp")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Main" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="GameOverTextLabel" type="Label" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "You won or lost the game
+You survived:"
+horizontal_alignment = 1
+
+[node name="ResultTextLabel" type="Label" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "19 + \"waves of enemies\""
+horizontal_alignment = 1
+
+[node name="TryAgainButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+layout_mode = 2
+theme = ExtResource("3_g6dbp")
+text = "TRY AGAIN"
+
+[node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+custom_minimum_size = Vector2(240, 100)
+layout_mode = 2
+theme = ExtResource("3_g6dbp")
+text = "QUIT GAME"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/QuitButton" to="." method="_on_quit_button_pressed"]

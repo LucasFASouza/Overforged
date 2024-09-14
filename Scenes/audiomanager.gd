@@ -2,9 +2,6 @@ extends Node
 
 var sfx_dict = {}
 var music_dict = {}
-@onready var main_music: AudioStreamPlayer2D = $Music/MainMusic
-@onready var battle_music: AudioStreamPlayer2D = $Music/BattleMusic
-@onready var victory_music: AudioStreamPlayer2D = $Music/VictoryMusic
 
 
 func _ready() -> void:
