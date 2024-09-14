@@ -29,14 +29,15 @@ func _physics_process(_delta: float) -> void:
 	entity_movement()
 
 	if mode == "walk" and self.global_position.x < 30:
-		game_manager.get_hit(10)
+		mode = "finish"
+
+		game_manager.get_hit()
 
 		sprite.play("attack")
 		
 		health = 0
 		health_bar.visible = false
 
-		mode = "finish"
 
 func entity_movement() -> void:
 	velocity.y = 0    

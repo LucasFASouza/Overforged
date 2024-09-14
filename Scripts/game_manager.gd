@@ -63,7 +63,7 @@ func _process(_delta: float) -> void:
 		turn_timer.start()
 
 
-func get_hit(_damage: float) -> void:
+func get_hit() -> void:
 	lives -= 1
 	health_sprite.play(str(lives))
 

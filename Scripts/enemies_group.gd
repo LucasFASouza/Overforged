@@ -87,8 +87,10 @@ func set_mode(new_mode: String) -> void:
 	mode = new_mode
 
 	if self.get_child_count() > 0:
-		var enemy = self.get_child(0)
-		enemy.mode = new_mode
+		var child = self.get_child(0)
+
+		if child.mode != "finish":
+			child.mode = new_mode
 
 
 func on_enemy_position_reached():

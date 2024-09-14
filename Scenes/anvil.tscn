@@ -52,7 +52,7 @@ autoplay = "idle"
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_1tpjp")
 
 [node name="interaction_area" type="Area2D" parent="."]
@@ -66,9 +66,9 @@ shape = SubResource("CircleShape2D_m7cgn")
 [node name="Tooltip" type="Label" parent="."]
 z_index = 50
 offset_left = -30.0
-offset_top = -22.0
+offset_top = -35.0
 offset_right = 203.0
-offset_bottom = 0.999998
+offset_bottom = -12.0
 scale = Vector2(0.257306, 0.257306)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
 theme_override_font_sizes/font_size = 16

@@ -65,9 +65,9 @@ shape = SubResource("CircleShape2D_vv5b5")
 [node name="Tooltip" type="Label" parent="."]
 z_index = 50
 offset_left = -30.0
-offset_top = -24.0
+offset_top = -38.0
 offset_right = 203.0
-offset_bottom = -1.0
+offset_bottom = -15.0
 scale = Vector2(0.257306, 0.257306)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
 theme_override_font_sizes/font_size = 16
