@@ -4,15 +4,13 @@ extends "res://Scripts/interactable_item.gd"
 
 func _ready() -> void:
 	message_base = "Press SPACE to sell the sword"
-	tooltip.text = message_base
 	super._ready()
 
 func interact() -> void:
 	if player.item_holding['id'] != 'finished_sword':
 		tooltip.text = "You need a finished sword to sell"
+		tooltip.visible = true
 	else:
 		var item = player.give_item()
 		soldiers.sell_weapon(item)
 		player.current_interactable_item = null
-		tooltip.visible = false
-		tooltip.text = message_base

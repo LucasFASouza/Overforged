@@ -10,8 +10,6 @@ var current_item = ItemsType.create_item("")
 var clear_timer = Timer.new()
 
 func _ready() -> void:
-	message_base = "Press SPACE to interact"
-	tooltip.visible = false
 	state = 'empty'
 	ballon.visible = false
 
@@ -30,12 +28,14 @@ func interact() -> void:
 	if state == 'empty':
 		if player.item_holding['id'] != "dull_sword":
 			tooltip.text = 'You need Dull Sword to start the anvil'
+			tooltip.visible = true
 			return
 
 		player.state = 'minigame'
 		current_item = player.give_item()
 
 		tooltip.text = "Hold SPACE to sharpen the sword at the right spot"
+		tooltip.visible = true
 		whetstone_minigame.visible = true
 		whetstone_minigame.start_minigame()
 
@@ -68,8 +68,6 @@ func finish_minigame(score):
 
 	current_item = ItemsType.create_item("")
 	state = 'empty'
-
-	tooltip.text = "You scored " + str(score) + "/3 stars!"
 
 	whetstone_minigame.visible = false
 	clear_timer.start()

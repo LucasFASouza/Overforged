@@ -12,10 +12,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if player.current_interactable_item == self:
-		tooltip.visible = true
 		sprite.play("selected")
 	else:
-		tooltip.visible = false
 		sprite.play("idle")
 
 func _on_interaction_area_body_entered(_body: Node2D) -> void:
@@ -24,7 +22,7 @@ func _on_interaction_area_body_entered(_body: Node2D) -> void:
 
 func _on_interaction_area_body_exited(_body: Node2D) -> void:
 	if _body == player:
-		tooltip.text = message_base
+		tooltip.visible = false
 
 		if self in player.items_in_range:
 			player.items_in_range.erase(self)

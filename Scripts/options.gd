@@ -13,13 +13,13 @@ var user_prefs = UserPreferences
 
 
 func _ready() -> void:
-    user_prefs = UserPreferences.load_or_create()
-    if master_slider:
-        master_slider.value = user_prefs.master_audio_level
-    if music_slider:
-        music_slider.value = user_prefs.music_audio_level
-    if sfx_slider:
-        sfx_slider.value = user_prefs.sfx_audio_level
+	user_prefs = UserPreferences.load_or_create()
+	if master_slider:
+		master_slider.value = user_prefs.master_audio_level
+	if music_slider:
+		music_slider.value = user_prefs.music_audio_level
+	if sfx_slider:
+		sfx_slider.value = user_prefs.sfx_audio_level
 
 func _on_master_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(master_bus_id, linear_to_db(value))
@@ -30,16 +30,16 @@ func _on_master_slider_value_changed(value: float) -> void:
 
 
 func _on_music_slider_value_changed(value: float) -> void:
-    AudioServer.set_bus_volume_db(music_bus_id, linear_to_db(value))
-    AudioServer.set_bus_mute(music_bus_id, value < .05)
-    if user_prefs:
-        user_prefs.music_audio_level = value
-        user_prefs.save()
+	AudioServer.set_bus_volume_db(music_bus_id, linear_to_db(value))
+	AudioServer.set_bus_mute(music_bus_id, value < .05)
+	if user_prefs:
+		user_prefs.music_audio_level = value
+		user_prefs.save()
 
 
 func _on_sfx_slider_value_changed(value: float) -> void:
-    AudioServer.set_bus_volume_db(sfx_bus_id, linear_to_db(value))
-    AudioServer.set_bus_mute(sfx_bus_id, value < .05)
-    if user_prefs:
-        user_prefs.sfx_audio_level = value
-        user_prefs.save()
+	AudioServer.set_bus_volume_db(sfx_bus_id, linear_to_db(value))
+	AudioServer.set_bus_mute(sfx_bus_id, value < .05)
+	if user_prefs:
+		user_prefs.sfx_audio_level = value
+		user_prefs.save()

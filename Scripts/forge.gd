@@ -11,8 +11,6 @@ var elapsed_time: float = 0.0
 var current_item = ItemsType.create_item("")
 
 func _ready() -> void:
-	message_base = "Press SPACE to start the forge"
-	tooltip.visible = false
 	ballon.visible = false
 	state = 'empty'
 
@@ -58,21 +56,11 @@ func _process(delta: float) -> void:
 				ballon.play("out")
 			elapsed_time = 0.0
 
-func _on_interaction_area_body_entered(_body: Node2D) -> void:
-	if _body == player:
-		if state == 'empty':
-			tooltip.text = "Press SPACE to start the forge"
-		elif state == 'running':
-			tooltip.visible = false
-		elif state == 'ready':
-			tooltip.text = "Press SPACE get your item"
-	
-	super._on_interaction_area_body_entered(_body)
-
 func interact() -> void:
 	if state == 'empty':
 		if player.item_holding['id'] != "iron_ore":
 			tooltip.text = 'You need Iron Ore to start the forge'
+			tooltip.visible = true
 			return
 
 		current_item = player.give_item()
@@ -85,6 +73,7 @@ func interact() -> void:
 	elif state == 'ready':
 		if player.item_holding['id'] != '':
 			tooltip.text = "You have your hands full right now"
+			tooltip.visible = true
 			return
 
 		current_item['id'] = "iron_ingot"

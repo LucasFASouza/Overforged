@@ -21,26 +21,21 @@ func _ready() -> void:
 	timer.start()
 
 	message_base = "Press SPACE to pick up item"
-	tooltip.text = message_base
 	item_sprite.play(item['id'])
 	super._ready()
 
 func _process(_delta: float) -> void:
 	if player.current_interactable_item == self:
-		tooltip.visible = true
 		sprite.play(item['id'] + "_selected")
-		print(item['id'] + "_selected")
 	else:
-		tooltip.visible = false
 		sprite.play(item['id'])
-		print("Not selected")
-
 
 func _physics_process(delta: float) -> void:
 	item_sprite.position.y += speed * direction * delta
 
 func interact() -> void:
 	if player.item_holding['id'] != '':
+		tooltip.visible = true
 		tooltip.text = "You have your hands full right now"
 	else:
 		player.get_item(item)
