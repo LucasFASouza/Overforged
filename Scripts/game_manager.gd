@@ -22,27 +22,11 @@ var is_enemy_ready = false
 var wave_number = 0
 var enemies_coming = 0
 
-var waves_info = [
-	{
-		"min_enemies": 3,
-		"max_enemies": 3,
-		"time": 60
-	},
-	{
-		"min_enemies": 3,
-		"max_enemies": 5,
-		"time": 60
-	},
-	{
-		"min_enemies": 5,
-		"max_enemies": 7,
-		"time": 60
-	}
-]
+var ending_scene = preload("res://Scenes/ending_screen.tscn")
 
 
 func _ready() -> void:
-	wave_timer.wait_time = waves_info[wave_number]["time"]
+	wave_timer.wait_time = 60
 	wave_timer.one_shot = true
 	wave_timer.connect("timeout", Callable(self, "_on_wave_timer_timeout"))
 	add_child(wave_timer)
@@ -83,12 +67,19 @@ func get_hit(_damage: float) -> void:
 	lives -= 1
 	health_sprite.play(str(lives))
 
+	if lives == 0:
+		phase = "defeat"
+		Audiomanager.switch_music("defeat")
+
+		var new_scene = ending_scene.instantiate()
+		get_tree().root.add_child(new_scene)
+		get_tree().current_scene.queue_free() 
+		get_tree().current_scene = new_scene
+
 
 func _on_wave_timer_timeout() -> void:
-	var num_enemies = randi_range(waves_info[wave_number]["min_enemies"], waves_info[wave_number]["max_enemies"])
-	enemies_coming = num_enemies
-	enemies_group.start_wave(num_enemies)
 	wave_number += 1
+	enemies_coming = enemies_group.start_wave(wave_number)
 	phase = "battle"
 
 	Audiomanager.play_sfx("warhorn")
@@ -96,13 +87,24 @@ func _on_wave_timer_timeout() -> void:
 
 
 func finish_wave() -> void:
-	finished_wave = true
-	phase = "calm"
-	wave_timer.wait_time = waves_info[wave_number]["time"]
-	wave_timer.start()
-
 	Audiomanager.play_sfx("victoryhorn")
-	Audiomanager.switch_music("main")
+	finished_wave = true
+
+	if wave_number < 3:
+		phase = "calm"
+		wave_timer.wait_time = 60
+		wave_timer.start()
+
+		Audiomanager.switch_music("main")
+	
+	else:
+		phase = "victory"
+		Audiomanager.switch_music("victory")
+
+		var new_scene = ending_scene.instantiate()
+		get_tree().root.add_child(new_scene)
+		get_tree().current_scene.queue_free() 
+		get_tree().current_scene = new_scene 
 
 
 func combat_step() -> void:
