@@ -92,8 +92,7 @@ func _on_wave_timer_timeout() -> void:
 	phase = "battle"
 
 	Audiomanager.play_sfx("warhorn")
-	Audiomanager.play_sfx("marchingdrums")
-	Audiomanager.switch_music(true)
+	Audiomanager.switch_music("battle")
 
 
 func finish_wave() -> void:
@@ -102,8 +101,8 @@ func finish_wave() -> void:
 	wave_timer.wait_time = waves_info[wave_number]["time"]
 	wave_timer.start()
 
-	Audiomanager.play_sfx("victoryhorns")
-	Audiomanager.switch_music(true)
+	Audiomanager.play_sfx("victoryhorn")
+	Audiomanager.switch_music("main")
 
 
 func combat_step() -> void:

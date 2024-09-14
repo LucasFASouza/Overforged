@@ -1,15 +1,24 @@
 extends Node
 
 var sfx_dict = {}
+var music_dict = {}
 @onready var main_music: AudioStreamPlayer2D = $Music/MainMusic
 @onready var battle_music: AudioStreamPlayer2D = $Music/BattleMusic
+@onready var victory_music: AudioStreamPlayer2D = $Music/VictoryMusic
+
 
 func _ready() -> void:
-	main_music.play()
 	var sfx_node = $SFX
 	for child in sfx_node.get_children():
 		if child is AudioStreamPlayer2D: 
 			sfx_dict[child.name.to_lower()] = child  
+
+	var music_node = $Music
+	for child in music_node.get_children():
+		if child is AudioStreamPlayer2D: 
+			music_dict[child.name.to_lower()] = child
+	print(music_dict)
+	switch_music("main")
 
 
 func play_sfx(sfx_name: String, play: bool = true) -> void:
@@ -25,19 +34,18 @@ func play_sfx(sfx_name: String, play: bool = true) -> void:
 		print("SFX: %s not found!" % sfx_name)
  
 
-func switch_music(to_battle: bool):
-	if to_battle:
-		if main_music.playing:
-			main_music.stop()
-		battle_music.play()
+func switch_music(track_name: String):
+	for music in music_dict.values():
+		if music.playing:
+			music.stop()
+	if music_dict.has(track_name):
+		music_dict[track_name].play()
 	else:
-		if battle_music.playing:
-			battle_music.stop()
-		main_music.play()
+		print("Music track: %s not found!" % track_name)
+
 
 func _process(delta):
 	var whetstone: AudioStreamPlayer2D = $SFX/Whetstone
-	var random_pitch = randf_range(0.8, 1.0)
 	if Input.is_action_pressed("interact"):
 		whetstone.pitch_scale = 0.5
 	else:

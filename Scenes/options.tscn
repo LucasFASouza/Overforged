@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhrq6hvw5wo3a"]
+
+[ext_resource type="Script" path="res://Scripts/options.gd" id="1_dljv7"]
+[ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="2_ni3nl"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_dljv7")
+
+[node name="OptionsContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MasterLabel" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ni3nl")
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.02
+value = 1.0
+
+[node name="Separator2" type="Control" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ni3nl")
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.02
+value = 1.0
+
+[node name="Separator3" type="Control" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ni3nl")
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.02
+value = 1.0
+
+[node name="Separator4" type="Control" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[connection signal="value_changed" from="OptionsContainer/MarginContainer/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="OptionsContainer/MarginContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="OptionsContainer/MarginContainer/VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
