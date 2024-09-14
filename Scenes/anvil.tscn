@@ -1,19 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://dggakpdoilho0"]
+[gd_scene load_steps=10 format=3 uid="uid://dggakpdoilho0"]
 
 [ext_resource type="Script" path="res://Scripts/anvil.gd" id="1_yd6yj"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_pnso0"]
 [ext_resource type="PackedScene" uid="uid://d3su57nld13ej" path="res://Scenes/anvil_minigame.tscn" id="3_u2vaf"]
 [ext_resource type="PackedScene" uid="uid://d2dcedxf8jbur" path="res://Scenes/ballon.tscn" id="4_qcm2w"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_451ml"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dn7wa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cylql"]
 atlas = ExtResource("2_pnso0")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qifsq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_451ml")
+"texture": SubResource("AtlasTexture_cylql")
 }],
 "loop": true,
 "name": &"idle",
@@ -31,6 +33,7 @@ z_index = 3
 script = ExtResource("1_yd6yj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_dn7wa")
 sprite_frames = SubResource("SpriteFrames_qifsq")
 animation = &"idle"
 offset = Vector2(0, -8)

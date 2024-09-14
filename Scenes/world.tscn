@@ -447,7 +447,7 @@ position = Vector2(-81, -16)
 position = Vector2(-59, -16)
 
 [node name="Anvil" parent="." instance=ExtResource("11_euab3")]
-position = Vector2(-28, -15)
+position = Vector2(-28, -16)
 
 [node name="Whetstone" parent="." instance=ExtResource("11_l4jay")]
 position = Vector2(1, -16)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://gdc1ix2uyyp3"]
+[gd_scene load_steps=11 format=3 uid="uid://gdc1ix2uyyp3"]
 
 [ext_resource type="Script" path="res://Scripts/forge.gd" id="1_kvn06"]
+[ext_resource type="Shader" path="res://Scripts/shader.gdshader" id="2_24vuk"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_t56f2"]
 [ext_resource type="PackedScene" uid="uid://b7opfpamsdu18" path="res://Scenes/forge_bar.tscn" id="3_cwaro"]
 [ext_resource type="PackedScene" uid="uid://d2dcedxf8jbur" path="res://Scenes/ballon.tscn" id="4_8h74i"]
@@ -10,6 +11,11 @@ size = Vector2(14, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ma16j"]
 radius = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6t7mm"]
+shader = ExtResource("2_24vuk")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l70f8"]
 atlas = ExtResource("2_t56f2")
@@ -63,12 +69,7 @@ position = Vector2(-2, -28)
 [node name="Ballon" parent="." instance=ExtResource("4_8h74i")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.03013, 1.022)
-sprite_frames = SubResource("SpriteFrames_qifsq")
-animation = &"idle"
-offset = Vector2(0, -8)
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_6t7mm")
 scale = Vector2(1.03013, 1.022)
 sprite_frames = SubResource("SpriteFrames_qifsq")
 animation = &"idle"
