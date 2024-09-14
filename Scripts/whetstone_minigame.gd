@@ -79,8 +79,6 @@ func _physics_process(delta):
 
 		max_score += delta
 
-		print("Score: ", score, " Max Score: ", max_score)
-
 
 func move_sweetspot():	
 	sweetspot_direction = randi() % 2 * 2 - 1
@@ -91,7 +89,7 @@ func move_sweetspot():
 
 
 func stop_minigame():
-	is_running  = falses
+	is_running = false
 	score = (score / max_score) * 3
 	whetstone.finish_minigame(score)
 	score = 0

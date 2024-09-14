@@ -51,18 +51,17 @@ func finish_minigame(score):
 	current_item['id'] = "finished_sword"
 	current_item['name'] = ItemsType.items_names.get("finished_sword", "")
 
-	var thresholds = [2.5, 2, 1.5, 1]
-	var scores = [3, 2.5, 2, 1.5]
-
-	for i in range(thresholds.size()):
-		if score > thresholds[i]:
-			score = scores[i]
-			break
-		else:
-			score = 1
+	if score > 2.5:
+		score = 3
+	elif score > 2:
+		score = 2.5
+	elif score > 1.5:
+		score = 2
+	elif score > 1:
+		score = 1.5
+	else:
+		score = 1
 	
-	print("Computed score: ", score)
-
 	ballon.visible = true
 	ballon.play(str(score) + "-stars")
 
