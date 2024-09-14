@@ -102,6 +102,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8e2nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e2nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e2nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e2nr")
 }],
 "loop": false,
 "name": &"die",
@@ -119,18 +128,6 @@ animations = [{
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tbhs3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r3udo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tbhs3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r3udo")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tbhs3")
 }, {
@@ -192,7 +189,8 @@ shape = SubResource("RectangleShape2D_xvcss")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ixryu")
-animation = &"hit"
+animation = &"die"
+autoplay = "back_walk"
 offset = Vector2(0, -6)
 
 [node name="HealthBar" parent="." instance=ExtResource("3_qb2rn")]

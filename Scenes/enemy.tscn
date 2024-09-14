@@ -18,13 +18,13 @@ region = Rect2(0, 48, 48, 48)
 atlas = ExtResource("2_ihgvq")
 region = Rect2(48, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_akhii"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7ck5"]
 atlas = ExtResource("2_ihgvq")
-region = Rect2(96, 144, 48, 48)
+region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_autgy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey80n"]
 atlas = ExtResource("2_ihgvq")
-region = Rect2(144, 144, 48, 48)
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lxskk"]
 atlas = ExtResource("2_ihgvq")
@@ -71,28 +71,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_akhii")
+"texture": SubResource("AtlasTexture_s7ck5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_autgy")
+"texture": SubResource("AtlasTexture_ey80n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey80n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey80n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey80n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey80n")
 }],
-"loop": false,
+"loop": true,
 "name": &"die",
 "speed": 4.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lxskk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rrjri")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lxskk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rrjri")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lxskk")
 }, {
@@ -134,7 +134,6 @@ animations = [{
 
 [node name="Enemy" type="CharacterBody2D"]
 z_index = 5
-scale = Vector2(2.44, 2.44)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_ie530")
@@ -155,12 +154,13 @@ shape = SubResource("RectangleShape2D_s6ly6")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_ixryu")
-animation = &"idle"
+animation = &"hit"
+frame = 3
+frame_progress = 1.0
 offset = Vector2(0, -6)
 
 [node name="HealthBar" parent="." instance=ExtResource("3_4ln40")]
-position = Vector2(-0.819672, -21.3115)
-scale = Vector2(0.459016, 0.459016)
+position = Vector2(-3, -28)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

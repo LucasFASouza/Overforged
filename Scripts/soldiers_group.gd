@@ -6,39 +6,18 @@ var weapons_sold: Array = []
 @export var boundary_up: int = -55
 @export var boundary_down: int = 60
 
-var enemy: Node2D
+@export var damage: float = 0
 
-var mode = "idle"
-var attack_timer: Timer
-@export var cooldown: float = 1
-@export var damage: int = 0
 
-func _ready() -> void:
-	attack_timer = Timer.new()
-	attack_timer.wait_time = cooldown
-	attack_timer.connect("timeout", Callable(self, "attack"))
-	attack_timer.one_shot = true
-	add_child(attack_timer)
-	attack_timer.start()
+func attack():
+	damage = 0
 
-func _process(_delta: float) -> void:
-	if enemy == null:
-		mode = "idle"
-
-func attack() -> void:
-	if mode == "fight" and get_child_count() > 1:
-		damage = 0
-
-		for child in get_children():
-			if child.name.split(" ")[0] != "Soldier":
-				continue
-			
-			child.sprite.play("attack")
-			damage += child.weapon.whetstone_level
-		
-		enemy.get_hit(damage)
+	for child in get_children():		
+		child.sprite.play("attack")
+		damage += child.weapon.whetstone_level
 	
-		attack_timer.start()	
+	return damage
+	
 
 func sell_weapon(weapon) -> void:
 	weapons_sold.append(weapon)
@@ -51,10 +30,10 @@ func sell_weapon(weapon) -> void:
 
 	add_child(new_soldier)
 
-	if enemy != null:
-		enemy.mode = "fight"
+	# new_soldier.position_reached.connect(on_soldier_position_reached)
 
 	move_soldiers()
+
 
 func move_soldiers():
 	Audiomanager.play_sfx("soldierfootsteps")
@@ -64,45 +43,29 @@ func move_soldiers():
 	for i in range(soldiers_count):
 		var soldier = soldiers[i]
 
-		if soldier.name.split(" ")[0] != "Soldier":
+		if soldier.health < 0:
 			continue
-		
+
 		var new_position = Vector2(35, boundary_up + (boundary_down - boundary_up) / (soldiers_count + 1) * (i + 1))
 
 		soldier.move_to_position(new_position)
 
-func get_hit(damage_hit):
-	var first_soldier: Node2D
+
+func get_hit(damage_hit: float):
+	var damage_left: float = damage_hit
+	var have_survivors = false
 
 	for child in get_children():
-		if child.name.split(" ")[0] != "Soldier":
-			continue
-		first_soldier = child
-		break
+		print(damage_left)
 
-	if first_soldier == null:
-		enemy.mode = "walk"
-		return
+		child.get_hit(damage_left)
 
-	var soldier_health = first_soldier.get_hit(damage_hit)
+		if child.health < 0:
+			child.die()
+			damage_left = abs(child.health)
+		else:
+			have_survivors = true
+			break
 
-	if soldier_health <= 0:
-		first_soldier.name = "Dead Guy"
-		first_soldier.die()
-		call_deferred("_handle_remaining_damage", soldier_health * -1)
-		
-func _handle_remaining_damage(remaining_damage):
-	if get_child_count() == 1:
-		enemy.mode = "walk"
-	else:
-		move_soldiers()
-		get_hit(remaining_damage)
-
-func set_mode(new_mode):
-	mode = new_mode
-
-	if new_mode == "idle":
-		enemy = null
-		move_soldiers()
-	else:
-		attack_timer.start()
+	move_soldiers()
+	return have_survivors

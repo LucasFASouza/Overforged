@@ -1,6 +1,6 @@
 extends "res://Scripts/interactable_item.gd"
 
-@onready var soldiers: Node2D = $"/root/World/SoldiersGroup"
+@onready var soldiers: Node2D = $"/root/World/GameManager/SoldiersGroup"
 
 func _ready() -> void:
 	message_base = "Press SPACE to sell the sword"

@@ -1,68 +1,86 @@
 extends CharacterBody2D
 
 @export var speed: int = 50
-@onready var soldiers_group = get_parent()
 @onready var sprite = $Sprite
 
 var target_position
-var is_walking = false
+var mode = "idle"
 
 @onready var health_bar: Node2D = $HealthBar
 @export var health: float
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var weapon = ItemsType.create_item("")
 
-var die_timer = Timer.new()
+signal position_reached
 
 func _ready() -> void:
 	health_bar.max_health = 3
 	health_bar.update_health_bar()
 
-	die_timer.wait_time = 1
-	die_timer.one_shot = true
-	die_timer.connect("timeout", Callable(self, "queue_free"))
-	add_child(die_timer)
 	
 func _physics_process(_delta: float) -> void:
 	entity_movement()
 
+
 func entity_movement() -> void:
-	if is_walking:
+	velocity.x = 0 
+	if mode == "walk":
 		var direction = (target_position - position).normalized()
-		velocity.x = 0
+		var animation_direction
 
 		if direction.y > 0:
-			sprite.play("front_walk")
+			animation_direction = "front"
 			velocity.y = speed
 		elif direction.y < 0:
-			sprite.play("back_walk")
+			animation_direction = "back"
 			velocity.y = -speed
 
+		if sprite.animation == "idle":
+			sprite.play(animation_direction + "_walk")
+
 		if position.distance_to(target_position) < 1:
-			is_walking = false
+			mode = "idle"
+
+			if sprite.animation == animation_direction + "_walk":
+				sprite.play("idle")
+
 			velocity.y = 0
 
-			sprite.play("idle")
+			position_reached.emit()
 		
 	move_and_slide()
 
+
 func move_to_position(new_position: Vector2) -> void:
 	target_position = new_position
-	is_walking = true
+	mode = "walk"
+
 
 func get_hit(damage):
 	health -= damage
 	health_bar.set_health(health)
+	print("Playing hit animation - current health: ", health)
 	sprite.play("hit")
 	return health
 
-func _on_sprite_animation_finished():
-	if sprite.animation != 'idle':
-		if health > 0:
-			sprite.play('idle')
 
 func die():
+	print("Playing die animation")
+	sprite.stop()
 	sprite.play("die")
-	collision_shape_2d.disabled = true
-	die_timer.start()
+	print("Playing animation: ", sprite.animation)
+	health_bar.visible = false
+	health_bar.set_health(0)
+	health = 0
+	$CollisionShape2D.disabled = true
+
+
+func _on_sprite_animation_finished():
+	print("Animation " + sprite.animation + " finished from soldier")
+
+	if sprite.animation != 'idle' and health > 0:
+		sprite.play('idle')
+	elif sprite.animation == 'die':
+		print("Soldier died")
+		queue_free()
+	pass

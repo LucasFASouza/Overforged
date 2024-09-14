@@ -8,16 +8,13 @@ extends CharacterBody2D
 @export var health: float = 15
 @onready var health_bar: Node2D = $HealthBar
 
-var soldiers_infront = []
-@onready var soldiers_group = $"/root/World/SoldiersGroup"
-
-var attack_timer = Timer.new()
-@export var cooldown: float = 2
 @export var damage: int = 3
 
-var die_timer = Timer.new()
-
 var mode = "walk"
+var target_position
+
+signal position_reached
+
 
 func _ready() -> void:
 	var random_number = randi_range(-10, 10)
@@ -26,69 +23,64 @@ func _ready() -> void:
 	health_bar.max_health = health
 	health_bar.set_health(health)
 
-	attack_timer.wait_time = cooldown
-	attack_timer.connect("timeout", Callable(self, "attack"))
-	add_child(attack_timer)
-	attack_timer.start()
-
-	die_timer.wait_time = 1
-	die_timer.one_shot = true
-	die_timer.connect("timeout", Callable(self, "queue_free"))
-	add_child(die_timer)
 
 func _physics_process(_delta: float) -> void:
 	entity_movement()
 
-	if health <= 0:
-		soldiers_group.set_mode("idle")
-		queue_free()
 
 func entity_movement() -> void:
-	velocity.y = 0
+	velocity.y = 0	
 	if mode == "walk":
 		velocity.x = -speed
 		sprite.play("walk")
-	else:
-		velocity.x = 0
-		sprite.play("idle")
+
+		if position.distance_to(target_position) < 1:
+			mode = "idle"
+			velocity.x = 0
+
+			sprite.play("idle")
+			position_reached.emit()
 
 	move_and_slide()
 
+
+func move_to_position(new_position: Vector2) -> void:
+	target_position = new_position
+	mode = "walk"
+
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	# TODO: Change for check the position
 	if body.name == "TileMap":
 		game_manager.get_hit(10)
 		queue_free()
 
-	elif body.name.split(" ")[0] == "Soldier":
-		soldiers_infront.append(body)
 
-		soldiers_group.set_mode("fight")
-		soldiers_group.enemy = self
-		mode = "fight"
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.name.split(" ")[0] == "Soldier":
-		soldiers_infront.erase(body)
-
-func get_hit(damage_hit: int) -> void:
+func get_hit(damage_hit: int):
 	health -= damage_hit
 	health_bar.set_health(health)
 
 	sprite.play("hit")
 
-	if health <= 0:
-		soldiers_group.set_mode("idle")
-		sprite.play("die")
+	return health
 
-func attack() -> void:
-	if mode == "fight":
-		damage = randf_range(1, 3)
-		soldiers_group.get_hit(damage)
-		sprite.play("attack")
 
-	attack_timer.start()
+func attack():
+	damage = randf_range(1, 3)
+
+	sprite.play("attack")
+
+	return damage
+
+
+func die():
+	sprite.play("die")
+	health_bar.visible = false
+
 
 func _on_sprite_animation_finished():
-	if sprite.animation != 'idle':
-		if health > 0:
-			sprite.play('idle')
+	if sprite.animation != 'idle' and health > 0:
+		sprite.play('idle')
+	elif sprite.animation == 'die':
+		queue_free()
+	pass

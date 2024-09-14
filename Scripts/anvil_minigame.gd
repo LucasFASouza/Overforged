@@ -60,7 +60,7 @@ func start_minigame():
 			sweetspot.scale.x = 1
 		2:
 			speed += 20
-			sweetspot.scale.x = 0.75
+			sweetspot.scale.x = 0.7
 		3:
 			speed += 20
 			sweetspot.scale.x = 0.5

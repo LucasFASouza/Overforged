@@ -47,6 +47,8 @@ func interact() -> void:
 
 		state = 'running'
 
+		player.player_sprite.play("back_idle")
+
 func finish_minigame(score):
 	current_item['id'] = "finished_sword"
 	current_item['name'] = ItemsType.items_names.get("finished_sword", "")
