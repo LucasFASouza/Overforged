@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3su57nld13ej"]
+[gd_scene load_steps=12 format=3 uid="uid://d3su57nld13ej"]
 
 [ext_resource type="Script" path="res://Scripts/anvil_minigame.gd" id="1_jh6bu"]
+[ext_resource type="Texture2D" uid="uid://luaexerpv4sl" path="res://Assets/Sprites/sword-minigame.png" id="2_0psfh"]
 [ext_resource type="Texture2D" uid="uid://x04taujvdhrw" path="res://Assets/Sprites/metal sword.png" id="2_8rexv"]
+[ext_resource type="Texture2D" uid="uid://brvpqg1frtytt" path="res://Assets/Sprites/sweetspot-minigame.png" id="3_0cfx4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fnfy"]
+atlas = ExtResource("2_0psfh")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mscwl"]
 size = Vector2(4.71875, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1v24"]
+atlas = ExtResource("3_0cfx4")
 
 [sub_resource type="GDScript" id="GDScript_6ux16"]
 script/source = "extends CharacterBody2D
@@ -37,32 +45,19 @@ script = ExtResource("1_jh6bu")
 
 [node name="Sword" type="Node2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Sword"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -3.0
-offset_right = 20.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(20, 3)
-color = Color(0.359069, 0.359069, 0.359069, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Sword"]
+texture = SubResource("AtlasTexture_0fnfy")
 
 [node name="MinX" type="Area2D" parent="Sword"]
-position = Vector2(-10, 0)
 collision_layer = 128
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/MinX"]
-position = Vector2(-10, 0)
+position = Vector2(-15, 0)
 shape = SubResource("RectangleShape2D_mscwl")
 
 [node name="MaxX" type="Area2D" parent="Sword"]
-position = Vector2(10, 0)
+position = Vector2(11, 0)
 collision_layer = 128
 collision_mask = 128
 
@@ -71,27 +66,16 @@ position = Vector2(10, 0)
 shape = SubResource("RectangleShape2D_mscwl")
 
 [node name="Sweetspot" type="Node2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="Sweetspot"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -3.0
-offset_right = 10.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(10, 3)
-color = Color(0.984314, 0.286275, 0.203922, 1)
+position = Vector2(-1, 0)
 
 [node name="MinX" type="Node2D" parent="Sweetspot"]
 position = Vector2(-10, 0)
 
 [node name="MaxX" type="Node2D" parent="Sweetspot"]
 position = Vector2(10, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sweetspot"]
+texture = SubResource("AtlasTexture_x1v24")
 
 [node name="Hammer" type="CharacterBody2D" parent="."]
 collision_layer = 128

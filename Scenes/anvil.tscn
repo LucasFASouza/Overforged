@@ -61,7 +61,7 @@ vertical_alignment = 1
 
 [node name="AnvilMinigame" parent="." instance=ExtResource("3_u2vaf")]
 visible = false
-position = Vector2(0, -26)
+position = Vector2(1, -21)
 
 [node name="Ballon" parent="." instance=ExtResource("4_qcm2w")]
 position = Vector2(0, -29)
