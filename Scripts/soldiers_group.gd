@@ -12,7 +12,7 @@ var weapons_sold: Array = []
 func attack():
 	damage = 0
 
-	for child in get_children():		
+	for child in get_children():        
 		child.sprite.play("attack")
 		damage += child.weapon.whetstone_level
 	

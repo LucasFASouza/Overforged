@@ -32,3 +32,13 @@ func interact() -> void:
 		Audiomanager.play_sfx("chest")
 	else:
 		tooltip.text = "You have your hands full right now"
+
+func _process(_delta: float) -> void:
+	var mode = "chest" if not is_trash else "trash"
+
+	if player.current_interactable_item == self:
+		tooltip.visible = true
+		sprite.play(mode + "_selected")
+	else:
+		tooltip.visible = false
+		sprite.play(mode)

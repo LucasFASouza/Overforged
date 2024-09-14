@@ -30,39 +30,40 @@ func _physics_process(_delta: float) -> void:
 			drop_item()
 		
 
-func player_movement() -> void:	
+func player_movement() -> void:    
 	if state != 'free':
 		return
 
-	if Input.is_action_pressed("ui_right"):
-		current_direction = "right"
-		is_moving = true
-		velocity.x = speed
-		velocity.y = 0
+	var input_vector = Vector2.ZERO
 
-	elif Input.is_action_pressed("ui_left"):
-		current_direction = "left"
+	if Input.is_action_pressed("ui_right"):
+		input_vector.x += 1
+
+	if Input.is_action_pressed("ui_left"):
+		input_vector.x -= 1
+
+	if Input.is_action_pressed("ui_up"):
+		input_vector.y -= 1
+
+	if Input.is_action_pressed("ui_down"):
+		input_vector.y += 1
+
+	if input_vector != Vector2.ZERO:
+		input_vector = input_vector.normalized()
+		velocity = input_vector * speed
 		is_moving = true
-		velocity.x = -speed
-		velocity.y = 0
-	elif Input.is_action_pressed("ui_up"):
-		current_direction = "back"
-		is_moving = true
-		velocity.x = 0
-		velocity.y = -speed
-	elif Input.is_action_pressed("ui_down"):
-		current_direction = "front"
-		is_moving = true
-		velocity.x = 0
-		velocity.y = speed
+
+		# Determine the current direction based on the input vector
+		if abs(input_vector.x) >= abs(input_vector.y):
+			current_direction = "right" if input_vector.x > 0 else "left"
+		else:
+			current_direction = "back" if input_vector.y < 0 else "front"
 	else:
-		velocity.x = 0
-		velocity.y = 0
+		velocity = Vector2.ZERO
 		is_moving = false
 			
 	move_and_slide()
 	play_animation()
-
 
 func play_animation() -> void:
 	animation_name = current_direction + ("_walk" if is_moving else "_idle")
@@ -86,6 +87,9 @@ func give_item():
 	return gave_item
 
 func drop_item() -> void:
+	if item_holding['id'] == "":
+		return
+
 	Audiomanager.play_sfx("drop")
 	item_sprite.visible = false
 

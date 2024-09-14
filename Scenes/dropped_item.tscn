@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4ba772gmr1xu"]
+[gd_scene load_steps=14 format=3 uid="uid://c4ba772gmr1xu"]
 
 [ext_resource type="Script" path="res://Scripts/dropped_item.gd" id="1_jqgpm"]
 [ext_resource type="Texture2D" uid="uid://x04taujvdhrw" path="res://Assets/Sprites/metal sword.png" id="2_5laa8"]
@@ -11,17 +11,33 @@ region = Rect2(16, 16, 16, 16)
 atlas = ExtResource("2_5laa8")
 region = Rect2(32, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mqgs"]
+atlas = ExtResource("2_5laa8")
+region = Rect2(32, 32, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1btn"]
 atlas = ExtResource("2_5laa8")
 region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyypd"]
+atlas = ExtResource("2_5laa8")
+region = Rect2(48, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omspf"]
 atlas = ExtResource("2_5laa8")
 region = Rect2(16, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_41var"]
+atlas = ExtResource("2_5laa8")
+region = Rect2(16, 32, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_diyoo"]
 atlas = ExtResource("2_5laa8")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rdkg"]
+atlas = ExtResource("2_5laa8")
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jddgd"]
 animations = [{
@@ -35,10 +51,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7mqgs")
+}],
+"loop": true,
+"name": &"dull_sword_selected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_t1btn")
 }],
 "loop": true,
 "name": &"finished_sword",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyypd")
+}],
+"loop": true,
+"name": &"finished_sword_selected",
 "speed": 5.0
 }, {
 "frames": [{
@@ -51,10 +83,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_41var")
+}],
+"loop": true,
+"name": &"iron_ingot_selected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_diyoo")
 }],
 "loop": true,
 "name": &"iron_ore",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rdkg")
+}],
+"loop": true,
+"name": &"iron_ore_selected",
 "speed": 5.0
 }]
 
@@ -83,11 +131,11 @@ position = Vector2(0, -4)
 scale = Vector2(0.505254, 0.505254)
 texture = SubResource("AtlasTexture_lmmnk")
 
-[node name="ItemSprite" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
 scale = Vector2(0.505254, 0.505254)
 sprite_frames = SubResource("SpriteFrames_jddgd")
-animation = &"iron_ore"
+animation = &"iron_ore_selected"
 
 [node name="interaction_area" type="Area2D" parent="."]
 collision_layer = 2

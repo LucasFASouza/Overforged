@@ -80,7 +80,7 @@ func _physics_process(delta):
 		max_score += delta
 
 
-func move_sweetspot():	
+func move_sweetspot():    
 	sweetspot_direction = randi() % 2 * 2 - 1
 	swetspot_speed = randf_range(10, 30)
 	movement_duration = randf_range(0.8, 1.2)

@@ -6,20 +6,20 @@ var game_scene = preload("res://Scenes/world.tscn")
 
 
 func _ready() -> void:
-	options.hide()
+    options.hide()
 
 
 func _on_resume_button_pressed() -> void:
-	get_tree().paused = false
-	hide()
+    get_tree().paused = false
+    hide()
 
 
 func _on_options_button_pressed() -> void:
-	if options.visible:
-		options.hide()
-	else:
-		options.show()
+    if options.visible:
+        options.hide()
+    else:
+        options.show()
 
 
 func _on_quit_button_pressed() -> void:
-	get_tree().quit()
+    get_tree().quit()

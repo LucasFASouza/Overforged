@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2wbdu6gus4bg"]
+[gd_scene load_steps=11 format=3 uid="uid://b2wbdu6gus4bg"]
 
 [ext_resource type="Script" path="res://Scripts/whetstone.gd" id="1_fsww0"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_h1dje"]
@@ -11,6 +11,10 @@
 atlas = ExtResource("2_h1dje")
 region = Rect2(144, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7thv"]
+atlas = ExtResource("2_h1dje")
+region = Rect2(144, 48, 48, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_qifsq"]
 animations = [{
 "frames": [{
@@ -19,6 +23,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7thv")
+}],
+"loop": true,
+"name": &"selected",
 "speed": 5.0
 }]
 
@@ -35,7 +47,7 @@ script = ExtResource("1_fsww0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_p5kys")
 sprite_frames = SubResource("SpriteFrames_qifsq")
-animation = &"idle"
+animation = &"selected"
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

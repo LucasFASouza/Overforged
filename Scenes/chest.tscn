@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://v8rnhsybj0qb"]
+[gd_scene load_steps=11 format=3 uid="uid://v8rnhsybj0qb"]
 
 [ext_resource type="Script" path="res://Scripts/chest.gd" id="1_4l67n"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_nxngq"]
@@ -9,9 +9,17 @@
 atlas = ExtResource("2_nxngq")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rc2nk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v0af"]
 atlas = ExtResource("2_nxngq")
 region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7et1v"]
+atlas = ExtResource("2_nxngq")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3owvk"]
+atlas = ExtResource("2_nxngq")
+region = Rect2(48, 96, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vx5ep"]
 animations = [{
@@ -25,10 +33,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rc2nk")
+"texture": SubResource("AtlasTexture_4v0af")
+}],
+"loop": true,
+"name": &"chest_selected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7et1v")
 }],
 "loop": true,
 "name": &"trash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3owvk")
+}],
+"loop": true,
+"name": &"trash_selected",
 "speed": 5.0
 }]
 
@@ -46,7 +70,8 @@ script = ExtResource("1_4l67n")
 material = SubResource("ShaderMaterial_ojo8f")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_vx5ep")
-animation = &"chest"
+animation = &"trash"
+autoplay = "chest"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)

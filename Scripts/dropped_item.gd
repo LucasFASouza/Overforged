@@ -8,7 +8,7 @@ extends "res://Scripts/interactable_item.gd"
 	"whetstone_level": null,
 }
 
-@onready var item_sprite: AnimatedSprite2D = $ItemSprite
+@onready var item_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var speed: float = 4
 var direction: int = 1
@@ -24,6 +24,17 @@ func _ready() -> void:
 	tooltip.text = message_base
 	item_sprite.play(item['id'])
 	super._ready()
+
+func _process(_delta: float) -> void:
+	if player.current_interactable_item == self:
+		tooltip.visible = true
+		sprite.play(item['id'] + "_selected")
+		print(item['id'] + "_selected")
+	else:
+		tooltip.visible = false
+		sprite.play(item['id'])
+		print("Not selected")
+
 
 func _physics_process(delta: float) -> void:
 	item_sprite.position.y += speed * direction * delta

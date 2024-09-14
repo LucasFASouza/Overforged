@@ -39,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 		mode = "finish"
 
 func entity_movement() -> void:
-	velocity.y = 0	
+	velocity.y = 0    
 	if mode == "walk":
 		velocity.x = -speed
 		sprite.play("walk")
