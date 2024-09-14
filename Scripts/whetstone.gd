@@ -25,12 +25,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super._process(delta)
 
-func _on_interaction_area_body_entered(_body: Node2D) -> void:
-	if _body == player:
-		player.current_interactable_item = self
-
-		if state == 'empty':
-			tooltip.text = message_base
 
 func interact() -> void:
 	if state == 'empty':

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2dcedxf8jbur"]
+[gd_scene load_steps=24 format=3 uid="uid://d2dcedxf8jbur"]
 
 [ext_resource type="Texture2D" uid="uid://didk5u4avfjyh" path="res://Assets/Sprites/ballons.png" id="1_qadpp"]
 
@@ -41,6 +41,30 @@ region = Rect2(0, 48, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wgesc"]
 atlas = ExtResource("1_qadpp")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql1p0"]
+atlas = ExtResource("1_qadpp")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0tq2"]
+atlas = ExtResource("1_qadpp")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qbck"]
+atlas = ExtResource("1_qadpp")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rhc1"]
+atlas = ExtResource("1_qadpp")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sofdv"]
+atlas = ExtResource("1_qadpp")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc3tj"]
+atlas = ExtResource("1_qadpp")
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85a38"]
 atlas = ExtResource("1_qadpp")
@@ -200,6 +224,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ql1p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0tq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qbck")
+}],
+"loop": false,
+"name": &"out",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rhc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sofdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc3tj")
+}],
+"loop": false,
+"name": &"out-stars",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_85a38")
 }, {
 "duration": 1.0,
@@ -227,4 +279,6 @@ animations = [{
 [node name="Ballon" type="AnimatedSprite2D"]
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_ef3vg")
-animation = &"1-stars"
+animation = &"out-stars"
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

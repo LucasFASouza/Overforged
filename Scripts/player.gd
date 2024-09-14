@@ -13,14 +13,16 @@ var item_holding = ItemsType.create_item("")
 const dropped_item_scene = preload("res://Scenes/dropped_item.tscn")
 
 var current_interactable_item = null
+var items_in_range = []
 
 var state: String = 'free'
 
 func _physics_process(_delta: float) -> void:
 	player_movement()
 
-	if state == 'free':
+	current_interactable_item = get_closest_interactable_item()
 
+	if state == 'free':
 		if Input.is_action_just_pressed("interact"):
 			if current_interactable_item != null:
 				current_interactable_item.interact()
@@ -95,3 +97,15 @@ func drop_item() -> void:
 	dropped_item.global_position = global_position
 
 	item_holding = ItemsType.create_item("")
+
+func get_closest_interactable_item() -> Node2D:
+	var closest_item = null
+	var closest_distance = 1000000
+
+	for item in items_in_range:
+		var distance = global_position.distance_to(item.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_item = item
+
+	return closest_item
