@@ -6,8 +6,6 @@ extends "res://Scripts/interactable_item.gd"
 
 var state: String = 'empty'
 
-@export var duration: float = 10
-@export var max_time: float = 20
 
 var elapsed_time: float = 0.0
 var current_item = ItemsType.create_item("")
@@ -19,7 +17,7 @@ func _ready() -> void:
 	state = 'empty'
 
 	forge_bar.visible = false
-	forge_bar.max_health = duration
+	forge_bar.max_health = 10
 	forge_bar.set_health(0)
 
 	super._ready()
@@ -31,7 +29,7 @@ func _process(delta: float) -> void:
 	if state == 'running':
 		forge_bar.set_health(elapsed_time)
 
-		if elapsed_time >= duration:
+		if elapsed_time >= 10:
 			state = 'ready'
 			forge_bar.visible = false
 
@@ -39,11 +37,7 @@ func _process(delta: float) -> void:
 			ballon.play("ready")
 
 	elif state == 'ready':
-		if elapsed_time >= max_time + 3:
-			ballon.visible = false
-			elapsed_time = 0.0
-			
-		elif elapsed_time >= max_time:
+		if elapsed_time >= 25:
 			state = 'empty'
 			current_item = ItemsType.create_item("")
 
@@ -51,13 +45,17 @@ func _process(delta: float) -> void:
 			Audiomanager.play_sfx("forgeburning",false)
 
 			ballon.play("sad")
-		elif elapsed_time >= max_time - 4:
+		elif elapsed_time >= 20:
 			ballon.play("attention-blinking")
-		elif elapsed_time >= max_time - 7:
+		elif elapsed_time >= 15:
 			ballon.play("attention")
 		else:
 			if ballon.animation != "ready":
 				ballon.play("ready")
+	else:
+		if elapsed_time >= 28:
+			ballon.visible = false
+			elapsed_time = 0.0
 
 func _on_interaction_area_body_entered(_body: Node2D) -> void:
 	if _body == player and state != 'running':

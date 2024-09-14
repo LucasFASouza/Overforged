@@ -29,7 +29,7 @@ size = Vector2(6, 18)
 [node name="Forge" type="StaticBody2D"]
 z_index = 3
 script = ExtResource("1_kvn06")
-max_time = 23.0
+max_time = 16.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qifsq")
