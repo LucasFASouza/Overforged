@@ -8,7 +8,6 @@ class_name UserPreferences extends Resource
 
 func save() -> void:
 	ResourceSaver.save(self, "user://user_prefs.tres")
-	print("Settings Saved")
 
 static func load_or_create() -> UserPreferences:
 	var res: UserPreferences = load("user://user_prefs.tres") as UserPreferences

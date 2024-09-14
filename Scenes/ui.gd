@@ -16,5 +16,3 @@ func _process(delta: float) -> void:
 		else:
 			pause_menu.hide()
 			get_tree().paused = false
-		
-	
