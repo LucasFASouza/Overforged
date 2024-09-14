@@ -2,6 +2,9 @@ extends "res://Scripts/interactable_item.gd"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@onready var original_material = animated_sprite.material
+@onready var shader_material = load("res://Scripts/shader.gdshader")
+
 @export var item_id: String = ''
 
 var item = ItemsType.create_item(item_id)
@@ -12,6 +15,9 @@ func _ready() -> void:
 	message_base = "Press SPACE to get the item" if not is_trash else "Press SPACE to throw the item"
 	tooltip.text = message_base
 	animated_sprite.play("chest" if not is_trash else "trash")
+
+	animated_sprite.material = ShaderMaterial.new()
+	animated_sprite.material = shader_material if is_trash else original_material
 
 	item['id'] = item_id
 	item['name'] = ItemsType.get_item_name(item_id)
