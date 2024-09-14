@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cw3e2l6ehj64b"]
+[gd_scene load_steps=25 format=3 uid="uid://cw3e2l6ehj64b"]
 
 [ext_resource type="PackedScene" uid="uid://bx3jr3fs8prko" path="res://Scenes/player.tscn" id="1_5hxnf"]
 [ext_resource type="PackedScene" uid="uid://bn5epijt7q1nj" path="res://Scenes/game_manager.tscn" id="1_e144n"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://c6tyhuoxibwwm" path="res://Assets/Sprites/Fences.png" id="10_klcub"]
 [ext_resource type="PackedScene" uid="uid://dggakpdoilho0" path="res://Scenes/anvil.tscn" id="11_euab3"]
 [ext_resource type="PackedScene" uid="uid://b2wbdu6gus4bg" path="res://Scenes/whetstone.tscn" id="11_l4jay"]
+[ext_resource type="Script" path="res://Scenes/ui.gd" id="16_rx0t0"]
+[ext_resource type="PackedScene" uid="uid://d3dtli5g12s3e" path="res://Scenes/pausemenu.tscn" id="17_q3qks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8df2o"]
 texture = ExtResource("2_cqnce")
@@ -451,3 +453,11 @@ position = Vector2(-28, -15)
 
 [node name="Whetstone" parent="." instance=ExtResource("11_l4jay")]
 position = Vector2(1, -16)
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("16_rx0t0")
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("17_q3qks")]
+visible = false
+offset_left = -0.5
+offset_right = -1.5

@@ -1,23 +1,28 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dj34p0jgvyynb"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dj34p0jgvyynb"]
 
 [ext_resource type="Texture2D" uid="uid://doglxwcf5srb5" path="res://Assets/Sprites/Menu_frame.png" id="1_8qyl1"]
 [ext_resource type="FontFile" uid="uid://cfm0pg3dqqnvd" path="res://Assets/Hardpixel.OTF" id="1_i5urq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrayb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atp11"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ajukb"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xuu3p"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65ax1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p5pw4"]
 texture = ExtResource("1_8qyl1")
 texture_margin_left = 3.0
 texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
-region_rect = Rect2(0, 0, 24, 31)
 
 [resource]
-Button/colors/font_color = Color(0.584314, 0.584314, 0.584314, 1)
+Button/colors/font_color = Color(0.231373, 0.231373, 0.231373, 1)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_color = Color(0.753983, 0.753984, 0.753985, 1)
 Button/colors/font_hover_pressed_color = Color(0.466181, 0.466181, 0.466181, 1)
@@ -29,14 +34,14 @@ Button/colors/icon_hover_color = Color(1, 1, 1, 0)
 Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
 Button/colors/icon_normal_color = Color(1, 1, 1, 0)
 Button/colors/icon_pressed_color = Color(0.329412, 0.329412, 0.329412, 0)
-Button/font_sizes/font_size = 60
+Button/font_sizes/font_size = 48
 Button/fonts/font = ExtResource("1_i5urq")
 Button/styles/disabled = null
 Button/styles/disabled_mirrored = null
-Button/styles/focus = null
+Button/styles/focus = SubResource("StyleBoxFlat_jrayb")
 Button/styles/hover = SubResource("StyleBoxFlat_atp11")
 Button/styles/normal = SubResource("StyleBoxTexture_ajukb")
-Button/styles/pressed = null
+Button/styles/pressed = SubResource("StyleBoxFlat_65ax1")
 Label/colors/font_color = Color(0.585062, 0.585062, 0.585062, 1)
 Label/colors/font_outline_color = Color(0.230315, 0.230315, 0.230315, 1)
 Label/colors/font_shadow_color = Color(0.196078, 0.196078, 0.2, 1)
@@ -46,4 +51,4 @@ Label/constants/shadow_offset_y = 5
 Label/constants/shadow_outline_size = 10
 Label/font_sizes/font_size = 36
 Label/fonts/font = ExtResource("1_i5urq")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_xuu3p")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_p5pw4")
