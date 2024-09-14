@@ -28,6 +28,15 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	entity_movement()
 
+	if mode == "walk" and self.global_position.x < 30:
+		game_manager.get_hit(10)
+
+		sprite.play("attack")
+		
+		health = 0
+		health_bar.visible = false
+
+		mode = "finish"
 
 func entity_movement() -> void:
 	velocity.y = 0	
@@ -49,14 +58,6 @@ func move_to_position(new_position: Vector2) -> void:
 	target_position = new_position
 	mode = "walk"
 
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "TileMap":
-		game_manager.get_hit(10)
-		sprite.play("attack")
-		
-		health = 0
-		health_bar.visible = false
 
 func get_hit(damage_hit: float):
 	health -= damage_hit

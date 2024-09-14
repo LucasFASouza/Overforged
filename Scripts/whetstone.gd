@@ -75,4 +75,4 @@ func finish_minigame(score):
 	clear_timer.start()
 
 func clean():
-	ballon.visible = false
+	ballon.play("out-stars")

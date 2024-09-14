@@ -54,7 +54,8 @@ func _process(delta: float) -> void:
 				ballon.play("ready")
 	else:
 		if elapsed_time >= 28:
-			ballon.visible = false
+			if ballon.animation != "out":
+				ballon.play("out")
 			elapsed_time = 0.0
 
 func _on_interaction_area_body_entered(_body: Node2D) -> void:
@@ -94,6 +95,7 @@ func interact() -> void:
 		current_item = ItemsType.create_item("")
 		state = 'empty'
 
-		ballon.visible = false
+		if ballon.animation != "out":
+			ballon.play("out")
 		
 		Audiomanager.play_sfx("forgeburning",false)

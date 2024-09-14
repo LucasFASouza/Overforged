@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2dcedxf8jbur"]
+[gd_scene load_steps=25 format=3 uid="uid://d2dcedxf8jbur"]
 
 [ext_resource type="Texture2D" uid="uid://didk5u4avfjyh" path="res://Assets/Sprites/ballons.png" id="1_qadpp"]
 
@@ -53,6 +53,10 @@ region = Rect2(48, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3qbck"]
 atlas = ExtResource("1_qadpp")
 region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4sna"]
+atlas = ExtResource("1_qadpp")
+region = Rect2(144, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rhc1"]
 atlas = ExtResource("1_qadpp")
@@ -231,6 +235,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3qbck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4sna")
 }],
 "loop": false,
 "name": &"out",
@@ -245,6 +252,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mc3tj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4sna")
 }],
 "loop": false,
 "name": &"out-stars",
@@ -280,5 +290,6 @@ animations = [{
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_ef3vg")
 animation = &"out-stars"
+autoplay = "ready"
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
