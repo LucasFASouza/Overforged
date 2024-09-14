@@ -8,7 +8,8 @@ extends CharacterBody2D
 @export var health: float = 4
 @onready var health_bar: Node2D = $HealthBar
 
-@export var damage: float = 2
+@export var min_damage: float = 1
+@export var max_damage: float = 4
 
 var mode = "walk"
 var target_position
@@ -50,11 +51,12 @@ func move_to_position(new_position: Vector2) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	# TODO: Change for check the position
 	if body.name == "TileMap":
 		game_manager.get_hit(10)
-		queue_free()
-
+		sprite.play("attack")
+		
+		health = 0
+		health_bar.visible = false
 
 func get_hit(damage_hit: float):
 	health -= damage_hit
@@ -66,11 +68,11 @@ func get_hit(damage_hit: float):
 
 
 func attack():
-	damage = randf_range(1, 3)
+	var attack_damage = randf_range(min_damage, max_damage)
 
 	sprite.play("attack")
-
-	return damage
+	
+	return attack_damage
 
 
 func die():
@@ -81,6 +83,6 @@ func die():
 func _on_sprite_animation_finished():
 	if sprite.animation != 'idle' and health > 0:
 		sprite.play('idle')
-	elif sprite.animation == 'die':
+	elif health <= 0:
 		queue_free()
 	pass
