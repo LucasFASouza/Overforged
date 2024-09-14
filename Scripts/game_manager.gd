@@ -2,9 +2,10 @@ extends Control
 
 @export var lives = 3
 
-@onready var health_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_sprite: AnimatedSprite2D = $LivesHUD
+@onready var counter_sprite: AnimatedSprite2D = $CounterHUD
 
-@onready var timer_label: Label = $TimerLabel
+@onready var counter_label: Label = $CounterLabel
 
 @onready var enemies_group = $EnemiesGroup
 @onready var soldiers_group = $SoldiersGroup
@@ -19,6 +20,7 @@ var turn = "enemies"
 
 var is_enemy_ready = false
 var wave_number = 0
+var enemies_coming = 0
 
 var waves_info = [
 	{
@@ -59,15 +61,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if wave_timer.time_left > 0:
-		timer_label.text = "Time: " + str(wave_timer.time_left)
+		counter_label.text = str(int(wave_timer.time_left))
+		counter_sprite.play("time")
 	else:
-		if lives <= 0:
-			timer_label.text = "Game Over"
-		else:
-			if finished_wave:
-				timer_label.text = "You Won!"
-			else:
-				timer_label.text = "Wave in progress"
+		counter_label.text = str(enemies_coming)
+		counter_sprite.play("enemies")
 
 	if soldiers_group.get_child_count() == 0 or enemies_group.get_child_count() == 0:
 		mode = "idle"
@@ -88,6 +86,7 @@ func get_hit(_damage: float) -> void:
 
 func _on_wave_timer_timeout() -> void:
 	var num_enemies = randi_range(waves_info[wave_number]["min_enemies"], waves_info[wave_number]["max_enemies"])
+	enemies_coming = num_enemies
 	enemies_group.start_wave(num_enemies)
 	wave_number += 1
 	phase = "battle"
@@ -121,6 +120,7 @@ func combat_step() -> void:
 				turn = "enemies"
 
 				if enemy_health <= 0:
+					enemies_coming -= 1
 					mode = "idle"
 					return
 				else:
@@ -141,8 +141,6 @@ func combat_step() -> void:
 				else:
 					turn = "soldiers"
 					turn_timer.start()
-			else:
-				turn = "soldiers"
 		
 
 func on_enemy_ready() -> void:

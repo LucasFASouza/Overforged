@@ -17,13 +17,14 @@ func _process(_delta: float) -> void:
 
 func _on_interaction_area_body_entered(_body: Node2D) -> void:
 	if _body == player:
-		player.current_interactable_item = self
+		player.items_in_range.append(self)
 
 func _on_interaction_area_body_exited(_body: Node2D) -> void:
 	if _body == player:
 		tooltip.text = message_base
-		if player.current_interactable_item == self:
-			player.current_interactable_item = null
+
+		if self in player.items_in_range:
+			player.items_in_range.erase(self)
 
 func interact() -> void:
 	pass

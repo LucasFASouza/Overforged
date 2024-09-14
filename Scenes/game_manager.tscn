@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn5epijt7q1nj"]
+[gd_scene load_steps=13 format=3 uid="uid://bn5epijt7q1nj"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_valuy"]
 [ext_resource type="Texture2D" uid="uid://ditlwa5hjprxh" path="res://Assets/Sprites/lifes.png" id="2_2cior"]
+[ext_resource type="Texture2D" uid="uid://f14410rfb7u2" path="res://Assets/Sprites/counter hud.png" id="3_ajpge"]
+[ext_resource type="FontFile" uid="uid://cfm0pg3dqqnvd" path="res://Assets/Hardpixel.OTF" id="4_4k18s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ydrg8"]
 atlas = ExtResource("2_2cior")
@@ -54,6 +56,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aa16"]
+atlas = ExtResource("3_ajpge")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6plx"]
+atlas = ExtResource("3_ajpge")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m1ink"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5aa16")
+}],
+"loop": true,
+"name": &"enemies",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6plx")
+}],
+"loop": true,
+"name": &"time",
+"speed": 5.0
+}]
+
 [node name="GameManager" type="Control"]
 z_index = 50
 layout_mode = 3
@@ -64,16 +93,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_valuy")
 
-[node name="TimerLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 62.0
-offset_right = 55.0
-offset_bottom = 85.0
-text = "90"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="LivesHUD" type="AnimatedSprite2D" parent="."]
 position = Vector2(44, 29)
-scale = Vector2(1.84, 1.84)
+scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_5kl6l")
 animation = &"0"
+
+[node name="CounterHUD" type="AnimatedSprite2D" parent="."]
+position = Vector2(-23, 43)
+scale = Vector2(1.6, 1.6)
+sprite_frames = SubResource("SpriteFrames_m1ink")
+animation = &"enemies"
+
+[node name="CounterLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 24.0
+offset_right = 85.0
+offset_bottom = 111.0
+scale = Vector2(0.258706, 0.258706)
+theme_override_colors/font_color = Color(0.564706, 0.384314, 0.364706, 1)
+theme_override_fonts/font = ExtResource("4_4k18s")
+theme_override_font_sizes/font_size = 72
+text = "90"
+horizontal_alignment = 1

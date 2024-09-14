@@ -58,15 +58,15 @@ func _process(delta: float) -> void:
 			elapsed_time = 0.0
 
 func _on_interaction_area_body_entered(_body: Node2D) -> void:
-	if _body == player and state != 'running':
-		player.current_interactable_item = self
-
+	if _body == player:
 		if state == 'empty':
 			tooltip.text = "Press SPACE to start the forge"
 		elif state == 'running':
-			tooltip.text = "Running..."
+			tooltip.visible = false
 		elif state == 'ready':
 			tooltip.text = "Press SPACE get your item"
+	
+	super._on_interaction_area_body_entered(_body)
 
 func interact() -> void:
 	if state == 'empty':
