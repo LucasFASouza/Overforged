@@ -1,14 +1,13 @@
 extends "res://Scripts/interactable_item.gd"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var percentage: Label = $Percentage
+@onready var ballon: AnimatedSprite2D = $Ballon
+@onready var forge_bar: Node2D = $ForgeBar
 
 var state: String = 'empty'
 
-@export var duration: float = 1
-@export var warning_time: float = 5
-@export var max_time: float = 6
-@export var clean_time: float = 10
+@export var duration: float = 10
+@export var max_time: float = 20
 
 var elapsed_time: float = 0.0
 var current_item = ItemsType.create_item("")
@@ -16,9 +15,12 @@ var current_item = ItemsType.create_item("")
 func _ready() -> void:
 	message_base = "Press SPACE to start the forge"
 	tooltip.visible = false
-	percentage.visible = false
-	percentage.text = "0%"
+	ballon.visible = false
 	state = 'empty'
+
+	forge_bar.visible = false
+	forge_bar.max_health = duration
+	forge_bar.set_health(0)
 
 	super._ready()
 
@@ -27,26 +29,35 @@ func _process(delta: float) -> void:
 	elapsed_time += delta
 
 	if state == 'running':
-		percentage.text = str(int(elapsed_time / duration * 100)) + "%"
+		forge_bar.set_health(elapsed_time)
 
 		if elapsed_time >= duration:
 			state = 'ready'
-			percentage.text = "READY"
+			forge_bar.visible = false
+
+			ballon.visible = true
+			ballon.play("ready")
+
 	elif state == 'ready':
-		if elapsed_time >= clean_time:
+		if elapsed_time >= max_time + 3:
+			ballon.visible = false
+			elapsed_time = 0.0
+			
+		elif elapsed_time >= max_time:
 			state = 'empty'
-			percentage.visible = false
-			percentage.text = "00%"
-		if elapsed_time >= max_time:
+			current_item = ItemsType.create_item("")
+
 			Audiomanager.play_sfx("melting",true)
 			Audiomanager.play_sfx("forgeburning",false)
-			percentage.text = "BURNED :("
-			state = 'empty'
-			elapsed_time = 0.0
-			current_item = ItemsType.create_item("")
-		elif elapsed_time >= warning_time:
-			percentage.text = "CAREFUL!!!"
 
+			ballon.play("sad")
+		elif elapsed_time >= max_time - 4:
+			ballon.play("attention-blinking")
+		elif elapsed_time >= max_time - 7:
+			ballon.play("attention")
+		else:
+			if ballon.animation != "ready":
+				ballon.play("ready")
 
 func _on_interaction_area_body_entered(_body: Node2D) -> void:
 	if _body == player and state != 'running':
@@ -69,7 +80,7 @@ func interact() -> void:
 		Audiomanager.play_sfx("forgestart",true)
 		Audiomanager.play_sfx("forgeburning",true)
 		state = 'running'
-		percentage.visible = true
+		forge_bar.visible = true
 		elapsed_time = 0.0
 
 	elif state == 'ready':
@@ -84,6 +95,7 @@ func interact() -> void:
 		player.get_item(current_item)
 		current_item = ItemsType.create_item("")
 		state = 'empty'
-		percentage.visible = false
-		percentage.text = "00%"
+
+		ballon.visible = false
+		
 		Audiomanager.play_sfx("forgeburning",false)

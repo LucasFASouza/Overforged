@@ -27,7 +27,7 @@ func start_wave(intensity: int) -> void:
 func spawn_enemy() -> void:
 	if enemies_to_spawn > 0:
 		var new_enemy = enemy_scene.instantiate()
-		new_enemy.position = Vector2(150, 0)
+		new_enemy.position = Vector2(150, 16)
 		new_enemy.name = "Enemy"
 		add_child(new_enemy)
 		enemies_to_spawn -= 1

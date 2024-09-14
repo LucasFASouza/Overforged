@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://gdc1ix2uyyp3"]
+[gd_scene load_steps=9 format=3 uid="uid://gdc1ix2uyyp3"]
 
 [ext_resource type="Script" path="res://Scripts/forge.gd" id="1_kvn06"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_t56f2"]
+[ext_resource type="PackedScene" uid="uid://b7opfpamsdu18" path="res://Scenes/forge_bar.tscn" id="3_cwaro"]
+[ext_resource type="PackedScene" uid="uid://d2dcedxf8jbur" path="res://Scenes/ballon.tscn" id="4_8h74i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5t042"]
 atlas = ExtResource("2_t56f2")
@@ -27,10 +29,7 @@ size = Vector2(6, 18)
 [node name="Forge" type="StaticBody2D"]
 z_index = 3
 script = ExtResource("1_kvn06")
-duration = 10.0
-warning_time = 15.0
-max_time = 20.0
-clean_time = 25.0
+max_time = 23.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qifsq")
@@ -50,6 +49,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_xigea")
 
 [node name="Tooltip" type="Label" parent="."]
+visible = false
 z_index = 50
 offset_left = -30.0
 offset_top = -22.0
@@ -62,18 +62,11 @@ text = "Press SPACE to interact"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Percentage" type="Label" parent="."]
-z_index = 50
-offset_left = -23.0
-offset_top = -32.0
-offset_right = 151.0
-offset_bottom = 13.0
-scale = Vector2(0.264085, 0.264085)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.568627)
-theme_override_font_sizes/font_size = 32
-text = "00%"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="ForgeBar" parent="." instance=ExtResource("3_cwaro")]
+visible = false
+position = Vector2(-2, -28)
+
+[node name="Ballon" parent="." instance=ExtResource("4_8h74i")]
 
 [connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="interaction_area" to="." method="_on_interaction_area_body_exited"]

@@ -1,6 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn5epijt7q1nj"]
+[gd_scene load_steps=8 format=3 uid="uid://bn5epijt7q1nj"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_valuy"]
+[ext_resource type="Texture2D" uid="uid://ditlwa5hjprxh" path="res://Assets/Sprites/lifes.png" id="2_2cior"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydrg8"]
+atlas = ExtResource("2_2cior")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fro32"]
+atlas = ExtResource("2_2cior")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm832"]
+atlas = ExtResource("2_2cior")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r87fh"]
+atlas = ExtResource("2_2cior")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kl6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydrg8")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fro32")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm832")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r87fh")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
 
 [node name="GameManager" type="Control"]
 z_index = 50
@@ -12,14 +64,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_valuy")
 
-[node name="HealthLabel" type="Label" parent="."]
-layout_mode = 1
-offset_right = 197.0
-offset_bottom = 50.0
-scale = Vector2(0.4, 0.4)
-theme_override_font_sizes/font_size = 36
-text = "Health: 100"
-
 [node name="TimerLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 2.0
@@ -27,3 +71,9 @@ offset_top = 17.0
 offset_right = 42.0
 offset_bottom = 40.0
 text = "90"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(44, 29)
+scale = Vector2(1.84, 1.84)
+sprite_frames = SubResource("SpriteFrames_5kl6l")
+animation = &"0"

@@ -3,7 +3,7 @@ extends Node2D
 var soldier_scene = preload("res://Scenes/soldier.tscn")
 var weapons_sold: Array = []
 
-@export var boundary_up: int = -46
+@export var boundary_up: int = -55
 @export var boundary_down: int = 60
 
 var enemy: Node2D

@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var game_manager = $"/root/World/GameManager"
 
 @export var health: float = 15
-@onready var health_label: Label = $HealthLabel
+@onready var health_bar: Node2D = $HealthBar
 
 var soldiers_infront = []
 @onready var soldiers_group = $"/root/World/SoldiersGroup"
@@ -23,7 +23,8 @@ func _ready() -> void:
 	var random_number = randi_range(-10, 10)
 	speed += random_number
 
-	health_label.text = str(health)
+	health_bar.max_health = health
+	health_bar.set_health(health)
 
 	attack_timer.wait_time = cooldown
 	attack_timer.connect("timeout", Callable(self, "attack"))
@@ -71,7 +72,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func get_hit(damage_hit: int) -> void:
 	health -= damage_hit
-	health_label.text = str(health)
+	health_bar.set_health(health)
 
 	sprite.play("hit")
 

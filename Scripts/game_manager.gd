@@ -1,9 +1,10 @@
 extends Control
 
-@export var health = 10
+@export var lives = 3
 @export var wave_timer_time = 90
 
-@onready var health_label: Label = $HealthLabel
+@onready var health_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 @onready var timer_label: Label = $TimerLabel
 @onready var enemies_group = $"/root/World/EnemiesGroup"
 
@@ -18,11 +19,14 @@ func _ready() -> void:
 	add_child(wave_timer)
 	wave_timer.start()
 
+	health_sprite.play(str(lives))
+
+
 func _process(_delta: float) -> void:
 	if wave_timer.time_left > 0:
 		timer_label.text = "Time: " + str(wave_timer.time_left)
 	else:
-		if health <= 0:
+		if lives <= 0:
 			timer_label.text = "Game Over"
 		else:
 			if finished_wave:
@@ -30,9 +34,9 @@ func _process(_delta: float) -> void:
 			else:
 				timer_label.text = "Wave in progress"
 
-func get_hit(damage: int) -> void:
-	health -= damage
-	health_label.text = "Health: "  + str(health)
+func get_hit(_damage: int) -> void:
+	lives -= 1
+	health_sprite.play(str(lives))
 
 func _on_wave_timer_timeout() -> void:
 	enemies_group.start_wave(3)

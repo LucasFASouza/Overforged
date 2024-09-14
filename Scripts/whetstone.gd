@@ -1,15 +1,24 @@
 extends "res://Scripts/interactable_item.gd"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var ballon: AnimatedSprite2D = $Ballon
 @onready var whetstone_minigame = $WhetstoneMinigame
 
 var state: String = 'empty'
 var current_item = ItemsType.create_item("")
 
+var clear_timer = Timer.new()
+
 func _ready() -> void:
 	message_base = "Press SPACE to interact"
 	tooltip.visible = false
 	state = 'empty'
+	ballon.visible = false
+
+	clear_timer.wait_time = 3
+	clear_timer.one_shot = true
+	clear_timer.connect("timeout", Callable(self, "clean"))
+	add_child(clear_timer)
 
 	super._ready()
 
@@ -51,6 +60,9 @@ func finish_minigame(score):
 			break
 		else:
 			score = 1
+	
+	ballon.visible = true
+	ballon.play(str(score) + "-stars")
 
 	current_item['whetstone_level'] = score
 
@@ -63,3 +75,7 @@ func finish_minigame(score):
 	tooltip.text = "You scored " + str(score) + "/3 stars!"
 
 	whetstone_minigame.visible = false
+	clear_timer.start()
+
+func clean():
+	ballon.visible = false

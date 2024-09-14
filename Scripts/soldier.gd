@@ -17,8 +17,7 @@ var die_timer = Timer.new()
 
 func _ready() -> void:
 	health_bar.max_health = 3
-
-	print("Minha health é: ", health)
+	health_bar.update_health_bar()
 
 	die_timer.wait_time = 1
 	die_timer.one_shot = true

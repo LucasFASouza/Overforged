@@ -192,14 +192,11 @@ shape = SubResource("RectangleShape2D_xvcss")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ixryu")
-animation = &"attack"
-frame = 3
-frame_progress = 1.0
+animation = &"hit"
 offset = Vector2(0, -6)
 
 [node name="HealthBar" parent="." instance=ExtResource("3_qb2rn")]
-position = Vector2(-7, -27)
-max_health = 3
+position = Vector2(-2, -26)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

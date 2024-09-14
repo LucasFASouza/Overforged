@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://pu3f13mvpekq"]
+[gd_scene load_steps=17 format=3 uid="uid://pu3f13mvpekq"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ie530"]
 [ext_resource type="Texture2D" uid="uid://b4bap1wo0xb3w" path="res://Assets/Sprites/Inimigo.png" id="2_ihgvq"]
+[ext_resource type="PackedScene" uid="uid://c0yvsljiwby2d" path="res://Scenes/health_bar.tscn" id="3_4ln40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xhoj"]
 size = Vector2(12.1475, 9.5)
@@ -157,15 +158,9 @@ sprite_frames = SubResource("SpriteFrames_ixryu")
 animation = &"idle"
 offset = Vector2(0, -6)
 
-[node name="HealthLabel" type="Label" parent="."]
-offset_left = 6.14754
-offset_top = -6.96721
-offset_right = 129.148
-offset_bottom = 58.0328
-scale = Vector2(0.107046, 0.107046)
-theme_override_font_sizes/font_size = 36
-text = "100
-"
+[node name="HealthBar" parent="." instance=ExtResource("3_4ln40")]
+position = Vector2(-0.819672, -21.3115)
+scale = Vector2(0.459016, 0.459016)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
