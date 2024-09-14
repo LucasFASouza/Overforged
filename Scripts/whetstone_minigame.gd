@@ -7,7 +7,7 @@ extends Node2D
 var sweetspot_direction = 1
 
 var direction = -1
-var is_running = true
+var is_running = false
 
 @onready var stone: CharacterBody2D = $Stone
 var stone_min
@@ -79,6 +79,8 @@ func _physics_process(delta):
 
 		max_score += delta
 
+		print("Score: ", score, " Max Score: ", max_score)
+
 
 func move_sweetspot():	
 	sweetspot_direction = randi() % 2 * 2 - 1
@@ -89,8 +91,8 @@ func move_sweetspot():
 
 
 func stop_minigame():
-	is_running  = false
-	score = min(3, (score / max_score * 3) + 0.2)
+	is_running  = falses
+	score = (score / max_score) * 3
 	whetstone.finish_minigame(score)
 	score = 0
 	max_score = 0
@@ -102,5 +104,8 @@ func start_minigame():
 
 	movement_timer.start()
 	game_timer.start()
+
+	score = 0
+	max_score = 0
 
 	Audiomanager.play_sfx("whetstone",true)

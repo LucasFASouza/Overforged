@@ -40,7 +40,6 @@ func _ready() -> void:
 	state = 'empty'
 
 	if station not in stations:
-		print("Station not found")
 		return
 
 	duration = stations[station]['duration']

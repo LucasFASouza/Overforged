@@ -61,6 +61,8 @@ func finish_minigame(score):
 		else:
 			score = 1
 	
+	print("Computed score: ", score)
+
 	ballon.visible = true
 	ballon.play(str(score) + "-stars")
 

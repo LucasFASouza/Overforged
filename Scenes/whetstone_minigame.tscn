@@ -88,7 +88,7 @@ scale = Vector2(0.359999, 0.359999)
 sprite_frames = SubResource("SpriteFrames_b7umi")
 
 [node name="MinY" type="Node2D" parent="Stone"]
-position = Vector2(0, 2.34375)
+position = Vector2(0, 1.5625)
 
 [node name="MaxY" type="Node2D" parent="Stone"]
-position = Vector2(0, -2.34375)
+position = Vector2(0, -1.5625)
