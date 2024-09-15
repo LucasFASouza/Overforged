@@ -124,31 +124,6 @@ size_flags_stretch_ratio = 2.72
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_mjmj1")
 
-[node name="OptionsContainer" type="MarginContainer" parent="MarginContainer/MenuContainer/SideMenu/Panel"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -25.0
-offset_top = -28.0
-offset_right = 21.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-size_flags_stretch_ratio = 2.72
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Options" parent="MarginContainer/MenuContainer/SideMenu/Panel/OptionsContainer" instance=ExtResource("4_iodgg")]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-
 [node name="ControlsContainer" type="MarginContainer" parent="MarginContainer/MenuContainer/SideMenu/Panel"]
 texture_filter = 1
 layout_mode = 1
@@ -194,6 +169,30 @@ theme_override_constants/margin_bottom = 20
 
 [node name="HowToPlay" parent="MarginContainer/MenuContainer/SideMenu/Panel/HowToPlayContainer" instance=ExtResource("7_0e2hi")]
 layout_mode = 2
+
+[node name="OptionsContainer" type="MarginContainer" parent="MarginContainer/MenuContainer/SideMenu/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.72
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Options" parent="MarginContainer/MenuContainer/SideMenu/Panel/OptionsContainer" instance=ExtResource("4_iodgg")]
+layout_mode = 2
+size_flags_vertical = 3
 
 [connection signal="pressed" from="MarginContainer/MenuContainer/MarginContainer/Main/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/MarginContainer/Main/OptionsButton" to="." method="_on_options_button_pressed"]

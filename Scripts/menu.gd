@@ -15,6 +15,7 @@ func _ready() -> void:
 	controls.hide()
 	how_to_play.hide()
 
+
 func _on_start_button_pressed() -> void:
 	var new_scene = game_scene.instantiate()
 	get_tree().root.add_child(new_scene)
