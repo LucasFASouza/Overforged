@@ -114,16 +114,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="Separator3" type="Control" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+layout_mode = 2
+
 [node name="TryAgainButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 layout_mode = 2
 theme = ExtResource("3_g6dbp")
-text = "TRY AGAIN"
+text = "play again"
 
 [node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 layout_mode = 2
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
-custom_minimum_size = Vector2(240, 60)
+custom_minimum_size = Vector2(240, 80)
 layout_mode = 2
 theme = ExtResource("3_g6dbp")
 text = "QUIT GAME"

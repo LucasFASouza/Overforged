@@ -181,11 +181,3 @@ func on_enemy_ready() -> void:
 func on_enemy_spawn() -> void:
 	is_enemy_ready = false
 	mode = "idle"
-
-
-func _on_pause_button_down() -> void:
-	Input.action_press("pause")
-
-
-func _on_pause_button_up() -> void:
-	Input.action_release("pause")
