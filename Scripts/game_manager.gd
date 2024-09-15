@@ -53,7 +53,7 @@ var enemies_killed = 0
 # 	}
 # }
 
-@onready var ui = $UI
+@onready var ui = $'root/World/UI'
 
 
 func _ready() -> void:
