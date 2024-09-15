@@ -117,9 +117,9 @@ script = ExtResource("1_jqgpm")
 [node name="Tooltip" type="Label" parent="."]
 z_index = 50
 offset_left = -30.0
-offset_top = -16.0
+offset_top = -12.0
 offset_right = 223.0
-offset_bottom = 7.0
+offset_bottom = 11.0
 scale = Vector2(0.257306, 0.257306)
 theme = ExtResource("2_wvi1v")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
@@ -129,17 +129,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0, -4)
 scale = Vector2(0.505254, 0.505254)
 texture = SubResource("AtlasTexture_lmmnk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(0, -2)
 scale = Vector2(0.505254, 0.505254)
 sprite_frames = SubResource("SpriteFrames_jddgd")
 animation = &"iron_ore_selected"
 
 [node name="interaction_area" type="Area2D" parent="."]
+position = Vector2(0, 4)
 collision_layer = 2
 collision_mask = 2
 

@@ -28,7 +28,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	entity_movement()
 
-	if mode == "walk" and self.global_position.x < 36:
+	if mode != "finish" and self.global_position.x < 36:
 		mode = "finish"
 
 		game_manager.get_hit()

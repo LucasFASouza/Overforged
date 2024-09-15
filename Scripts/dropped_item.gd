@@ -39,6 +39,7 @@ func interact() -> void:
 		tooltip.text = "You have your hands full right now"
 	else:
 		player.get_item(item)
+		Audiomanager.play_sfx("pickup")
 		queue_free()
 
 func _on_timer_timeout() -> void:

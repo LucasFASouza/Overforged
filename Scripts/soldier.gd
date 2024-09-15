@@ -71,7 +71,6 @@ func die():
 	health_bar.set_health(0)
 	health = 0
 	Audiomanager.play_sfx("die")
-	$CollisionShape2D.disabled = true
 
 
 func _on_sprite_animation_finished():
