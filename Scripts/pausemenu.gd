@@ -3,11 +3,12 @@ extends Control
 const menu_scene = preload("res://Scenes/menu.tscn")
 
 @onready var options: MarginContainer = %PauseOptionsContainer
+@onready var how_to_play: MarginContainer = %HTPContainer
 
 
 func _ready() -> void:
-	pass
-	# options.hide()
+	options.hide()
+	how_to_play.hide()
 
 
 func _on_resume_button_pressed() -> void:
@@ -15,11 +16,22 @@ func _on_resume_button_pressed() -> void:
 	hide()
 
 
-# func _on_options_button_pressed() -> void:
-# 	if options.visible:
-# 		options.hide()
-# 	else:
-# 		options.show()
+func toggle_active_section(section: MarginContainer) -> void:
+	if section.visible:
+		section.hide()
+	else:
+		options.hide()
+		how_to_play.hide()
+
+		section.show()
+
+func _on_options_button_pressed() -> void:
+	toggle_active_section(options)
+
+
+func _on_how_to_play_button_pressed() -> void:
+	toggle_active_section(how_to_play)
+
 
 # func _on_quit_button_pressed() -> void:
 # 	if menu_scene:

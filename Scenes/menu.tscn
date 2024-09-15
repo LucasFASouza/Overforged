@@ -145,6 +145,7 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="Controls" parent="MarginContainer/MenuContainer/SideMenu/Panel/ControlsContainer" instance=ExtResource("6_uuysc")]
+visible = true
 layout_mode = 2
 
 [node name="HowToPlayContainer" type="MarginContainer" parent="MarginContainer/MenuContainer/SideMenu/Panel"]
@@ -153,8 +154,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 22.0
-offset_top = -5.0
+offset_left = 3.0
 offset_right = 6.0
 offset_bottom = -11.0
 grow_horizontal = 2
@@ -168,6 +168,7 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="HowToPlay" parent="MarginContainer/MenuContainer/SideMenu/Panel/HowToPlayContainer" instance=ExtResource("7_0e2hi")]
+visible = false
 layout_mode = 2
 
 [node name="OptionsContainer" type="MarginContainer" parent="MarginContainer/MenuContainer/SideMenu/Panel"]
@@ -191,6 +192,7 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="Options" parent="MarginContainer/MenuContainer/SideMenu/Panel/OptionsContainer" instance=ExtResource("4_iodgg")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhki4femv30j8"]
+[gd_scene load_steps=9 format=3 uid="uid://dhki4femv30j8"]
 
 [ext_resource type="Script" path="res://Scripts/pausemenu.gd" id="1_wq3gf"]
 [ext_resource type="Texture2D" uid="uid://csjuuxdjxnk0r" path="res://Assets/Sprites/Grass.png" id="2_xqgnj"]
 [ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="3_2enea"]
 [ext_resource type="PackedScene" uid="uid://cdyy5qayqrtns" path="res://Scenes/options.tscn" id="4_br3tb"]
 [ext_resource type="Texture2D" uid="uid://61cwi7mhiov1" path="res://Assets/Sprites/container-export.png" id="4_piggv"]
+[ext_resource type="Texture2D" uid="uid://c83h81w32fqpr" path="res://Assets/Sprites/cheat_sheet.png" id="6_tdst6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3aivo"]
 texture = ExtResource("4_piggv")
@@ -12,6 +13,8 @@ texture_margin_left = 30.0
 texture_margin_top = 30.0
 texture_margin_right = 30.0
 texture_margin_bottom = 30.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ukumm"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -23,6 +26,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_wq3gf")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -99,8 +103,17 @@ text = "RESUME"
 [node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 layout_mode = 2
 
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_2enea")
+text = "OPTIONs"
+icon = SubResource("ViewportTexture_ukumm")
+alignment = 0
+
 [node name="PauseOptionsContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 2
@@ -115,6 +128,39 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Separator4" type="Control" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+layout_mode = 2
+
+[node name="HowToPlayButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_2enea")
+text = "How to Play"
+icon = SubResource("ViewportTexture_ukumm")
+alignment = 0
+
+[node name="HTPContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/HTPContainer"]
+layout_mode = 2
+texture = ExtResource("6_tdst6")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Separator5" type="Control" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+layout_mode = 2
+
 [node name="Separator3" type="Control" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 layout_mode = 2
 
@@ -126,4 +172,6 @@ theme = ExtResource("3_2enea")
 text = "back to menu"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c83h81w32fqpr" path="res://Assets/Sprites/cheat_sheet.png" id="2_ec7vy"]
 
 [node name="HowToPlay" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 
@@ -20,11 +19,11 @@ text = "How to play
 "
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HowToPlay"]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 81.0
-offset_top = 48.0
-offset_right = 161.0
-offset_bottom = 160.0
+offset_left = 62.0
+offset_top = 61.0
+offset_right = 142.0
+offset_bottom = 173.0
 scale = Vector2(2.72, 2.72)
 texture = ExtResource("2_ec7vy")
