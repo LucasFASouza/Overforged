@@ -33,24 +33,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tpjp"]
-size = Vector2(14, 12)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ma16j"]
 radius = 12.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tpjp"]
+size = Vector2(14, 12)
+
 [node name="Forge" type="StaticBody2D"]
-z_index = 3
+z_index = 1
 script = ExtResource("1_kvn06")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qifsq")
 animation = &"selected"
 offset = Vector2(0, -8)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_1tpjp")
 
 [node name="interaction_area" type="Area2D" parent="."]
 collision_layer = 2
@@ -80,6 +76,12 @@ visible = false
 position = Vector2(-2, -28)
 
 [node name="Ballon" parent="." instance=ExtResource("4_8h74i")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_1tpjp")
 
 [connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="interaction_area" to="." method="_on_interaction_area_body_exited"]

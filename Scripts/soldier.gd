@@ -60,6 +60,7 @@ func get_hit(damage):
 	health -= damage
 	health_bar.set_health(health)
 	sprite.play("hit")
+	Audiomanager.play_sfx("hit")
 	return health
 
 
@@ -69,6 +70,7 @@ func die():
 	health_bar.visible = false
 	health_bar.set_health(0)
 	health = 0
+	Audiomanager.play_sfx("die")
 	$CollisionShape2D.disabled = true
 
 

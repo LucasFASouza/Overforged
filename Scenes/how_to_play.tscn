@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqxojq50xph0a"]
+
+[ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="1_11w3e"]
+[ext_resource type="Texture2D" uid="uid://c83h81w32fqpr" path="res://Assets/Sprites/cheat_sheet.png" id="2_ec7vy"]
+
+[node name="HowToPlay" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HowToPlay" type="Label" parent="."]
+offset_left = -19.0
+offset_top = 13.0
+offset_right = 365.0
+offset_bottom = 46.0
+theme = ExtResource("1_11w3e")
+theme_override_colors/font_outline_color = Color(0.329412, 0.34902, 0.34902, 1)
+text = "How to play
+"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HowToPlay"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 48.0
+offset_right = 161.0
+offset_bottom = 160.0
+scale = Vector2(2.72, 2.72)
+texture = ExtResource("2_ec7vy")

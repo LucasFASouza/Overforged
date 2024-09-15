@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://qm45mrbn5w5i"]
+[gd_scene load_steps=9 format=3 uid="uid://qm45mrbn5w5i"]
 
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_5tidw"]
 [ext_resource type="Texture2D" uid="uid://cnu4myw6m0qu6" path="res://Assets/Marketing/main_menu.png" id="2_k3tfx"]
 [ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="2_uqj6p"]
 [ext_resource type="PackedScene" uid="uid://cdyy5qayqrtns" path="res://Scenes/options.tscn" id="4_iodgg"]
 [ext_resource type="Texture2D" uid="uid://61cwi7mhiov1" path="res://Assets/Sprites/container-export.png" id="6_c80e3"]
-[ext_resource type="Texture2D" uid="uid://dla00bxd8vbqi" path="res://Assets/Marketing/controller/controller.png" id="6_q88h0"]
+[ext_resource type="PackedScene" uid="uid://cv2o5cvqw0uq" path="res://Scenes/controls.tscn" id="6_uuysc"]
+[ext_resource type="PackedScene" uid="uid://bqxojq50xph0a" path="res://Scenes/how_to_play.tscn" id="7_0e2hi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mjmj1"]
 texture = ExtResource("6_c80e3")
@@ -13,35 +14,6 @@ texture_margin_left = 30.0
 texture_margin_top = 30.0
 texture_margin_right = 30.0
 texture_margin_bottom = 30.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_13wx3"]
-atlas = ExtResource("6_q88h0")
-region = Rect2(0, 0, 48, 144)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hm30y"]
-atlas = ExtResource("6_q88h0")
-region = Rect2(48, 0, 48, 144)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctdqe"]
-atlas = ExtResource("6_q88h0")
-region = Rect2(96, 0, 48, 144)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_37gf2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_13wx3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hm30y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ctdqe")
-}],
-"loop": true,
-"name": &"default",
-"speed": 0.5
-}]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -117,17 +89,26 @@ alignment = 0
 [node name="Separator4" type="Control" parent="MarginContainer/MenuContainer/MarginContainer/Main"]
 layout_mode = 2
 
-[node name="AboutButton" type="Button" parent="MarginContainer/MenuContainer/MarginContainer/Main"]
+[node name="ControlsButton" type="Button" parent="MarginContainer/MenuContainer/MarginContainer/Main"]
 layout_mode = 2
 theme = ExtResource("2_uqj6p")
-text = "ABOUT"
+text = "controls"
+alignment = 0
+
+[node name="Separator5" type="Control" parent="MarginContainer/MenuContainer/MarginContainer/Main"]
+layout_mode = 2
+
+[node name="HowToPlayButton" type="Button" parent="MarginContainer/MenuContainer/MarginContainer/Main"]
+layout_mode = 2
+theme = ExtResource("2_uqj6p")
+text = "How to play"
 alignment = 0
 
 [node name="Separator3" type="Control" parent="MarginContainer/MenuContainer/MarginContainer/Main"]
 layout_mode = 2
 
 [node name="QuitButton" type="Button" parent="MarginContainer/MenuContainer/MarginContainer/Main"]
-custom_minimum_size = Vector2(240, 200)
+custom_minimum_size = Vector2(240, 120)
 layout_mode = 2
 theme = ExtResource("2_uqj6p")
 text = "QUIT"
@@ -140,7 +121,6 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.72
 
 [node name="Panel" type="Panel" parent="MarginContainer/MenuContainer/SideMenu"]
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_mjmj1")
 
@@ -169,7 +149,7 @@ visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AboutContainer" type="MarginContainer" parent="MarginContainer/MenuContainer/SideMenu/Panel"]
+[node name="ControlsContainer" type="MarginContainer" parent="MarginContainer/MenuContainer/SideMenu/Panel"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -189,58 +169,34 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="About" type="Control" parent="MarginContainer/MenuContainer/SideMenu/Panel/AboutContainer"]
-visible = false
+[node name="Controls" parent="MarginContainer/MenuContainer/SideMenu/Panel/ControlsContainer" instance=ExtResource("6_uuysc")]
 layout_mode = 2
 
-[node name="HowToPlayTitle" type="Label" parent="MarginContainer/MenuContainer/SideMenu/Panel/AboutContainer/About"]
-layout_mode = 0
-offset_left = -18.0
-offset_right = 437.0
-offset_bottom = 33.0
-theme = ExtResource("2_uqj6p")
-theme_override_colors/font_color = Color(0.278431, 0.290196, 0.294118, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-text = "How to play"
-horizontal_alignment = 1
+[node name="HowToPlayContainer" type="MarginContainer" parent="MarginContainer/MenuContainer/SideMenu/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -5.0
+offset_right = 6.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.72
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Controller" type="AnimatedSprite2D" parent="MarginContainer/MenuContainer/SideMenu/Panel/AboutContainer/About"]
-position = Vector2(75, 225.5)
-scale = Vector2(2.5, 2.5)
-sprite_frames = SubResource("SpriteFrames_37gf2")
-autoplay = "default"
-frame_progress = 0.252335
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MenuContainer/SideMenu/Panel/AboutContainer/About"]
-layout_mode = 0
-offset_left = 159.0
-offset_top = 81.5
-offset_right = 454.0
-offset_bottom = 386.5
-theme_override_constants/separation = 92
-
-[node name="Movement" type="Label" parent="MarginContainer/MenuContainer/SideMenu/Panel/AboutContainer/About/VBoxContainer"]
+[node name="HowToPlay" parent="MarginContainer/MenuContainer/SideMenu/Panel/HowToPlayContainer" instance=ExtResource("7_0e2hi")]
 layout_mode = 2
-theme = ExtResource("2_uqj6p")
-theme_override_colors/font_color = Color(0.278431, 0.290196, 0.294118, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-text = "- Movement"
-
-[node name="Interact" type="Label" parent="MarginContainer/MenuContainer/SideMenu/Panel/AboutContainer/About/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_uqj6p")
-theme_override_colors/font_color = Color(0.278431, 0.290196, 0.294118, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-text = "- Intereact"
-
-[node name="Drop" type="Label" parent="MarginContainer/MenuContainer/SideMenu/Panel/AboutContainer/About/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_uqj6p")
-theme_override_colors/font_color = Color(0.278431, 0.290196, 0.294118, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-text = "- Drop item"
 
 [connection signal="pressed" from="MarginContainer/MenuContainer/MarginContainer/Main/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/MarginContainer/Main/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuContainer/MarginContainer/Main/AboutButton" to="." method="_on_about_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/MarginContainer/Main/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/MarginContainer/Main/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/MarginContainer/Main/QuitButton" to="." method="_on_quit_button_pressed"]

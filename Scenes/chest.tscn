@@ -1,10 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://v8rnhsybj0qb"]
+[gd_scene load_steps=11 format=3 uid="uid://v8rnhsybj0qb"]
 
 [ext_resource type="Script" path="res://Scripts/chest.gd" id="1_4l67n"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_nxngq"]
 [ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="3_tw4dp"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojo8f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ov8r0"]
 atlas = ExtResource("2_nxngq")
@@ -58,24 +56,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tpjp"]
-size = Vector2(14, 12)
+size = Vector2(14, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_71t7c"]
 radius = 12.0
 
 [node name="chest" type="StaticBody2D"]
-z_index = 3
+z_index = 1
 script = ExtResource("1_4l67n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_ojo8f")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_vx5ep")
 animation = &"trash"
 autoplay = "chest"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_1tpjp")
 
 [node name="interaction_area" type="Area2D" parent="."]

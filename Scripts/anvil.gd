@@ -40,6 +40,7 @@ func interact() -> void:
 		anvil_minigame.visible = true
 		anvil_minigame.start_minigame()
 
+		player.position = position + Vector2(-3, 10)
 		state = 'running'
 
 func finish_minigame(score):

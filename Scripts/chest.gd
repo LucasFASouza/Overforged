@@ -2,21 +2,17 @@ extends "res://Scripts/interactable_item.gd"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var original_material = animated_sprite.material
-@onready var shader_material = load("res://Scripts/shader.gdshader")
-
 @export var item_id: String = ''
 
 var item = ItemsType.create_item(item_id)
 
 @export var is_trash: bool = false
+var mode
 
 func _ready() -> void:
 	message_base = "Press SPACE to get the item" if not is_trash else "Press SPACE to throw the item"
-	animated_sprite.play("chest" if not is_trash else "trash")
-
-	animated_sprite.material = ShaderMaterial.new()
-	animated_sprite.material = shader_material if is_trash else original_material
+	mode = "chest" if not is_trash else "trash"
+	animated_sprite.play(mode)
 
 	item['id'] = item_id
 	item['name'] = ItemsType.get_item_name(item_id)
@@ -28,14 +24,12 @@ func interact() -> void:
 		player.give_item()
 	elif player.item_holding['id'] == '':
 		player.get_item(item)
-		Audiomanager.play_sfx("chest")
+		Audiomanager.play_sfx(mode)
 	else:
 		tooltip.visible = true
 		tooltip.text = "You have your hands full right now"
 
 func _process(_delta: float) -> void:
-	var mode = "chest" if not is_trash else "trash"
-
 	if player.current_interactable_item == self:
 		sprite.play(mode + "_selected")
 	else:

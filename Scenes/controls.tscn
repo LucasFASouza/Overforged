@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv2o5cvqw0uq"]
+
+[ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="1_1d1f1"]
+[ext_resource type="Texture2D" uid="uid://dla00bxd8vbqi" path="res://Assets/Marketing/controller/controller.png" id="2_7rdb3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13wx3"]
+atlas = ExtResource("2_7rdb3")
+region = Rect2(0, 0, 48, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm30y"]
+atlas = ExtResource("2_7rdb3")
+region = Rect2(48, 0, 48, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctdqe"]
+atlas = ExtResource("2_7rdb3")
+region = Rect2(96, 0, 48, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_37gf2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13wx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm30y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctdqe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.5
+}]
+
+[node name="Controls" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Controls" type="Label" parent="."]
+layout_mode = 0
+offset_left = -18.0
+offset_right = 399.0
+offset_bottom = 33.0
+theme = ExtResource("1_1d1f1")
+theme_override_colors/font_outline_color = Color(0.329412, 0.34902, 0.34902, 1)
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="Controller" type="AnimatedSprite2D" parent="."]
+position = Vector2(78, 212)
+scale = Vector2(2.2, 2.2)
+sprite_frames = SubResource("SpriteFrames_37gf2")
+autoplay = "default"
+frame_progress = 0.861167
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 82.0
+offset_right = 445.0
+offset_bottom = 387.0
+theme_override_constants/separation = 79
+
+[node name="Movement" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_1d1f1")
+theme_override_colors/font_outline_color = Color(0.329412, 0.34902, 0.34902, 1)
+text = "- Movement"
+
+[node name="Interact" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_1d1f1")
+theme_override_colors/font_outline_color = Color(0.329412, 0.34902, 0.34902, 1)
+text = "- Intereact"
+
+[node name="Drop" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_1d1f1")
+theme_override_colors/font_outline_color = Color(0.329412, 0.34902, 0.34902, 1)
+text = "- Drop item"

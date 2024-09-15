@@ -23,6 +23,36 @@ var wave_number = 0
 var enemies_coming = 0
 var enemies_killed = 0
 
+# @onready var objective_label: Label = $Objective
+# var current_objective = 1
+# var objectives = {
+# 	1: {
+# 		"id": 1,
+# 		"objective": "Get iron ore from the chest",
+# 		"completed": false
+# 	},
+# 	2: {
+# 		"id": 2,
+# 		"objective": "Make an iron ingot in the forge",
+# 		"completed": false
+# 	},
+# 	3: {
+# 		"id": 3,
+# 		"objective": "Give form to the sword in the anvil",
+# 		"completed": false
+# 	},
+# 	4: {
+# 		"id": 4,
+# 		"objective": "Sharpen the sword in the whetstone",
+# 		"completed": false
+# 	},
+# 	5: {
+# 		"id": 5,
+# 		"objective": "Defend the village from the enemies",
+# 		"completed": false
+# 	}
+# }
+
 @onready var ui = $UI
 
 
@@ -62,6 +92,9 @@ func _process(_delta: float) -> void:
 
 	if mode == "attack" and turn_timer.is_stopped():
 		turn_timer.start()
+
+
+	# objective_label.text = objectives[current_objective]["objective"]
 
 
 func get_hit() -> void:

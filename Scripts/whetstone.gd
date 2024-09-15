@@ -39,6 +39,7 @@ func interact() -> void:
 
 		state = 'running'
 
+		player.position = position + Vector2(0, 10)
 		player.player_sprite.play("back_idle")
 
 func finish_minigame(score):

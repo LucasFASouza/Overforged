@@ -34,6 +34,7 @@ func _physics_process(_delta: float) -> void:
 		game_manager.get_hit()
 
 		sprite.play("attack")
+		Audiomanager.play_sfx("houseattacked")
 		
 		health = 0
 		health_bar.visible = false
@@ -73,12 +74,14 @@ func attack():
 	var attack_damage = randf_range(min_damage, max_damage)
 
 	sprite.play("attack")
+	Audiomanager.play_sfx("enemyattack")
 	
 	return attack_damage
 
 
 func die():
 	sprite.play("die")
+	Audiomanager.play_sfx("enemydying")
 	health_bar.visible = false
 
 

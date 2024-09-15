@@ -13,6 +13,7 @@ func attack():
 	damage = 0
 
 	for child in get_children():        
+		Audiomanager.play_sfx("attack")
 		child.sprite.play("attack")
 		damage += child.weapon.whetstone_level
 	
@@ -29,6 +30,8 @@ func sell_weapon(weapon) -> void:
 	new_soldier.weapon = weapon
 
 	add_child(new_soldier)
+
+	Audiomanager.play_sfx("sell")
 
 	# new_soldier.position_reached.connect(on_soldier_position_reached)
 

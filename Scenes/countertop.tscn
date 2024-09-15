@@ -35,10 +35,12 @@ animations = [{
 }]
 
 [node name="CounterTop" type="StaticBody2D"]
+z_index = 1
 script = ExtResource("1_0bcu8")
 
 [node name="Tooltip" type="Label" parent="."]
 z_index = 50
+y_sort_enabled = true
 offset_left = -30.0
 offset_top = -22.0
 offset_right = 226.0

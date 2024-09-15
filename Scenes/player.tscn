@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dtn68yvlf7xn0" path="res://Assets/Sprites/Basic Charakter Spritesheet.png" id="2_gdo80"]
 [ext_resource type="Texture2D" uid="uid://x04taujvdhrw" path="res://Assets/Sprites/metal sword.png" id="3_ucujl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_unyj5"]
-size = Vector2(12, 9.5)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8813w"]
 atlas = ExtResource("2_gdo80")
 region = Rect2(96, 192, 48, 48)
@@ -98,7 +95,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"back_hammer",
-"speed": 8.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -251,21 +248,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oq1n6"]
+radius = 4.0
+
 [node name="Player" type="CharacterBody2D"]
-z_index = 5
+z_index = 1
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_4brsm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-y_sort_enabled = true
-position = Vector2(0, -3.25)
-shape = SubResource("RectangleShape2D_unyj5")
-
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ixryu")
 animation = &"back_hammer"
-frame_progress = 0.609456
+frame_progress = 0.282274
 offset = Vector2(0, -6)
 
 [node name="ItemSprite" type="AnimatedSprite2D" parent="."]
@@ -275,3 +270,8 @@ position = Vector2(0, -20)
 scale = Vector2(0.56, 0.56)
 sprite_frames = SubResource("SpriteFrames_tumcx")
 animation = &"iron_ore"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_oq1n6")

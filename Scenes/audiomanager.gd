@@ -9,6 +9,7 @@ func _ready() -> void:
 	for child in sfx_node.get_children():
 		if child is AudioStreamPlayer2D: 
 			sfx_dict[child.name.to_lower()] = child  
+	print(sfx_dict)
 
 	var music_node = $Music
 	for child in music_node.get_children():
