@@ -7,6 +7,8 @@ var sfx_bus_id = AudioServer.get_bus_index("SFX")
 var music_bus_id = AudioServer.get_bus_index("Music")
 var user_prefs = UserPreferences
 
+@onready var title_label: Label = $OptionsContainer/MarginContainer/VBoxContainer/TitleLabel
+
 @onready var master_slider: HSlider = $OptionsContainer/MarginContainer/VBoxContainer/MasterSlider
 @onready var music_slider: HSlider = $OptionsContainer/MarginContainer/VBoxContainer/MusicSlider
 @onready var sfx_slider: HSlider = $OptionsContainer/MarginContainer/VBoxContainer/SFXSlider
@@ -20,6 +22,11 @@ func _ready() -> void:
 		music_slider.value = user_prefs.music_audio_level
 	if sfx_slider:
 		sfx_slider.value = user_prefs.sfx_audio_level
+				
+	if get_parent().name == "OptionsContainer":
+		title_label.visible = true
+	else:
+		title_label.visible = false
 
 func _on_master_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(master_bus_id, linear_to_db(value))

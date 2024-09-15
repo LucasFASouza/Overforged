@@ -1,7 +1,19 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dj34p0jgvyynb"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dj34p0jgvyynb"]
 
-[ext_resource type="Texture2D" uid="uid://doglxwcf5srb5" path="res://Assets/Sprites/Menu_frame.png" id="1_8qyl1"]
-[ext_resource type="FontFile" uid="uid://cfm0pg3dqqnvd" path="res://Assets/Hardpixel.OTF" id="1_i5urq"]
+[ext_resource type="FontFile" uid="uid://dvpul7e486lhc" path="res://Assets/editundo.ttf" id="1_cnoqw"]
+[ext_resource type="Texture2D" uid="uid://ceq5qynhxtgd0" path="res://Assets/Sprites/container.png" id="2_lytc8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83ho4"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrayb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -14,41 +26,50 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65ax1"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yerct"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p5pw4"]
-texture = ExtResource("1_8qyl1")
-texture_margin_left = 3.0
-texture_margin_top = 3.0
-texture_margin_right = 3.0
-texture_margin_bottom = 3.0
+texture = ExtResource("2_lytc8")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
 
 [resource]
-Button/colors/font_color = Color(0.231373, 0.231373, 0.231373, 1)
-Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_color = Color(0.753983, 0.753984, 0.753985, 1)
-Button/colors/font_hover_pressed_color = Color(0.466181, 0.466181, 0.466181, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(0.572988, 0.572988, 0.572988, 1)
+Button/colors/font_color = Color(0.952941, 0.956863, 0.905882, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.862745, 0.878431, 0.823529, 1)
+Button/colors/font_hover_color = Color(0.631373, 0.380392, 0.34902, 1)
+Button/colors/font_hover_pressed_color = Color(0.756863, 0.784314, 0.72549, 1)
+Button/colors/font_outline_color = Color(0.207843, 0.215686, 0.219608, 1)
+Button/colors/font_pressed_color = Color(0.756863, 0.784314, 0.72549, 1)
 Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
 Button/colors/icon_focus_color = Color(1, 1, 1, 0)
 Button/colors/icon_hover_color = Color(1, 1, 1, 0)
 Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
 Button/colors/icon_normal_color = Color(1, 1, 1, 0)
 Button/colors/icon_pressed_color = Color(0.329412, 0.329412, 0.329412, 0)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 19
 Button/font_sizes/font_size = 48
-Button/fonts/font = ExtResource("1_i5urq")
-Button/styles/disabled = null
+Button/fonts/font = ExtResource("1_cnoqw")
+Button/styles/disabled = SubResource("StyleBoxFlat_83ho4")
 Button/styles/disabled_mirrored = null
 Button/styles/focus = SubResource("StyleBoxFlat_jrayb")
 Button/styles/hover = SubResource("StyleBoxFlat_atp11")
 Button/styles/normal = SubResource("StyleBoxTexture_ajukb")
 Button/styles/pressed = SubResource("StyleBoxFlat_65ax1")
-Label/colors/font_color = Color(0.585062, 0.585062, 0.585062, 1)
-Label/colors/font_outline_color = Color(0.230315, 0.230315, 0.230315, 1)
-Label/colors/font_shadow_color = Color(0.196078, 0.196078, 0.2, 1)
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 0)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.560784)
+Label/constants/line_spacing = 3
 Label/constants/outline_size = 10
-Label/constants/shadow_offset_x = 5
-Label/constants/shadow_offset_y = 5
-Label/constants/shadow_outline_size = 10
+Label/constants/shadow_offset_x = -1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 5
 Label/font_sizes/font_size = 36
-Label/fonts/font = ExtResource("1_i5urq")
+Label/fonts/font = ExtResource("1_cnoqw")
+Label/styles/normal = SubResource("StyleBoxEmpty_yerct")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_p5pw4")

@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgunobdrnpkan"]
+[gd_scene load_steps=6 format=3 uid="uid://blagjlnetpjba"]
 
 [ext_resource type="Script" path="res://Scripts/endgamescreen.gd" id="1_v27kb"]
 [ext_resource type="Texture2D" uid="uid://csjuuxdjxnk0r" path="res://Assets/Sprites/Grass.png" id="2_yugrg"]
 [ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="3_g6dbp"]
+[ext_resource type="Texture2D" uid="uid://61cwi7mhiov1" path="res://Assets/Sprites/container-export.png" id="4_f78w7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h8hgw"]
+texture = ExtResource("4_f78w7")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
 
 [node name="EndScreenMenu" type="Control"]
 process_mode = 3
@@ -49,7 +57,7 @@ layout_mode = 2
 [node name="GameoverLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_g6dbp")
-text = "GAME OVER"
+text = "GAME OVER!"
 horizontal_alignment = 1
 
 [node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer"]
@@ -72,6 +80,7 @@ theme_override_constants/margin_bottom = 20
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
 theme = ExtResource("3_g6dbp")
+theme_override_styles/panel = SubResource("StyleBoxTexture_h8hgw")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer"]
 layout_mode = 2
@@ -88,15 +97,22 @@ alignment = 1
 [node name="GameOverTextLabel" type="Label" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "You won or lost the game
-You survived:"
+text = "Victory"
 horizontal_alignment = 1
 
 [node name="ResultTextLabel" type="Label" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-text = "19 + \"waves of enemies\""
+theme_override_colors/font_color = Color(0.211765, 0.219608, 0.223529, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 24
+text = "You have survived all 3 waves of enemies. 
+You killed 9 enemies and made 12 swords."
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="TryAgainButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 layout_mode = 2
@@ -107,7 +123,7 @@ text = "TRY AGAIN"
 layout_mode = 2
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
-custom_minimum_size = Vector2(240, 100)
+custom_minimum_size = Vector2(240, 60)
 layout_mode = 2
 theme = ExtResource("3_g6dbp")
 text = "QUIT GAME"

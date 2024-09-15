@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwk46s58fngmc"]
+[gd_scene load_steps=11 format=3 uid="uid://dwk46s58fngmc"]
 
 [ext_resource type="Script" path="res://Scripts/whetstone_minigame.gd" id="1_5k8xd"]
 [ext_resource type="Texture2D" uid="uid://x04taujvdhrw" path="res://Assets/Sprites/metal sword.png" id="2_2h3g3"]
 [ext_resource type="Texture2D" uid="uid://luaexerpv4sl" path="res://Assets/Sprites/sword-minigame.png" id="2_e5rxs"]
 [ext_resource type="Texture2D" uid="uid://brvpqg1frtytt" path="res://Assets/Sprites/sweetspot-minigame.png" id="3_6oupj"]
+[ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="5_7otnm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tjynd"]
 atlas = ExtResource("2_e5rxs")
@@ -81,3 +82,19 @@ position = Vector2(0, 1.5625)
 
 [node name="MaxY" type="Node2D" parent="Stone"]
 position = Vector2(0, -1.5625)
+
+[node name="Tooltip" type="Label" parent="."]
+z_index = 50
+offset_left = -38.0
+offset_top = -29.0
+offset_right = 98.0
+offset_bottom = 22.0
+scale = Vector2(0.257306, 0.257306)
+theme = ExtResource("5_7otnm")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_font_sizes/font_size = 16
+text = "hOLD SPACE
+TO SHARPEN
+THE RIGHT AREA"
+horizontal_alignment = 2
+vertical_alignment = 1

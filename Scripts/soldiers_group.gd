@@ -4,7 +4,7 @@ var soldier_scene = preload("res://Scenes/soldier.tscn")
 var weapons_sold: Array = []
 
 @export var boundary_up: int = -55
-@export var boundary_down: int = 60
+@export var boundary_down: int = 69
 
 @export var damage: float = 0
 

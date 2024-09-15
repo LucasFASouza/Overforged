@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4c0j2oh51sl"
-path="res://.godot/imported/Basic_tools_and_meterials.png-dbedd0e66b5fd519ae30f448a032923b.ctex"
+uid="uid://dmopcv2ta1j05"
+path="res://.godot/imported/anvil.png-b139cf9b0a120d62429c3362c288d129.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Basic_tools_and_meterials.png"
-dest_files=["res://.godot/imported/Basic_tools_and_meterials.png-dbedd0e66b5fd519ae30f448a032923b.ctex"]
+source_file="res://Assets/Marketing/components/anvil.png"
+dest_files=["res://.godot/imported/anvil.png-b139cf9b0a120d62429c3362c288d129.ctex"]
 
 [params]
 

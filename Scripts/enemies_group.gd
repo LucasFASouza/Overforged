@@ -34,11 +34,13 @@ func start_wave(wave_number: int):
 			enemies_to_spawn = 6
 			min_enemy_damage  = 1.6
 			max_enemy_damage = 3.2
+	
+	var enemies_this_wave = enemies_to_spawn
 
 	is_attacking = true
 	spawn_enemy()
 
-	return enemies_to_spawn
+	return enemies_this_wave
 
 
 func spawn_enemy() -> void:

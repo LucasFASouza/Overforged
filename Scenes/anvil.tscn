@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dggakpdoilho0"]
+[gd_scene load_steps=12 format=3 uid="uid://dggakpdoilho0"]
 
 [ext_resource type="Script" path="res://Scripts/anvil.gd" id="1_yd6yj"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_pnso0"]
+[ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="3_6j0hj"]
 [ext_resource type="PackedScene" uid="uid://d3su57nld13ej" path="res://Scenes/anvil_minigame.tscn" id="3_u2vaf"]
 [ext_resource type="PackedScene" uid="uid://d2dcedxf8jbur" path="res://Scenes/ballon.tscn" id="4_qcm2w"]
 
@@ -64,12 +65,14 @@ position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_m7cgn")
 
 [node name="Tooltip" type="Label" parent="."]
+visible = false
 z_index = 50
 offset_left = -30.0
-offset_top = -35.0
+offset_top = -22.0
 offset_right = 203.0
-offset_bottom = -12.0
+offset_bottom = 1.0
 scale = Vector2(0.257306, 0.257306)
+theme = ExtResource("3_6j0hj")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
 theme_override_font_sizes/font_size = 16
 text = "Press SPACE to interact"
@@ -81,6 +84,7 @@ visible = false
 position = Vector2(1, -21)
 
 [node name="Ballon" parent="." instance=ExtResource("4_qcm2w")]
+visible = false
 position = Vector2(0, -29)
 
 [connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]

@@ -27,15 +27,13 @@ func _process(delta: float) -> void:
 func interact() -> void:
 	if state == 'empty':
 		if player.item_holding['id'] != "dull_sword":
-			tooltip.text = 'You need Dull Sword to start the anvil'
+			tooltip.text = 'You need a Dull Sword to use the whetstone'
 			tooltip.visible = true
 			return
 
 		player.state = 'minigame'
 		current_item = player.give_item()
 
-		tooltip.text = "Hold SPACE to sharpen the sword at the right spot"
-		tooltip.visible = true
 		whetstone_minigame.visible = true
 		whetstone_minigame.start_minigame()
 

@@ -16,6 +16,7 @@ func _on_try_again_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
+
 func change_endscreen_text(text: String, result: String):
 	game_over_text_label.text = text
 	result_text_label.text = result

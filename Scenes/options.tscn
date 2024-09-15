@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhrq6hvw5wo3a"]
+[gd_scene load_steps=3 format=3 uid="uid://cdyy5qayqrtns"]
 
 [ext_resource type="Script" path="res://Scripts/options.gd" id="1_dljv7"]
 [ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="2_ni3nl"]
@@ -12,9 +12,15 @@ script = ExtResource("1_dljv7")
 
 [node name="OptionsContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -159.5
+offset_right = 162.0
+offset_bottom = 159.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -31,10 +37,20 @@ theme_override_constants/margin_bottom = 40
 layout_mode = 2
 alignment = 1
 
+[node name="TitleLabel" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme = ExtResource("2_ni3nl")
+theme_override_colors/font_outline_color = Color(0.329412, 0.34902, 0.34902, 1)
+text = "sound"
+horizontal_alignment = 1
+
 [node name="MasterLabel" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_ni3nl")
+theme_override_colors/font_outline_color = Color(0.329412, 0.34902, 0.34902, 1)
 text = "Master Volume"
+horizontal_alignment = 1
 
 [node name="MasterSlider" type="HSlider" parent="OptionsContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -49,7 +65,9 @@ layout_mode = 2
 [node name="MusicLabel" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_ni3nl")
+theme_override_colors/font_outline_color = Color(0.329412, 0.34902, 0.34902, 1)
 text = "Music Volume"
+horizontal_alignment = 1
 
 [node name="MusicSlider" type="HSlider" parent="OptionsContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -64,7 +82,9 @@ layout_mode = 2
 [node name="SFXLabel" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_ni3nl")
+theme_override_colors/font_outline_color = Color(0.329412, 0.34902, 0.34902, 1)
 text = "SFX Volume"
+horizontal_alignment = 1
 
 [node name="SFXSlider" type="HSlider" parent="OptionsContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

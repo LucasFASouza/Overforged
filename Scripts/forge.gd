@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 func interact() -> void:
 	if state == 'empty':
 		if player.item_holding['id'] != "iron_ore":
-			tooltip.text = 'You need Iron Ore to start the forge'
+			tooltip.text = 'You need an Iron Ore to start the forge'
 			tooltip.visible = true
 			return
 

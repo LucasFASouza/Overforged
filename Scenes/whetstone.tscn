@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2wbdu6gus4bg"]
+[gd_scene load_steps=12 format=3 uid="uid://b2wbdu6gus4bg"]
 
 [ext_resource type="Script" path="res://Scripts/whetstone.gd" id="1_fsww0"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_h1dje"]
 [ext_resource type="PackedScene" uid="uid://dwk46s58fngmc" path="res://Scenes/whetstone_minigame.tscn" id="3_ja7yg"]
+[ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="3_m52vp"]
 [ext_resource type="PackedScene" uid="uid://d2dcedxf8jbur" path="res://Scenes/ballon.tscn" id="4_iavcj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5kys"]
@@ -65,10 +66,11 @@ shape = SubResource("CircleShape2D_vv5b5")
 [node name="Tooltip" type="Label" parent="."]
 z_index = 50
 offset_left = -30.0
-offset_top = -38.0
+offset_top = -24.0
 offset_right = 203.0
-offset_bottom = -15.0
+offset_bottom = -1.0
 scale = Vector2(0.257306, 0.257306)
+theme = ExtResource("3_m52vp")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
 theme_override_font_sizes/font_size = 16
 text = "Press SPACE to interact"
@@ -80,6 +82,7 @@ visible = false
 position = Vector2(13, -8)
 
 [node name="Ballon" parent="." instance=ExtResource("4_iavcj")]
+visible = false
 position = Vector2(0, -29)
 
 [connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]

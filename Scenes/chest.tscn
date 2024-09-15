@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://v8rnhsybj0qb"]
+[gd_scene load_steps=12 format=3 uid="uid://v8rnhsybj0qb"]
 
 [ext_resource type="Script" path="res://Scripts/chest.gd" id="1_4l67n"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_nxngq"]
+[ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="3_tw4dp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ojo8f"]
 
@@ -92,6 +93,7 @@ offset_top = -22.0
 offset_right = 203.0
 offset_bottom = 0.999998
 scale = Vector2(0.257306, 0.257306)
+theme = ExtResource("3_tw4dp")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
 theme_override_font_sizes/font_size = 16
 text = "Press SPACE to grab the material"

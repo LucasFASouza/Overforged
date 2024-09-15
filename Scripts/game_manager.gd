@@ -21,12 +21,13 @@ var turn = "enemies"
 var is_enemy_ready = false
 var wave_number = 0
 var enemies_coming = 0
+var enemies_killed = 0
 
-var ending_scene = preload("res://Scenes/endgamescreen.tscn")
+@onready var ui = $UI
 
 
 func _ready() -> void:
-	wave_timer.wait_time = 60
+	wave_timer.wait_time = 45
 	wave_timer.one_shot = true
 	wave_timer.connect("timeout", Callable(self, "_on_wave_timer_timeout"))
 	add_child(wave_timer)
@@ -71,11 +72,7 @@ func get_hit() -> void:
 		phase = "defeat"
 		Audiomanager.switch_music("defeat")
 
-		var new_scene = ending_scene.instantiate()
-		get_tree().root.add_child(new_scene)
-		get_tree().current_scene.queue_free() 
-		get_tree().current_scene = new_scene
-		new_scene.change_endscreen_text("You lost", "result")
+		ui.finish_game(false, enemies_killed, len(soldiers_group.weapons_sold))
 
 
 func _on_wave_timer_timeout() -> void:
@@ -93,7 +90,7 @@ func finish_wave() -> void:
 
 	if wave_number < 3:
 		phase = "calm"
-		wave_timer.wait_time = 60
+		wave_timer.wait_time = 45
 		wave_timer.start()
 
 		Audiomanager.switch_music("main")
@@ -102,10 +99,7 @@ func finish_wave() -> void:
 		phase = "victory"
 		Audiomanager.switch_music("victory")
 
-		var new_scene = ending_scene.instantiate()
-		get_tree().root.add_child(new_scene)
-		get_tree().current_scene.queue_free() 
-		get_tree().current_scene = new_scene 
+		ui.finish_game(true, enemies_killed, len(soldiers_group.weapons_sold))
 
 
 func combat_step() -> void:
@@ -123,6 +117,7 @@ func combat_step() -> void:
 
 				if enemy_health <= 0:
 					enemies_coming -= 1
+					enemies_killed += 1
 					mode = "idle"
 					return
 				else:

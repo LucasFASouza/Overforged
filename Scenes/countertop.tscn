@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd8mep6yrwu1w"]
+[gd_scene load_steps=8 format=3 uid="uid://cd8mep6yrwu1w"]
 
 [ext_resource type="Script" path="res://Scripts/countertop.gd" id="1_0bcu8"]
+[ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="2_ijx1j"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_obx4v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uoln0"]
@@ -40,9 +41,10 @@ script = ExtResource("1_0bcu8")
 z_index = 50
 offset_left = -30.0
 offset_top = -22.0
-offset_right = 223.0
+offset_right = 226.0
 offset_bottom = 1.0
 scale = Vector2(0.257306, 0.257306)
+theme = ExtResource("2_ijx1j")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
 theme_override_font_sizes/font_size = 16
 text = "Press SPACE to grab the material"

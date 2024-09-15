@@ -30,15 +30,13 @@ func _process(delta: float) -> void:
 func interact() -> void:
 	if state == 'empty':
 		if player.item_holding['id'] != "iron_ingot":
-			tooltip.text = 'You need Iron Ingot to start the anvil'
+			tooltip.text = 'You need an Iron Ingot to use the anvil'
 			tooltip.visible = true
 			return
 
 		player.state = 'minigame'
 		current_item = player.give_item()
 		
-		tooltip.text = "Press SPACE to hammer the right spot"
-		tooltip.visible = true
 		anvil_minigame.visible = true
 		anvil_minigame.start_minigame()
 

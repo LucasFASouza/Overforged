@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4ba772gmr1xu"]
+[gd_scene load_steps=15 format=3 uid="uid://c4ba772gmr1xu"]
 
 [ext_resource type="Script" path="res://Scripts/dropped_item.gd" id="1_jqgpm"]
 [ext_resource type="Texture2D" uid="uid://x04taujvdhrw" path="res://Assets/Sprites/metal sword.png" id="2_5laa8"]
+[ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="2_wvi1v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmmnk"]
 atlas = ExtResource("2_5laa8")
@@ -113,13 +114,13 @@ radius = 5.0
 script = ExtResource("1_jqgpm")
 
 [node name="Tooltip" type="Label" parent="."]
-visible = false
 z_index = 50
 offset_left = -30.0
 offset_top = -16.0
 offset_right = 223.0
 offset_bottom = 7.0
 scale = Vector2(0.257306, 0.257306)
+theme = ExtResource("2_wvi1v")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
 theme_override_font_sizes/font_size = 16
 text = "Press SPACE to grab the item"

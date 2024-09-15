@@ -1,21 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3dtli5g12s3e"]
+[gd_scene load_steps=7 format=3 uid="uid://dhki4femv30j8"]
 
 [ext_resource type="Script" path="res://Scripts/pausemenu.gd" id="1_wq3gf"]
 [ext_resource type="Texture2D" uid="uid://csjuuxdjxnk0r" path="res://Assets/Sprites/Grass.png" id="2_xqgnj"]
 [ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="3_2enea"]
-[ext_resource type="PackedScene" uid="uid://dhrq6hvw5wo3a" path="res://Scenes/options.tscn" id="4_br3tb"]
+[ext_resource type="PackedScene" uid="uid://cdyy5qayqrtns" path="res://Scenes/options.tscn" id="4_br3tb"]
+[ext_resource type="Texture2D" uid="uid://61cwi7mhiov1" path="res://Assets/Sprites/container-export.png" id="4_piggv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3aivo"]
+texture = ExtResource("4_piggv")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1.0
-offset_bottom = 3.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(-163, 371)
 script = ExtResource("1_wq3gf")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -33,6 +40,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -75.0
+offset_right = 10.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
@@ -73,12 +84,14 @@ theme_override_constants/margin_bottom = 20
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme = ExtResource("3_2enea")
+theme_override_styles/panel = SubResource("StyleBoxTexture_3aivo")
 
 [node name="Main" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer"]
 layout_mode = 2
 alignment = 1
 
 [node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 theme = ExtResource("3_2enea")
 text = "RESUME"
@@ -86,13 +99,7 @@ text = "RESUME"
 [node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 layout_mode = 2
 
-[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
-custom_minimum_size = Vector2(240, 100)
-layout_mode = 2
-theme = ExtResource("3_2enea")
-text = "OPTIONS"
-
-[node name="OptionsContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+[node name="PauseOptionsContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(200, 250)
@@ -104,7 +111,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Options" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/OptionsContainer" instance=ExtResource("4_br3tb")]
+[node name="Options" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/PauseOptionsContainer" instance=ExtResource("4_br3tb")]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -112,11 +119,11 @@ size_flags_vertical = 3
 layout_mode = 2
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+visible = false
 custom_minimum_size = Vector2(240, 100)
 layout_mode = 2
 theme = ExtResource("3_2enea")
-text = "QUIT GAME"
+text = "back to menu"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/QuitButton" to="." method="_on_quit_button_pressed"]
