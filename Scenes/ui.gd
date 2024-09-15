@@ -17,12 +17,14 @@ func _process(_delta: float) -> void:
 		if not get_tree().paused:
 			pause_menu.show()
 			get_tree().paused = true
+			Audiomanager.stop_all_sfx()
 		else:
 			pause_menu.hide()
 			get_tree().paused = false
 
 
 func finish_game(is_victory, enemies_killed, weapons_sold) -> void:
+	Audiomanager.stop_all_sfx()
 	ending_menu.show()
 	is_finished = true
 	get_tree().paused = true

@@ -33,14 +33,14 @@ func _on_how_to_play_button_pressed() -> void:
 	toggle_active_section(how_to_play)
 
 
-# func _on_quit_button_pressed() -> void:
-# 	if menu_scene:
-# 		var new_scene = menu_scene.instantiate()
-# 		if new_scene:
-# 			get_tree().root.add_child(new_scene)
-# 			get_tree().current_scene.queue_free()
-# 			get_tree().current_scene = new_scene
-# 		else:
-# 			print("Failed to instantiate the menu scene.")
-# 	else:
-# 		print("Failed to load the menu scene.")
+func _on_quit_button_pressed() -> void:
+	if menu_scene:
+		var new_scene = menu_scene.instantiate()
+
+		get_tree().root.add_child(new_scene)
+		get_tree().paused = false
+		get_tree().current_scene.queue_free()
+		get_tree().current_scene = new_scene
+
+	else:
+		print("Failed to load the menu scene.")

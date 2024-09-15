@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cw3e2l6ehj64b"]
+[gd_scene load_steps=29 format=3 uid="uid://cw3e2l6ehj64b"]
 
 [ext_resource type="PackedScene" uid="uid://bx3jr3fs8prko" path="res://Scenes/player.tscn" id="1_5hxnf"]
 [ext_resource type="PackedScene" uid="uid://bn5epijt7q1nj" path="res://Scenes/game_manager.tscn" id="1_e144n"]
@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://b2wbdu6gus4bg" path="res://Scenes/whetstone.tscn" id="11_l4jay"]
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="16_rx0t0"]
 [ext_resource type="PackedScene" uid="uid://dhki4femv30j8" path="res://Scenes/pausemenu.tscn" id="17_q3qks"]
+[ext_resource type="Texture2D" uid="uid://17dssqct6p0r" path="res://Assets/Sprites/pause button.png" id="18_er45w"]
 [ext_resource type="PackedScene" uid="uid://blagjlnetpjba" path="res://Scenes/endgamescreen.tscn" id="18_rjnus"]
+[ext_resource type="Texture2D" uid="uid://llkkcq8c0h82" path="res://Assets/Sprites/pause button pressed.png" id="19_jrccy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8df2o"]
 texture = ExtResource("2_cqnce")
@@ -437,6 +439,27 @@ Get iron ore from the chest"
 vertical_alignment = 2
 autowrap_mode = 3
 
+[node name="TextureButton" type="TextureButton" parent="GameManager"]
+layout_mode = 0
+offset_left = 35.4165
+offset_top = 231.249
+offset_right = 75.4165
+offset_bottom = 271.249
+scale = Vector2(1.51, 1.51)
+texture_normal = ExtResource("18_er45w")
+texture_pressed = ExtResource("19_jrccy")
+
+[node name="Label" type="Label" parent="GameManager"]
+layout_mode = 0
+offset_left = -383.0
+offset_top = 250.0
+offset_right = 110.0
+offset_bottom = 344.0
+scale = Vector2(0.333337, 0.333337)
+theme = ExtResource("4_sf3lb")
+text = "[Space] to interact
+[E] or [shift] to drop item"
+
 [node name="Player" parent="." instance=ExtResource("1_5hxnf")]
 position = Vector2(-38, 3)
 
@@ -497,3 +520,6 @@ scale = Vector2(0.87308, 0.87308)
 
 [node name="EndScreenMenu" parent="UI" instance=ExtResource("18_rjnus")]
 visible = false
+
+[connection signal="button_down" from="GameManager/TextureButton" to="GameManager" method="_on_pause_button_down"]
+[connection signal="button_up" from="GameManager/TextureButton" to="GameManager" method="_on_pause_button_up"]

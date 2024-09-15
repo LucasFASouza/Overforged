@@ -40,7 +40,13 @@ func switch_music(track_name: String):
 		print("Music track: %s not found!" % track_name)
 
 
-func _process(delta):
+func stop_all_sfx() -> void:
+	for sfx in sfx_dict.values():
+		if sfx.is_playing():
+			sfx.stop()
+
+
+func _process(_delta):
 	var whetstone: AudioStreamPlayer2D = $SFX/Whetstone
 	if Input.is_action_pressed("interact"):
 		whetstone.pitch_scale = 0.5
