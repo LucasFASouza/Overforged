@@ -8,8 +8,9 @@ var enemies_to_spawn: int
 var is_attacking = false
 
 var mode = "walk"
-var min_enemy_damage: float
-var max_enemy_damage: float
+var min_damage: float
+var max_damage: float
+var health: float
 
 signal enemy_ready
 signal enemy_spawn
@@ -24,16 +25,19 @@ func start_wave(wave_number: int):
 	match wave_number:
 		1:
 			enemies_to_spawn = 2
-			min_enemy_damage  = 0.8
-			max_enemy_damage = 1.6
+			min_damage  = 0.8
+			max_damage = 1.4
+			health = 4
 		2:
 			enemies_to_spawn = 4
-			min_enemy_damage  = 1.4
-			max_enemy_damage = 2.6
+			min_damage  = 1.4
+			max_damage = 2.6
+			health = 5
 		3:
 			enemies_to_spawn = 6
-			min_enemy_damage  = 2.2
-			max_enemy_damage = 3.8
+			min_damage  = 2.2
+			max_damage = 3.8
+			health = 6
 	
 	var enemies_this_wave = enemies_to_spawn
 
@@ -48,8 +52,9 @@ func spawn_enemy() -> void:
 		var new_enemy = enemy_scene.instantiate()
 		new_enemy.position = Vector2(150, 2)
 		new_enemy.name = "Enemy"
-		new_enemy.min_damage = min_enemy_damage
-		new_enemy.max_damage = max_enemy_damage
+		new_enemy.min_damage = min_damage
+		new_enemy.max_damage = max_damage
+		new_enemy.health = health
 		add_child(new_enemy)
 		
 		enemy_spawn.emit()
