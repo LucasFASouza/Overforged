@@ -22,9 +22,10 @@ func _ready() -> void:
 func interact() -> void:
 	if is_trash:
 		player.give_item()
+		Audiomanager.play_sfx('trash')
 	elif player.item_holding['id'] == '':
 		player.get_item(item)
-		Audiomanager.play_sfx(mode)
+		Audiomanager.play_sfx('chest')
 	else:
 		tooltip.visible = true
 		tooltip.text = "You have your hands full right now"
