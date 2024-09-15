@@ -63,6 +63,7 @@ func get_hit(damage_hit: float):
 
 		if child.health < 0:
 			child.die()
+			Audiomanager.play_sfx("die")
 			damage_left = abs(child.health)
 		else:
 			have_survivors = true

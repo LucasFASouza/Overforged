@@ -70,7 +70,6 @@ func die():
 	health_bar.visible = false
 	health_bar.set_health(0)
 	health = 0
-	Audiomanager.play_sfx("die")
 
 
 func _on_sprite_animation_finished():
