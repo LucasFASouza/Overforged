@@ -29,6 +29,7 @@
   <figure style="margin: 0 10px;"><img src="https://img.itch.zone/aW1hZ2UvMjk2NzI2NS8xNzc4NTI0OS5wbmc=/347x500/1hKsfB.png"></figure>
   <figure style="margin: 0 10px;"><img src="https://img.itch.zone/aW1hZ2UvMjk2NzI2NS8xNzc4NTI1Ni5wbmc=/347x500/Y3b3VP.png"></figure>
   <figure style="margin: 0 10px;"><img src="https://img.itch.zone/aW1hZ2UvMjk2NzI2NS8xNzc4NTI1OC5wbmc=/347x500/5NEDhm.png"></figure>
+  <figure style="margin: 0 10px;"><img src="https://img.itch.zone/aW1hZ2UvMjk2NzI2NS8xNzc4NTI4MC5wbmc=/347x500/3XQWUr.png"></figure>
 </div>
 <p><br></p>
 <p><em>This game was made in 1 week for the 2024.2 Brackey's Game Jam with the theme "Calm before the storm"</em></p>
