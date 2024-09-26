@@ -53,14 +53,13 @@ theme_override_constants/margin_bottom = 20
 
 [node name="MenuContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 169
+theme_override_constants/separation = 105
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MenuContainer"]
 texture_filter = 1
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 6
 size_flags_vertical = 4
-size_flags_stretch_ratio = 2.72
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -101,7 +100,7 @@ layout_mode = 2
 [node name="HowToPlayButton" type="Button" parent="MarginContainer/MenuContainer/MarginContainer/Main"]
 layout_mode = 2
 theme = ExtResource("2_uqj6p")
-text = "How to play"
+text = "How to play   "
 alignment = 0
 
 [node name="Separator3" type="Control" parent="MarginContainer/MenuContainer/MarginContainer/Main"]

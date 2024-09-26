@@ -8,8 +8,7 @@ extends CharacterBody2D
 @export var health: float = 4
 @onready var health_bar: Node2D = $HealthBar
 
-@export var min_damage: float = 1
-@export var max_damage: float = 4
+@export var damage: float = 1
 
 var mode = "walk"
 var target_position
@@ -18,9 +17,6 @@ signal position_reached
 
 
 func _ready() -> void:
-	var random_number = randi_range(-10, 10)
-	speed += random_number
-
 	health_bar.max_health = health
 	health_bar.set_health(health)
 
@@ -71,7 +67,7 @@ func get_hit(damage_hit: float):
 
 
 func attack():
-	var attack_damage = randf_range(min_damage, max_damage)
+	var attack_damage = damage
 
 	sprite.play("attack")
 	Audiomanager.play_sfx("enemyattack")

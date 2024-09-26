@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_pnso0"]
 [ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="3_6j0hj"]
 [ext_resource type="PackedScene" uid="uid://d3su57nld13ej" path="res://Scenes/anvil_minigame.tscn" id="3_u2vaf"]
-[ext_resource type="PackedScene" uid="uid://d2dcedxf8jbur" path="res://Scenes/ballon.tscn" id="4_qcm2w"]
+[ext_resource type="PackedScene" path="res://Scenes/ballon.tscn" id="4_qcm2w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dn7wa"]
 

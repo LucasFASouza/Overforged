@@ -7,6 +7,10 @@ extends Control
 
 @onready var counter_label: Label = $CounterLabel
 
+@onready var player: CharacterBody2D = $"../Player"
+@onready var tip: Label = $Tip
+var tipText = ""
+
 @onready var enemies_group = $EnemiesGroup
 @onready var soldiers_group = $SoldiersGroup
 
@@ -93,6 +97,26 @@ func _process(_delta: float) -> void:
 	if mode == "attack" and turn_timer.is_stopped():
 		turn_timer.start()
 
+	tipText = ""
+	
+	if player.current_interactable_item != null:
+		tipText += "\nPress [Space] to interact"
+	else: 
+		match player.item_holding["id"]:
+			"iron_ore":
+				tipText += "\nGo to the furnace to make an iron ingot"
+			"iron_ingot":
+				tipText += "\nGo to the anvil to give form to the sword"
+			"dull_sword":
+				tipText += "\nGo to the whetstone to sharpen the sword"
+			"sharp_sword":
+				tipText += "\nGo to the counter to deliver the sword"
+
+	
+	if player.item_holding["id"] != "":
+		tipText += "\nPress [E] or [Shift] to drop your item"
+
+	tip.text = tipText
 
 	# objective_label.text = objectives[current_objective]["objective"]
 
@@ -181,3 +205,11 @@ func on_enemy_ready() -> void:
 func on_enemy_spawn() -> void:
 	is_enemy_ready = false
 	mode = "idle"
+
+
+func _on_pause_button_down() -> void:
+	Input.action_press("pause")
+
+
+func _on_pause_button_up() -> void:
+	Input.action_release("pause")

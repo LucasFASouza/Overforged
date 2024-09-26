@@ -25,7 +25,7 @@ var score: float = 0
 var max_score = 0
 var phase: int = 1
 
-@export var duration: float = 8
+@export var duration: float = 6
 var game_timer: Timer = Timer.new()
 
 @export var movement_duration: float = 1

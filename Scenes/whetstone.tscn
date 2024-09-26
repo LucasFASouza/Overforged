@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_h1dje"]
 [ext_resource type="PackedScene" uid="uid://dwk46s58fngmc" path="res://Scenes/whetstone_minigame.tscn" id="3_ja7yg"]
 [ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="3_m52vp"]
-[ext_resource type="PackedScene" uid="uid://d2dcedxf8jbur" path="res://Scenes/ballon.tscn" id="4_iavcj"]
+[ext_resource type="PackedScene" path="res://Scenes/ballon.tscn" id="4_iavcj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5kys"]
 
@@ -48,7 +48,8 @@ script = ExtResource("1_fsww0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_p5kys")
 sprite_frames = SubResource("SpriteFrames_qifsq")
-animation = &"selected"
+animation = &"idle"
+autoplay = "idle"
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -26,7 +26,7 @@ var anvil: Node2D
 
 func _ready():
     restart_timer = Timer.new()
-    restart_timer.wait_time = 2
+    restart_timer.wait_time = 1
     restart_timer.one_shot = true
     restart_timer.connect("timeout", Callable(self, "start_minigame"))
     add_child(restart_timer)

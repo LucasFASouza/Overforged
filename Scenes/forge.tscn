@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/forge.gd" id="1_kvn06"]
 [ext_resource type="Texture2D" uid="uid://bhxahs8aexv4v" path="res://Assets/Sprites/stations.png" id="2_t56f2"]
 [ext_resource type="Theme" uid="uid://dj34p0jgvyynb" path="res://menu_theme.tres" id="3_bykxf"]
-[ext_resource type="PackedScene" uid="uid://b7opfpamsdu18" path="res://Scenes/forge_bar.tscn" id="3_cwaro"]
-[ext_resource type="PackedScene" uid="uid://d2dcedxf8jbur" path="res://Scenes/ballon.tscn" id="4_8h74i"]
+[ext_resource type="PackedScene" path="res://Scenes/forge_bar.tscn" id="3_cwaro"]
+[ext_resource type="PackedScene" path="res://Scenes/ballon.tscn" id="4_8h74i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l70f8"]
 atlas = ExtResource("2_t56f2")
@@ -45,7 +45,8 @@ script = ExtResource("1_kvn06")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qifsq")
-animation = &"selected"
+animation = &"idle"
+autoplay = "idle"
 offset = Vector2(0, -8)
 
 [node name="interaction_area" type="Area2D" parent="."]

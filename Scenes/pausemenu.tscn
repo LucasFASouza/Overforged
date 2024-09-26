@@ -161,6 +161,11 @@ stretch_mode = 5
 [node name="Separator5" type="Control" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 layout_mode = 2
 
+[node name="TryAgainButton" type="Button" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
+layout_mode = 2
+theme = ExtResource("3_2enea")
+text = "restart"
+
 [node name="Separator3" type="Control" parent="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main"]
 layout_mode = 2
 
@@ -174,4 +179,5 @@ text = "back to menu"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/TryAgainButton" to="." method="_on_try_again_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuContainer/MarginContainer/PanelContainer/Main/QuitButton" to="." method="_on_quit_button_pressed"]

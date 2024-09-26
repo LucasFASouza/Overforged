@@ -44,3 +44,9 @@ func _on_quit_button_pressed() -> void:
 
 	else:
 		print("Failed to load the menu scene.")
+
+
+func _on_try_again_button_pressed() -> void:
+	get_tree().paused = false
+	Audiomanager.switch_music("main")
+	get_tree().reload_current_scene()
