@@ -423,12 +423,15 @@ position = Vector2(-143.749, 127.083)
 scale = Vector2(2.08332, 2.08332)
 
 [node name="Objective" type="Label" parent="GameManager"]
-visible = false
-layout_mode = 0
-offset_left = -383.0
-offset_top = 217.0
-offset_right = 172.0
-offset_bottom = 378.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -383.331
+offset_top = 14.5832
+offset_right = 171.669
+offset_bottom = 175.583
+grow_horizontal = 2
 scale = Vector2(0.333335, 0.333335)
 theme = ExtResource("4_sf3lb")
 theme_override_colors/font_color = Color(0.952941, 0.956863, 0.905882, 1)
@@ -436,7 +439,6 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_colors/font_outline_color = Color(0.207843, 0.215686, 0.219608, 1)
 text = "Objective:
 Get iron ore from the chest"
-vertical_alignment = 2
 autowrap_mode = 3
 
 [node name="Pause" type="TextureButton" parent="GameManager"]
@@ -457,6 +459,8 @@ offset_right = 258.669
 offset_bottom = 327.332
 scale = Vector2(0.333337, 0.333337)
 theme = ExtResource("4_sf3lb")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.207843, 0.215686, 0.219608, 1)
 text = "Press [Space] to interact
 Press [E] or [Shift] to drop your item"
 

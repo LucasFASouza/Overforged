@@ -27,35 +27,15 @@ var wave_number = 0
 var enemies_coming = 0
 var enemies_killed = 0
 
-# @onready var objective_label: Label = $Objective
-# var current_objective = 1
-# var objectives = {
-# 	1: {
-# 		"id": 1,
-# 		"objective": "Get iron ore from the chest",
-# 		"completed": false
-# 	},
-# 	2: {
-# 		"id": 2,
-# 		"objective": "Make an iron ingot in the forge",
-# 		"completed": false
-# 	},
-# 	3: {
-# 		"id": 3,
-# 		"objective": "Give form to the sword in the anvil",
-# 		"completed": false
-# 	},
-# 	4: {
-# 		"id": 4,
-# 		"objective": "Sharpen the sword in the whetstone",
-# 		"completed": false
-# 	},
-# 	5: {
-# 		"id": 5,
-# 		"objective": "Defend the village from the enemies",
-# 		"completed": false
-# 	}
-# }
+@onready var objective_label: Label = $Objective
+var current_objective = 0
+var objectives = [
+	"Get iron ore from the chest",
+	"Make an iron ingot in the forge",
+	"Give form to the sword in the anvil",
+	"Sharpen the sword in the whetstone",
+	"Deliever the sword in the counter"
+]
 
 @onready var ui = $"/root/World/UI"
 
@@ -102,15 +82,7 @@ func _process(_delta: float) -> void:
 	if player.current_interactable_item != null:
 		tipText += "\nPress [Space] to interact"
 	else: 
-		match player.item_holding["id"]:
-			"iron_ore":
-				tipText += "\nGo to the furnace to make an iron ingot"
-			"iron_ingot":
-				tipText += "\nGo to the anvil to give form to the sword"
-			"dull_sword":
-				tipText += "\nGo to the whetstone to sharpen the sword"
-			"sharp_sword":
-				tipText += "\nGo to the counter to deliver the sword"
+		tipText += "\n"
 
 	
 	if player.item_holding["id"] != "":
@@ -118,7 +90,8 @@ func _process(_delta: float) -> void:
 
 	tip.text = tipText
 
-	# objective_label.text = objectives[current_objective]["objective"]
+	if objective_label.visible:
+		show_objective()
 
 
 func get_hit() -> void:
@@ -213,3 +186,18 @@ func _on_pause_button_down() -> void:
 
 func _on_pause_button_up() -> void:
 	Input.action_release("pause")
+
+
+func show_objective():
+	if current_objective == 0 and player.item_holding["id"] == "iron_ore":
+		current_objective += 1
+	elif current_objective == 1 and player.item_holding["id"] == "iron_ingot":
+		current_objective += 1
+	elif current_objective == 2 and player.item_holding["id"] == "dull_sword":
+		current_objective += 1
+	elif current_objective == 3 and player.item_holding["id"] == "finished_sword":
+		current_objective += 1
+	elif current_objective == 4 and player.item_holding["id"] == "":
+		objective_label.visible = false
+
+	objective_label.text = "Objective:\n" + objectives[current_objective]
