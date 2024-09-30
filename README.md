@@ -32,4 +32,4 @@
   <figure style="margin: 0 10px;"><img src="https://img.itch.zone/aW1hZ2UvMjk2NzI2NS8xNzc4NTI4MC5wbmc=/347x500/3XQWUr.png"></figure>
 </div>
 <p><br></p>
-<p><em>This game was made in 1 week for the 2024.2 Brackey's Game Jam with the theme "Calm before the storm"</em></p>
+<p><em>This game was made in 1 week for the 2024.2 Brackey's Game Jam with the theme "Calm before the storm" and placed 129th among 1501 entries.</em></p>
