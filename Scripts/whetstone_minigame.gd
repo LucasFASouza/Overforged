@@ -3,7 +3,7 @@ extends Node2D
 @export var stone_speed_up = 30
 @export var stone_speed_down = 40
 
-@export var swetspot_speed = 50
+@export var swetspot_speed = 20
 var sweetspot_direction = 1
 
 var direction = -1
@@ -25,7 +25,7 @@ var score: float = 0
 var max_score = 0
 var phase: int = 1
 
-@export var duration: float = 6
+@export var duration: float = 5
 var game_timer: Timer = Timer.new()
 
 @export var movement_duration: float = 1

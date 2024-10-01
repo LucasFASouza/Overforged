@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var health_bar: Node2D = $HealthBar
 
 @export var damage: float = 1
+@onready var debug_label: Label = $Label
 
 var mode = "walk"
 var target_position

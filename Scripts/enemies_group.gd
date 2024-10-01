@@ -27,15 +27,15 @@ func start_wave(wave_number: int):
 			enemies_to_spawn = 2
 			damage  = 1
 			health = 4
-			speed = 15
+			speed = 20
 		2:
 			enemies_to_spawn = 4
 			damage  = 1.5
 			health = 5
-			speed = 20
+			speed = 22
 		3:
 			enemies_to_spawn = 6
-			damage  = 2
+			damage  = 2.5
 			health = 6
 			speed = 25
 	
