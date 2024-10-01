@@ -195,6 +195,16 @@ visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 961.0
+offset_top = 621.0
+offset_right = 1246.0
+offset_bottom = 654.0
+scale = Vector2(0.599998, 0.599998)
+theme = ExtResource("2_uqj6p")
+text = "Post jam version"
+
 [connection signal="pressed" from="MarginContainer/MenuContainer/MarginContainer/Main/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/MarginContainer/Main/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/MarginContainer/Main/ControlsButton" to="." method="_on_controls_button_pressed"]
