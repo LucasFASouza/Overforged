@@ -156,11 +156,4 @@ offset = Vector2(0, -6)
 [node name="HealthBar" parent="." instance=ExtResource("3_4ln40")]
 position = Vector2(-3, -28)
 
-[node name="Label" type="Label" parent="."]
-offset_left = -6.0
-offset_top = -4.0
-offset_right = 39.0
-offset_bottom = 19.0
-text = "mode"
-
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
